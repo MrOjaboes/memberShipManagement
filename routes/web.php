@@ -21,6 +21,7 @@ Route::get('/', function () {
 Auth::routes();
 //Member Section
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home/profile', [App\Http\Controllers\HomeController::class, 'profileDetails'])->name('home.profile');
 
 
 //Admin Section

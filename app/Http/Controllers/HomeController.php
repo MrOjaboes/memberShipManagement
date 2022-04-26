@@ -27,6 +27,8 @@ class HomeController extends Controller
     }
     public function profileDetails()
     {
+        //$profiles = Profile::where('user_id',auth()->user()->id)->get();
+
         return view('Member.Profile.details');
     }
     public function profileUpdate()
