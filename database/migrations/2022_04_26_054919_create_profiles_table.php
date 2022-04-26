@@ -16,6 +16,7 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->string('fullname');
+            $table->string('number_of_children')->nullable();
             $table->string('email');
             $table->string('contact_one');
             $table->string('contact_two')->nullable();
@@ -34,6 +35,7 @@ class CreateProfilesTable extends Migration
             $table->string('leadership_position');
             $table->string('memberId');
             $table->string('photo');
+            $table->integer('user_id')->unsigned()->references('id')->on('users')->onDelete('SET NULL');
             $table->timestamps();
         });
     }
