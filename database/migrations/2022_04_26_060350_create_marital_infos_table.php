@@ -23,6 +23,7 @@ class CreateMaritalInfosTable extends Migration
             $table->string('child_birthdate')->nullable();
             $table->string('child_gender')->nullable();
             $table->integer('profile_id')->unsigned()->references('id')->on('profiles')->onDelete('SET NULL');
+            $table->integer('member_id')->unsigned()->references('id')->on('members')->onDelete('SET NULL');
             $table->timestamps();
         });
     }
