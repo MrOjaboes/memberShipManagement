@@ -53,32 +53,18 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+
+
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                    Profile
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
+                            <a href="{{ route('home.profile') }}" class="nav-link">
+                                <i class="far fa-file nav-icon"></i>
+                                <p>Profile</p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Login Details</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Senior</p>
-                                    </a>
-                                </li>
-                            </ul>
+                        </li>
                         <li class="nav-item">
                             <a href="" class="nav-link">
                                 <i class="far fa-dot-circle nav-icon"></i>
-                                <p>Sessions</p>
+                                <p>Login Details</p>
                             </a>
                         </li>
 

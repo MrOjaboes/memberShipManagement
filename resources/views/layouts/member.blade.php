@@ -24,6 +24,16 @@ a {
     text-decoration: none;
     background-color: transparent;
 }
+.card-primary:not(.card-outline)>.card-header {
+    background-color: #dc3545;
+}
+ .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #dc3545;
+}
+.card-primary.card-outline {
+    border-top: 3px solid #dc3545;
+}
   </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">

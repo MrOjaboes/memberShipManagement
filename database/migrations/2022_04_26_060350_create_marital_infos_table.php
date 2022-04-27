@@ -15,10 +15,6 @@ class CreateMaritalInfosTable extends Migration
     {
         Schema::create('marital_infos', function (Blueprint $table) {
             $table->id();
-            $table->string('spouse_name')->nullable();
-            $table->string('spouse_birthdate')->nullable();
-            $table->string('spouse_contact')->nullable();
-            $table->string('wedding_date')->nullable();
             $table->string('child_name')->nullable();
             $table->string('child_birthdate')->nullable();
             $table->string('child_gender')->nullable();
