@@ -16,9 +16,14 @@
   <link rel="stylesheet" href="/Interface/dist/css/adminlte.min.css">
   @livewireStyles
   <style>
-      [class*=sidebar-dark-] .sidebar a {
-    color: white;
+           [class*=sidebar-dark-] .sidebar a {
+    color: #fff;
+      }
+      .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+    background-color: #fff;
+    color: #000;
 }
+ 
 a {
     color: #dc3545;
     text-decoration: none;
