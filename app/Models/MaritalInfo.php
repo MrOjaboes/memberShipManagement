@@ -12,6 +12,6 @@ class MaritalInfo extends Model
         'child_birthdate',
         'child_gender',
         'profile_id',
-        'member_id',
+        'user_id',
         ];
 }

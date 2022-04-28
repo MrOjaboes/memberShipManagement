@@ -63,26 +63,26 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('junior.subject') }}" class="nav-link">
+                                    <a href=" " class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Junior</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('senior.subject') }}" class="nav-link">
+                                    <a href=" " class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Senior</p>
                                     </a>
                                 </li>
                             </ul>
                         <li class="nav-item">
-                            <a href="{{ route('sessions') }}" class="nav-link">
+                            <a href=" " class="nav-link">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>Sessions</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('principal.accounts') }}" class="nav-link">
+                            <a href=" " class="nav-link">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>Accounts</p>
                             </a>
@@ -104,13 +104,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{ route('junior.list') }}" class="nav-link">
+                        <a href=" " class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Junior</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('senior.list') }}" class="nav-link">
+                        <a href=" " class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Senior</p>
                         </a>

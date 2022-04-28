@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MaritalInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -28,9 +29,8 @@ class HomeController extends Controller
     }
     public function profileDetails()
     {
-        //$profiles = Profile::where('user_id',auth()->user()->id)->get();
-
-        return view('Member.Profile.details');
+        $marital_info = MaritalInfo::where('user_id',auth()->user()->id)->get();
+        return view('Member.Profile.details',compact('marital_info'));
     }
     public function editProfile()
     {
@@ -44,6 +44,72 @@ class HomeController extends Controller
         $request['file'] = $fileName;
     }
 
+    if($request->marital_status == "Married"){
+      $profile = DB::table('profiles')
+        ->where('user_id',auth()->user()->id)
+        ->update([
+            'fullname' => $request->fullname,
+            'number_of_children' => $request->number_of_children,
+            'email' => $request->email,
+            'spouse_name' => $request->spouse_name,
+            'spouse_birthdate' => $request->spouse_birthdate,
+            'spouse_contact' => $request->spouse_contact,
+            'wedding_date' => $request->wedding_date,
+            'contact_one' => $request->contact_one,
+            'contact_two' => $request->contact_two,
+            'age_group' => $request->age_group,
+            'gender' => $request->gender,
+            'church_location' => $request->church_location,
+            'address_one' => $request->address_one,
+            'address_two' => $request->address_two,
+            'area' => 'Area 1',
+            'fellowship_group' => $request->fellowship_group,
+            'friendship_centre' => $request->friendship_centre,
+            'marital_status' => $request->marital_status,
+            'birth_date' => $request->birth_date,
+            'occupation' => $request->occupation,
+            'leadership_position' => $request->leadership_position,
+            'memberId' => 'HOG/'.date('Y').'/'.substr(rand(0,time()),0,5),
+
+        ]);
+//dd($profile);
+$maritalInfo = MaritalInfo::where('user_id',auth()->user()->id)->count();
+//dd($maritalInfo);
+         //Insert Marital Info
+       if($profile){
+        $child_name = $request['child_name'];
+        $child_birthdate = $request['child_birthdate'];
+        $child_gender = $request['child_gender'];
+
+for ($i = 0; $i <= count($child_name) - 1; $i++) {
+    if($maritalInfo > 0){
+            DB::table('marital_infos')
+            ->where('user_id',auth()->user()->id)
+            ->update([
+            'profile_id' => $profile,
+            'child_gender' => $child_gender[$i],
+            'child_birthdate' => $child_birthdate[$i],
+            'child_name' => $child_name[$i],
+        ]);
+
+    }
+//    DB::table('marital_infos')
+//    ->where('user_id',auth()->user()->id)
+//    ->update([
+    auth()->user()->marital_profile()
+        ->create([
+            'profile_id' => $profile,
+            'child_gender' => $child_gender[$i],
+            'child_birthdate' => $child_birthdate[$i],
+            'child_name' => $child_name[$i],
+        ]);
+
+}
+
+       }
+        return redirect()->back()->with('message', 'Profile updated succesfully');
+
+    }else{
         DB::table('profiles')
         ->where('user_id',auth()->user()->id)
         ->update([
@@ -72,6 +138,8 @@ class HomeController extends Controller
             'photo' => $fileName,
         ]);
         return redirect()->back()->with('message', 'Profile updated succesfully');
+
+    }
 
     }
 }

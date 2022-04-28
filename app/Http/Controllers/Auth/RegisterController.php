@@ -80,7 +80,7 @@ class RegisterController extends Controller
             Member::create([
                 'user_id' => $user->id,
             ]);
-            return redirect()->route('login')->with('message','Account Created Successfully,Login to complete your profile');
+            return view('auth.login')->with('message','Account Created Successfully,Login to complete your profile');
         }
     }
 }

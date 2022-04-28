@@ -41,4 +41,8 @@ class User extends Authenticatable
     {
        return $this->hasOne(Profile::class,'user_id');
     }
+    public function marital_profile()
+    {
+        return $this->hasOne(MaritalInfo::class,'user_id');
+    }
 }

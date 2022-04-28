@@ -30,20 +30,20 @@
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                   @if (Auth::user()->profile->photo == null)
-                                   <img class="profile-user-img img-fluid img-circle"
-                                   src="/Interface/dist/img/AdminLTELogo.PNG" alt="member photo" />
+                                    @if (Auth::user()->profile->photo == null)
+                                        <img class="profile-user-img img-fluid img-circle"
+                                            src="/Interface/dist/img/AdminLTELogo.PNG" alt="member photo" />
                                     @else
-                                    <img class="profile-user-img img-fluid img-circle"
-                                    src="{{ asset('/Photos/' . Auth::user()->profile->photo ) }}" alt="member Passport" />
-
-                                   @endif
+                                        <img class="profile-user-img img-fluid img-circle"
+                                            src="{{ asset('/Photos/' . Auth::user()->profile->photo) }}"
+                                            alt="member Passport" />
+                                    @endif
                                 </div>
 
                                 <h3 class="profile-username text-center">{{ Auth::user()->profile->fullname }} </h3>
 
                                 <p class="text-muted text-center"><b>{{ Auth::user()->profile->memberId }}</b></p>
-                                 
+
                                 {{-- <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
                                         <b>State</b> <a class="float-right">{{ $student->state }}</a>
@@ -95,7 +95,7 @@
                                 <strong><i class="fas fa-pencil-alt mr-1"></i> Gender</strong>
 
                                 <p class="text-muted">
-                                    {{Auth::user()->profile->gender }}
+                                    {{ Auth::user()->profile->gender }}
                                 </p>
 
                                 <hr>
@@ -129,89 +129,110 @@
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
                                     <li class="nav-item"><a class="nav-link active" href="#activity"
-                                            data-toggle="tab">Subject Details</a></li>
+                                            data-toggle="tab">Marital Info</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#settings"
                                             data-toggle="tab">Guardian Details</a></li>
 
                                 </ul>
                             </div><!-- /.card-header -->
                             <div class="card-body">
-                                {{-- <div class="tab-content">
+                                <div class="tab-content">
                                     <div class="active tab-pane" id="activity">
+                                        <form action="">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Gender</th>
+                                                        <th>Birth Date</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($marital_info as $item)
+                                                        <tr>
+                                                            <td><input type="text" class="form-control" name="child_name"
+                                                                    value="{{ $item->child_name }}"></td>
+                                                            <td>
+                                                                <select name="child_gender" class="form-control">
+                                                                    <option value="{{ $item->child_gender }}">
+                                                                        {{ $item->child_gender }}</option>
+                                                                    <option value="Male">Male</option>
+                                                                    <option value="Female">Female</option>
+                                                                </select>
+                                                            </td>
+                                                            <td><input type="date" class="form-control"
+                                                                    name="child_birthdate"
+                                                                    value="{{ $item->child_birthdate }}"></td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                            <button type="submit" class="btn btn-outline-danger">Update</button>
+                                        </form>
 
-                                        @foreach ($subjects as $subject)
-
-                                                    @php
-                                                    $parties = explode(",", $subject->subject_id);
-                                                  @endphp
-
-                                                    @for($i = 0; $i < count($parties); $i++)
-                                                    <li class="list-group-item">
-                                                        <b>
-
-                                                    {{ App\Http\Controllers\StudentController::GetJuniorSubjectById($parties[$i]) }}
-                                                </b>
-                                            </li>
-                                                    @endfor
-
-                                        @endforeach
 
                                     </div>
 
                                     <div class="tab-pane" id="settings">
-                                       @foreach ($guardian_details as $guardian)
-                                       <form class="form-horizontal">
-                                        <div class="form-group row">
-                                            <label for="inputName" class="col-sm-2 col-form-label"> Full Name</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" readonly class="form-control" id="inputName"
-                                                    value="{{ $guardian->fullname }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                                            <div class="col-sm-10">
-                                                <input type="email" readonly  class="form-control" id="inputEmail"
-                                                    value="{{ $guardian->email }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="inputName2" class="col-sm-2 col-form-label">Contact 1</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" readonly class="form-control" id="inputName2"
-                                                    value="{{ $guardian->fathercontact }}">
-                                            </div>
-                                        </div>
+                                        {{-- @foreach ($guardian_details as $guardian)
+                                            <form class="form-horizontal">
+                                                <div class="form-group row">
+                                                    <label for="inputName" class="col-sm-2 col-form-label"> Full
+                                                        Name</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" readonly class="form-control" id="inputName"
+                                                            value="{{ $guardian->fullname }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="email" readonly class="form-control" id="inputEmail"
+                                                            value="{{ $guardian->email }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputName2" class="col-sm-2 col-form-label">Contact
+                                                        1</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" readonly class="form-control" id="inputName2"
+                                                            value="{{ $guardian->fathercontact }}">
+                                                    </div>
+                                                </div>
 
-                                        <div class="form-group row">
-                                            <label for="inputSkills" readonly class="col-sm-2 col-form-label">Contact 2</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" readonly id="inputSkills"
-                                                    value="{{ $guardian->mothercontact }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="inputSkills" readonly class="col-sm-2 col-form-label">Occupation</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" readonly id="inputSkills"
-                                                    value="{{ $guardian->occupation }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="inputSkills" readonly class="col-sm-2 col-form-label">Address</label>
-                                            <div class="col-sm-10">
-                                                <textarea type="text" class="form-control" readonly id="inputSkills">{{ $guardian->address }}</textarea>
-                                            </div>
-                                        </div>
-                                    </form>
-                                       @endforeach
+                                                <div class="form-group row">
+                                                    <label for="inputSkills" readonly
+                                                        class="col-sm-2 col-form-label">Contact 2</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" readonly id="inputSkills"
+                                                            value="{{ $guardian->mothercontact }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputSkills" readonly
+                                                        class="col-sm-2 col-form-label">Occupation</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" readonly id="inputSkills"
+                                                            value="{{ $guardian->occupation }}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputSkills" readonly
+                                                        class="col-sm-2 col-form-label">Address</label>
+                                                    <div class="col-sm-10">
+                                                        <textarea type="text" class="form-control" readonly id="inputSkills">{{ $guardian->address }}</textarea>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        @endforeach --}}
                                     </div>
                                     <!-- /.tab-pane -->
-                                </div> --}}
+                                </div>
                                 <!-- /.tab-content -->
                             </div><!-- /.card-body -->
                         </div>
-                        <h2><a class="btn btn-outline-danger" href="{{ route('member.profile') }}">Update Profile</a></h2>
+                        <h2><a class="btn btn-outline-danger" href="{{ route('member.profile') }}">Update Profile</a>
+                        </h2>
                         <!-- /.card -->
                     </div>
                     <!-- /.col -->
