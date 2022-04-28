@@ -18,6 +18,7 @@ class CreateEventsTable extends Migration
             $table->string('title');
             $table->string('caption');
             $table->string('description');
+            $table->boolean('status')->default(0);
             $table->integer('user_id')->unsigned()->references('id')->on('users')->onDelete('SET NULL');
             $table->timestamps();
         });

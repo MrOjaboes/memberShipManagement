@@ -76,9 +76,9 @@
                                 </li>
                             </ul>
                         <li class="nav-item">
-                            <a href=" " class="nav-link">
+                            <a href="{{ route('admin.events') }}" class="nav-link">
                                 <i class="far fa-dot-circle nav-icon"></i>
-                                <p>Sessions</p>
+                                <p>Event</p>
                             </a>
                         </li>
                         <li class="nav-item">

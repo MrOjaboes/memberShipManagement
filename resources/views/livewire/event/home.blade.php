@@ -1,6 +1,7 @@
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Recently Added Events</h3>
+        <h3 class="card-title">Recently Added Events &nbsp;&nbsp;&nbsp;&nbsp;<span><a
+                    href="{{ route('admin.event') }}" class="btn btn-sm btn-danger">New Event</a></span></h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -14,65 +15,31 @@
     <!-- /.card-header -->
     <div class="card-body p-0">
         <ul class="products-list product-list-in-card pl-2 pr-2">
-            <li class="item">
-                <div class="product-img">
-                    <img src="/Interface/dist/img/default-150x150.png" alt="Product Image"
-                        class="img-size-50">
-                </div>
-                <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">Samsung TV
-                        <span class="badge badge-warning float-right">$1800</span></a>
-                    <span class="product-description">
-                        Samsung 32" 1080p 60Hz LED Smart HDTV.
-                    </span>
-                </div>
-            </li>
-            <!-- /.item -->
-            <li class="item">
-                <div class="product-img">
-                    <img src="/Interface/dist/img/default-150x150.png" alt="Product Image"
-                        class="img-size-50">
-                </div>
-                <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">Bicycle
-                        <span class="badge badge-info float-right">$700</span></a>
-                    <span class="product-description">
-                        26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                    </span>
-                </div>
-            </li>
-            <!-- /.item -->
-            <li class="item">
-                <div class="product-img">
-                    <img src="/Interface/dist/img/default-150x150.png" alt="Product Image"
-                        class="img-size-50">
-                </div>
-                <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">
-                        Xbox One <span class="badge badge-danger float-right">
-                            $350
+            @foreach ($events as $event)
+                <li class="item">
+                    <div class="product-img">
+                        <img src="{{ asset('/Events/' . $event->caption) }}" alt="Product Image"
+                            class="img-size-50">
+                    </div>
+                    <div class="product-info">
+                        <a href="{{ route('admin.event.edit', $event->id) }}"
+                            class="product-title">{{ $event->title }}
+                            <span
+                                class="label label-danger text-dark float-right">{{ \Carbon\Carbon::parse($event->created_at)->format('d D, M Y') }}</span></a>
+                        <span class="label label-danger text-dark float-right px-5">
+                            @if ($event->status == 0)
+                                <button wire:click.prevent="closeEvent({{ $event->id }})" class="btn btn-sm btn-success">Active</button>
+                            @else
+                                <button class="btn btn-sm btn-danger">Closed</button>
+                            @endif
                         </span>
-                    </a>
-                    <span class="product-description">
-                        Xbox One Console Bundle with Halo Master Chief Collection.
-                    </span>
-                </div>
-            </li>
-            <!-- /.item -->
-            <li class="item">
-                <div class="product-img">
-                    <img src="/Interface/dist/img/default-150x150.png" alt="Product Image"
-                        class="img-size-50">
-                </div>
-                <div class="product-info">
-                    <a href="javascript:void(0)" class="product-title">PlayStation 4
-                        <span class="badge badge-success float-right">$399</span></a>
-                    <span class="product-description">
-                        PlayStation 4 500GB Console (PS4)
-                    </span>
-                </div>
-            </li>
-            <!-- /.item -->
+                        <span class="product-description">
+                            {{ substr($event->description, 0, 43) }}
+                        </span>
+                    </div>
+                </li>
+            @endforeach
+
         </ul>
     </div>
     <!-- /.card-body -->

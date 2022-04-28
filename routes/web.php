@@ -28,3 +28,10 @@ Route::post('/home/profile/update', [App\Http\Controllers\HomeController::class,
 
 //Admin Section
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+
+//Event Section
+Route::get('/admin/events', [App\Http\Controllers\EventController::class, 'index'])->name('admin.events');
+Route::get('/admin/event', [App\Http\Controllers\EventController::class, 'event'])->name('admin.event');
+Route::post('/admin/event', [App\Http\Controllers\EventController::class, 'store'])->name('admin.event');
+Route::get('/admin/event/{event}/edit', [App\Http\Controllers\EventController::class, 'edit'])->name('admin.event.edit');
+Route::post('/admin/event/{event}/edit', [App\Http\Controllers\EventController::class, 'updateEvent'])->name('admin.event.edit');
