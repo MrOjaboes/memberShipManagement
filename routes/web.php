@@ -25,6 +25,8 @@ Route::get('/home/profile', [App\Http\Controllers\HomeController::class, 'profil
 Route::get('/home/profile/update', [App\Http\Controllers\HomeController::class, 'editProfile'])->name('member.profile');
 Route::post('/home/profile/update', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('member.profile');
 
+//Event collection
+Route::get('/home/event/{event}/details', [App\Http\Controllers\EventRegistrationController::class, 'eventDetails'])->name('member.eventDetails');
 
 //Admin Section
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
