@@ -20,19 +20,19 @@
     color: white;
 }
 a {
-    color: #dc3545;
+    color: #DB261D;
     text-decoration: none;
     background-color: transparent;
 }
 .card-primary:not(.card-outline)>.card-header {
-    background-color: #dc3545;
+    background-color: #DB261D;
 }
- .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+ .btn-danger,.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     color: #fff;
-    background-color: #dc3545;
+    background-color: #DB261D;
 }
 .card-primary.card-outline {
-    border-top: 3px solid #dc3545;
+    border-top: 3px solid #DB261D;
 }
   </style>
 </head>

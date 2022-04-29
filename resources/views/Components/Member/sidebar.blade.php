@@ -5,9 +5,9 @@
             style="opacity: .8">
         <span class="brand-text font-weight-light">AdminLTE 3</span>
     </a>
-
+      {{-- dc3545 --}}
     <!-- Sidebar -->
-    <div class="sidebar" style="background-color: #dc3545;color: #fff;">
+    <div class="sidebar" style="background-color: #DB261D;color: #fff;">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">

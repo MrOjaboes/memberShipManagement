@@ -17,7 +17,7 @@
             @foreach ($events as $event)
                 <li class="item">
                     <div class="product-img">
-                        <img src="/Interface/dist/img/default-150x150.png" alt="Product Image" class="img-size-50">
+                        <img src="{{ asset('/Events/' . $event->caption) }}" alt="Product Image" class="img-size-50">
                     </div>
                     <div class="product-info">
                         <a href="{{ route('member.eventDetails',$event->id) }}" class="product-title">{{ $event->title }}</a>

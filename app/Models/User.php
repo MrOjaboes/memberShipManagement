@@ -49,4 +49,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(MaritalInfo::class,'user_id');
     }
+    public function eventRegister()
+    {
+        return $this->hasMany(EventRegister::class,'user_id');
+    }
+
 }
