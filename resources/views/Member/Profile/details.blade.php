@@ -130,12 +130,32 @@
                     <!-- /.col -->
                     <div class="col-md-9">
                         <div class="card">
+                            @if (session()->has('message'))
+                            <div class="alert alert-success alert-dismissible fade show px-3" role="alert">
+                                <strong><i class="fas fa-check-circle"></i></strong> {{ session()->get('message') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span style="color:white;" aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
+                        @if (session()->has('error'))
+                        <div class="alert alert-danger alert-dismissible fade show px-3 py-3" role="alert">
+                            <strong><i class="fas fa-check-circle"></i></strong> {{ session()->get('error') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span style="color:white;" aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
                                     <li class="nav-item"><a class="nav-link active" href="#activity"
                                             data-toggle="tab">marital Info</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#settings"
                                             data-toggle="tab">More Details</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#login"
+                                            data-toggle="tab">Login Details</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#password"
+                                            data-toggle="tab">Password</a></li>
 
                                 </ul>
                             </div><!-- /.card-header -->
@@ -292,6 +312,73 @@
 
 
 
+                                            </div>
+                                            <!-- /.card-body -->
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="login">
+                                        <div class="card">
+
+                                            <!-- /.card-header -->
+                                            <div class="card-body">
+                                                <form action="{{ route('member.account') }}" method="POST">
+                                                    @csrf
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="">User Name</label>
+                                                                <input type="text" placeholder="********"
+                                                                    class="form-control"
+                                                                    value="{{ Auth::user()->name }}" name="name" id="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="">Email</label>
+                                                                <input type="email" placeholder="********"
+                                                                    class="form-control"
+                                                                    value="{{ Auth::user()->email }}" name="email" id="">
+                                                            </div>
+
+                                                            <button class="btn btn-danger" type="submit">Update
+                                                                Details</button>
+                                                        </div>
+                                                        <div class="col-md-6"></div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <!-- /.card-body -->
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="password">
+                                        <div class="card">
+
+                                            <!-- /.card-header -->
+                                            <div class="card-body">
+
+                                                <form action="{{ route('member.password') }}" method="POST">
+                                                    @csrf
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="">Old Password</label>
+                                                                <input type="password" placeholder="********"
+                                                                    class="form-control" name="oldpassword" id="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="">New Password</label>
+                                                                <input type="password" placeholder="********"
+                                                                    class="form-control" name="password" id="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="">Confirm Password</label>
+                                                                <input type="password" placeholder="********"
+                                                                    class="form-control" name="confirm_password" id="">
+                                                            </div>
+                                                            <button class="btn btn-danger" type="submit">Update
+                                                                password</button>
+                                                        </div>
+                                                        <div class="col-md-6"></div>
+                                                    </div>
+                                                </form>
                                             </div>
                                             <!-- /.card-body -->
                                         </div>

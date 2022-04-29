@@ -25,6 +25,8 @@ Route::get('/home/profile', [App\Http\Controllers\HomeController::class, 'profil
 Route::post('/home/profile', [App\Http\Controllers\HomeController::class, 'updateChildren'])->name('home.profile');
 Route::get('/home/profile/update', [App\Http\Controllers\HomeController::class, 'editProfile'])->name('member.profile');
 Route::post('/home/profile/update', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('member.profile');
+Route::post('/home/profile/login', [App\Http\Controllers\AccountUpdateController::class, 'updateDetails'])->name('member.account');
+Route::post('/home/profile/password', [App\Http\Controllers\AccountUpdateController::class, 'updatePassword'])->name('member.password');
 
 //Event collection
 Route::get('/home/event/{event}/details', [App\Http\Controllers\EventRegistrationController::class, 'eventDetails'])->name('member.eventDetails');
