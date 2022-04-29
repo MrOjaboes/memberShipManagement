@@ -41,3 +41,6 @@ Route::get('/admin/event', [App\Http\Controllers\EventController::class, 'event'
 Route::post('/admin/event', [App\Http\Controllers\EventController::class, 'store'])->name('admin.event');
 Route::get('/admin/event/{event}/edit', [App\Http\Controllers\EventController::class, 'edit'])->name('admin.event.edit');
 Route::post('/admin/event/{event}/edit', [App\Http\Controllers\EventController::class, 'updateEvent'])->name('admin.event.edit');
+
+//Member(s) Collection
+Route::get('/admin/members', [App\Http\Controllers\AdminController::class, 'members'])->name('admin.members');

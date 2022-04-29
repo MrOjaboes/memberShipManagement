@@ -10,4 +10,8 @@ class AdminController extends Controller
     {
        return view('Admin.index');
     }
+    public function members()
+    {
+       return view('Admin.Members.index');
+    }
 }

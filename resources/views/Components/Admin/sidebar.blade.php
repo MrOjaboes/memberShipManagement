@@ -7,7 +7,7 @@
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar" style="background-color: #dc3545;color: #fff;">
+    <div class="sidebar" style="background-color: #DB261D;color: #fff;">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
@@ -44,6 +44,7 @@
                         </p>
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-circle"></i>
@@ -57,36 +58,13 @@
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
-                                    Subjects
+                                    Profile
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href=" " class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Junior</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href=" " class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Senior</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.events') }}" class="nav-link">
-                                <i class="far fa-dot-circle nav-icon"></i>
-                                <p>Event</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href=" " class="nav-link">
-                                <i class="far fa-dot-circle nav-icon"></i>
-                                <p>Accounts</p>
-                            </a>
-                        </li>
+
+
+
                 </li>
 
 
@@ -95,28 +73,24 @@
 
 
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-chart-pie"></i>
+                <a href="{{ route('admin.events') }}" class="nav-link">
+                    <i class="nav-icon fas fa-comment"></i>
                     <p>
-                        Students
+                        Events
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href=" " class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Junior</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href=" " class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Senior</p>
-                        </a>
-                    </li>
 
-                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('admin.members') }}" class="nav-link">
+                    <i class="nav-icon fas fa-users"></i>
+                    <p>
+                        Members
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+
             </li>
 
             <li class="nav-item">

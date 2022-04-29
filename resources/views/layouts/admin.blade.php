@@ -23,7 +23,12 @@
             padding: 3px;
             width: 100px;
         }
-
+        .page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #DB261D;
+    border-color: #DB261D;
+}
         [class*=sidebar-dark-] .sidebar a {
             color: #fff;
         }

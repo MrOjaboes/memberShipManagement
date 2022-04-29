@@ -41,6 +41,12 @@ a {
 .card-primary.card-outline {
     border-top: 3px solid #DB261D;
 }
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #DB261D;
+    border-color: #DB261D;
+}
   </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
