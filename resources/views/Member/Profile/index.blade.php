@@ -78,7 +78,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="">Contact 1</label>
+                                        <label for="">Contact 1 (WhatsApp No.)</label>
                                         <input type="text" class="form-control"
                                             value="{{ Auth::user()->profile->contact_one }}" name="contact_one" id="">
                                     </div>
@@ -94,7 +94,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="">Age Group</label>
+                                        <label for="">Service Group</label>
                                         <input type="text" maxlength="11" class="form-control"
                                             value="{{ Auth::user()->profile->age_group }}" name="age_group" id="">
                                     </div>
@@ -131,21 +131,21 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Fellowship Group</label>
-                                        <select name="fellowship_group" class="form-control" id="">
-                                            <option value="{{ Auth::user()->profile->fellowship_group }}">
-                                                {{ Auth::user()->profile->fellowship_group }}</option>
-                                            <option value="{{ Auth::user()->profile->fellowship_group }}"> 3</option>
+                                        <select name="fellowship_group" class="form-control input-lg" id="">
+                                            <option value="{{ Auth::user()->profile->fellowship_group}}">{{ Auth::user()->profile->fellowship_group}}</option>
+                                            <option value="Zenith fellowship">Zenith fellowship </option>
+                                            <option value="Ultimate Class">Ultimate Class</option>
+                                            <option value="Men Fellowship">Men Fellowship</option>
+                                            <option value="Women Fellowship">Women Felloship</option>
+                                            <option value="Battle Axe">Battle Axe</option>
+                                            <option value="Graceville Fellowship">Graceville Fellowship</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Friendship Centre</label>
-                                        <select name="friendship_centre" class="form-control" id="">
-                                            <option value="{{ Auth::user()->profile->friendship_centre }}">
-                                                {{ Auth::user()->profile->friendship_centre }}</option>
-                                            <option value="{{ Auth::user()->profile->fellowship_group }}"> 3</option>
-                                        </select>
+                                      <input type="text" value="{{ Auth::user()->profile->friendship_centre }}" class="form-control" name="friendship_centre" id="">
                                     </div>
                                 </div>
                             </div>
@@ -153,37 +153,23 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Address 1</label>
-                                       <input type="text" placeholder="Address 1" name="address_one" class="form-control" id="">
+                                       <input type="text" placeholder="Address 1" value="{{ Auth::user()->profile->address_one }}" name="address_one" class="form-control" id="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Address 2</label>
-                                        <input type="text" placeholder="Address 2" name="address_two" class="form-control" id="">
+                                        <input type="text" placeholder="Address 2" value="{{ Auth::user()->profile->address_two }}" name="address_two" class="form-control" id="">
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="">Age Group</label>
-                                       <input type="text" placeholder="Age Group" name="age_group" class="form-control" id="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="">Church Location</label>
-                                        <input type="text" placeholder="Location" name="church_location" class="form-control" id="">
 
-                                    </div>
-                                </div>
-                            </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="">Area</label>
-                                       <input type="text" placeholder="Area" name="area" class="form-control" id="">
+                                        <label for="">Church Branch</label>
+                                       <input type="text" placeholder="Area" value="{{ Auth::user()->profile->church_location }}" name="church_location" class="form-control" id="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -202,9 +188,10 @@
 
                                     <!-- /.form-group -->
                                     <div class="form-group">
+                                        <label for="">Marital Status</label>
                                         <select class="form-control select2bs4" name="marital_status" id="MaritalStatus"
                                             style="width: 100%;">
-                                            <option value="">----Marital Status-----</option>
+                                            <option value="{{ Auth::user()->profile->marital_status}}">{{ Auth::user()->profile->marital_status}}</option>
                                             <option value="Single">Single</option>
                                             <option value="Married">Married</option>
                                             @error('marital_status')
@@ -222,8 +209,9 @@
 
                                     <!-- /.form-group -->
                                     <div class="form-group">
-                                        <select class="form-control select2bs4" name="position" id="" style="width: 100%;">
-                                            <option value="">----Leadership Position-----</option>
+                                        <label for="">Leadership Position</label>
+                                        <select class="form-control select2bs4" name="leadership_position" id="" style="width: 100%;">
+                                            <option value="{{ Auth::user()->profile->leadership_position}}">{{ Auth::user()->profile->leadership_position}}</option>
                                             <option value="Shepherd">Shepherd</option>
                                             <option value="Asst.Shepherd">Asst. Shepherd</option>
                                             <option value="Secretary">Secretary</option>

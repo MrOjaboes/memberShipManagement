@@ -7,7 +7,7 @@
     </a>
       {{-- dc3545 --}}
     <!-- Sidebar -->
-    <div class="sidebar" style="background-color: #DB261D;color: #fff;">
+    <div class="sidebar" style="background-color: #DB261D;color:#fff;">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
@@ -46,7 +46,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-circle"></i>
+                        <i class="nav-icon fas fa-th"></i>
                         <p>
                             Settings
                             <i class="right fas fa-angle-left"></i>
@@ -75,30 +75,7 @@
             </li>
 
 
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-chart-pie"></i>
-                    <p>
-                        Students
-                        <i class="right fas fa-angle-left"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Junior</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Senior</p>
-                        </a>
-                    </li>
 
-                </ul>
-            </li>
 
             <li class="nav-item">
                 <a id="logout" href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();

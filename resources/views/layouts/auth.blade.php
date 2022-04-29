@@ -27,13 +27,13 @@
 <style>
     .btn-primary {
     color: #fff;
-    background-color: brown;
-    border-color: brown;
+    background-color: #DB261D;
+    border-color: #DB261D;
 }
     .btn-primary:hover{
     color: #fff;
-    background-color: brown;
-    border-color: brown;
+    background-color: #DB261D;
+    border-color: #DB261D;
 }
 </style>
   </head>

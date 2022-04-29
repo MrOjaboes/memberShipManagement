@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    //protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -80,7 +80,7 @@ class RegisterController extends Controller
             Member::create([
                 'user_id' => $user->id,
             ]);
-            return view('auth.login')->with('message','Account Created Successfully,Login to complete your profile');
+            return $user;
         }
     }
 }

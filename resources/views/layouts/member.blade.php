@@ -16,6 +16,13 @@
   <link rel="stylesheet" href="/Interface/dist/css/adminlte.min.css">
   @livewireStyles
   <style>
+       .profile-user-img {
+            border: 3px solid gainsboro;
+            margin: 0 auto;
+            padding: 3px;
+            width: 150px;
+        }
+
       [class*=sidebar-dark-] .sidebar a {
     color: white;
 }

@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Dasboard / Student Profile</h1>
+                        <h1>Dasboard / Member Profile</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -74,7 +74,7 @@
                                 <h3 class="card-title">About Me</h3>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body">
+                            <div class="card-body" style="height: 200px;overflow-y:scroll;">
                                 <strong><i class="fas fa-book mr-1"></i> Email</strong>
 
                                 <p class="text-muted">
@@ -83,15 +83,14 @@
 
                                 <hr>
 
-                                <strong><i class="fas fa-map-marker-alt mr-1"></i> Contact</strong>
+                                <strong><i class="fas fa-map-marker-alt mr-1"></i> Contact 1 (WhatsApp)</strong>
 
                                 <p class="text-muted">{{ Auth::user()->profile->contact_one }}</p>
-
-
-
                                 <hr>
-                                <hr>
+                                <strong><i class="fas fa-map-marker-alt mr-1"></i> Contact 2</strong>
 
+                                <p class="text-muted">{{ Auth::user()->profile->contact_two }}</p>
+                                <hr>
                                 <strong><i class="fas fa-pencil-alt mr-1"></i> Gender</strong>
 
                                 <p class="text-muted">
@@ -99,6 +98,13 @@
                                 </p>
 
                                 <hr>
+
+                                <strong><i class="fas fa-pencil-alt mr-1"></i> Marital Status</strong>
+
+                                <p class="text-muted">
+                                    {{ Auth::user()->profile->marital_status }}
+                                </p>
+
                                 <hr>
 
                                 <strong><i class="fas fa-pencil-alt mr-1"></i> Date Of Birth</strong>
@@ -109,9 +115,7 @@
 
                                 <hr>
 
-                                <hr>
-
-                                <strong><i class="fas fa-pencil-alt mr-1"></i> Date Added</strong>
+                                <strong><i class="fas fa-pencil-alt mr-1"></i> Account Created On</strong>
 
                                 <p class="text-muted">
                                     {{ \Carbon\Carbon::parse(Auth::user()->created_at)->format('d D, M Y') }}
@@ -129,16 +133,21 @@
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
                                     <li class="nav-item"><a class="nav-link active" href="#activity"
-                                            data-toggle="tab">Marital Info</a></li>
+                                            data-toggle="tab">marital Info</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#settings"
-                                            data-toggle="tab">Guardian Details</a></li>
+                                            data-toggle="tab">More Details</a></li>
 
                                 </ul>
                             </div><!-- /.card-header -->
                             <div class="card-body">
                                 <div class="tab-content">
                                     <div class="active tab-pane" id="activity">
-                                        <form action="">
+
+                                        <form action="{{ route('home.profile') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" class="form-control" name="profile_id"
+                                                value="{{ Auth::user()->profile->id }}">
+
                                             <table class="table">
                                                 <thead>
                                                     <tr>
@@ -148,12 +157,14 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($marital_info as $item)
+                                                    @forelse ($marital_info as $item)
                                                         <tr>
-                                                            <td><input type="text" class="form-control" name="child_name"
-                                                                    value="{{ $item->child_name }}"></td>
                                                             <td>
-                                                                <select name="child_gender" class="form-control">
+                                                                <input type="text" class="form-control"
+                                                                    name="child_name[]" value="{{ $item->child_name }}">
+                                                            </td>
+                                                            <td>
+                                                                <select name="child_gender[]" class="form-control">
                                                                     <option value="{{ $item->child_gender }}">
                                                                         {{ $item->child_gender }}</option>
                                                                     <option value="Male">Male</option>
@@ -161,70 +172,129 @@
                                                                 </select>
                                                             </td>
                                                             <td><input type="date" class="form-control"
-                                                                    name="child_birthdate"
+                                                                    name="child_birthdate[]"
                                                                     value="{{ $item->child_birthdate }}"></td>
                                                         </tr>
-                                                    @endforeach
+                                                    @empty
+                                                        loading
+                                                    @endforelse
+
+
                                                 </tbody>
                                             </table>
                                             <button type="submit" class="btn btn-outline-danger">Update</button>
                                         </form>
 
 
+
                                     </div>
 
-                                    <div class="tab-pane" id="settings">
-                                        {{-- @foreach ($guardian_details as $guardian)
-                                            <form class="form-horizontal">
-                                                <div class="form-group row">
-                                                    <label for="inputName" class="col-sm-2 col-form-label"> Full
-                                                        Name</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" readonly class="form-control" id="inputName"
-                                                            value="{{ $guardian->fullname }}">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="email" readonly class="form-control" id="inputEmail"
-                                                            value="{{ $guardian->email }}">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="inputName2" class="col-sm-2 col-form-label">Contact
-                                                        1</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" readonly class="form-control" id="inputName2"
-                                                            value="{{ $guardian->fathercontact }}">
-                                                    </div>
-                                                </div>
+                                    <div class="tab-pane" id="settings" style="height: 350px;overflow-y:scroll;">
+                                        <div class="card">
 
-                                                <div class="form-group row">
-                                                    <label for="inputSkills" readonly
-                                                        class="col-sm-2 col-form-label">Contact 2</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" readonly id="inputSkills"
-                                                            value="{{ $guardian->mothercontact }}">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="inputSkills" readonly
-                                                        class="col-sm-2 col-form-label">Occupation</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" readonly id="inputSkills"
-                                                            value="{{ $guardian->occupation }}">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label for="inputSkills" readonly
-                                                        class="col-sm-2 col-form-label">Address</label>
-                                                    <div class="col-sm-10">
-                                                        <textarea type="text" class="form-control" readonly id="inputSkills">{{ $guardian->address }}</textarea>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        @endforeach --}}
+                                            <!-- /.card-header -->
+                                            <div class="card-body">
+                                                <strong><i class="fas fa-book mr-1"></i> Spouse Name</strong>
+
+                                                <p class="text-muted">
+                                                    {{ Auth::user()->profile->spouse_name }}
+                                                </p>
+
+                                                <hr>
+
+                                                <strong><i class="fas fa-map-marker-alt mr-1"></i>Spouse Contact</strong>
+
+                                                <p class="text-muted">{{ Auth::user()->profile->spouse_contact }}</p>
+
+                                                <hr>
+
+
+                                                <hr>
+
+                                                <strong><i class="fas fa-pencil-alt mr-1"></i>Spouse Date Of Birth</strong>
+
+                                                <p class="text-muted">
+                                                    {{ Auth::user()->profile->spouse_birthdate }}
+                                                </p>
+
+
+                                                <hr>
+
+                                                <strong><i class="fas fa-pencil-alt mr-1"></i>Occupation</strong>
+
+                                                <p class="text-muted">
+                                                    {{ Auth::user()->profile->occupation }}
+                                                </p>
+
+
+                                                <hr>
+
+                                                <strong><i class="fas fa-pencil-alt mr-1"></i>Fellowship Group</strong>
+
+                                                <p class="text-muted">
+                                                    {{ Auth::user()->profile->fellowship_group }}
+                                                </p>
+
+
+                                                <hr>
+
+                                                <strong><i class="fas fa-pencil-alt mr-1"></i>Friendship Centre</strong>
+
+                                                <p class="text-muted">
+                                                    {{ Auth::user()->profile->friendship_centre }}
+                                                </p>
+
+
+
+                                                <hr>
+
+                                                <strong><i class="fas fa-pencil-alt mr-1"></i>Leadership Position</strong>
+
+                                                <p class="text-muted">
+                                                    {{ Auth::user()->profile->leadership_position }}
+                                                </p>
+
+
+                                                <hr>
+
+                                                <strong><i class="fas fa-pencil-alt mr-1"></i>Service Group</strong>
+
+                                                <p class="text-muted">
+                                                    {{ Auth::user()->profile->age_group }}
+                                                </p>
+
+
+                                                <hr>
+
+                                                <strong><i class="fas fa-pencil-alt mr-1"></i>Church branch</strong>
+
+                                                <p class="text-muted">
+                                                    {{ Auth::user()->profile->church_location }}
+                                                </p>
+
+
+                                                <hr>
+
+                                                <strong><i class="fas fa-pencil-alt mr-1"></i>Address 1</strong>
+
+                                                <p class="text-muted">
+                                                    {{ Auth::user()->profile->address_one }}
+                                                </p>
+
+
+                                                <hr>
+
+                                                <strong><i class="fas fa-pencil-alt mr-1"></i>Address 2</strong>
+
+                                                <p class="text-muted">
+                                                    {{ Auth::user()->profile->address_two }}
+                                                </p>
+
+
+
+                                            </div>
+                                            <!-- /.card-body -->
+                                        </div>
                                     </div>
                                     <!-- /.tab-pane -->
                                 </div>
