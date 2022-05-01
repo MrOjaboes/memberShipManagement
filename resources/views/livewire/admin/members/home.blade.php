@@ -1,6 +1,5 @@
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title">Recently Added Registered Members</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -10,13 +9,19 @@
                 <i class="fas fa-times"></i>
             </button>
         </div>
+        <div class="row px-5 pt-2">
+            <div class="col-md-12">
+                <x-member-search />
+            </div>
+        </div>
     </div>
     <!-- /.card-header -->
     <div class="card-body p-0">
         <table class="table table-stripped table-hover">
-            <thead>
+            <thead class="bg-danger text-white">
                 <tr>
                     <th>User Name</th>
+                    <th>Full Name</th>
                     <th>Email</th>
                     <th>Contact</th>
                     <th>Gender</th>
@@ -25,21 +30,24 @@
                 </tr>
             </thead>
 
-            @forelse ($users as $user)
-                <tbody>
-                    <tr class="text-bold">
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->profile->email ?? 'Loading...' }}</td>
-                        <td>{{ $user->profile->contact_one ?? 'Loading...' }}</td>
-                        <td>{{ $user->profile->gender ?? 'Loading...' }}</td>
-                        <td>{{ $user->profile->memberId ?? 'Loading...' }}</td>
-                        <td>{{ $user->profile->created_at ?? 'Loading...' }}</td>
 
-                    </tr>
-                @empty
-                    <span class="text-success">Loading.....</span>
-                </tbody>
-            @endforelse
+            <tbody>
+                @foreach ($users as $user)
+
+                        <tr class="text-bold">
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->profile->fullname ?? 'Loading...' }}</td>
+                            <td>{{ $user->profile->email ?? 'Loading...' }}</td>
+                            <td>{{ $user->profile->contact_one ?? 'Loading...' }}</td>
+                            <td>{{ $user->profile->gender ?? 'Loading...' }}</td>
+                            <td>{{ $user->profile->memberId ?? 'Loading...' }}</td>
+                            <td>{{ \Carbon\Carbon::parse($user->created_at)->format('d D, M Y') ?? 'Loading...' }}
+                            </td>
+
+                        </tr>
+                    
+                @endforeach
+            </tbody>
 
         </table>
 
@@ -49,5 +57,5 @@
 
     <!-- /.card-footer -->
 
-<span class="float-right px-3 py-3"><b>{{ $users->links() }}</b></span>
+    <span class="float-right px-3 py-3"><b>{{ $users->links() }}</b></span>
 </div>

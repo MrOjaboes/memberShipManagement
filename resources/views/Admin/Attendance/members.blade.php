@@ -42,15 +42,17 @@
                                 <table class="table table-stripped table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Event Title</th>
-                                            <th>Date</th>
+                                            <th><h3>Members</h3></th>
+                                            <th><h3>Contact</h3></th>
+                                            <th><h3>Date</h3></th>
                                         </tr>
                                     </thead>
 
                                     @forelse ($members as $member)
                                         <tbody>
                                             <tr class="">
-                                                <td> <b>{{ $member->user_id}}</b> </td>
+                                                <td> <b> {{ App\Http\Controllers\HomeController::GetUserById($member->user_id) }}</b></td>
+                                                <td> <b> {{ $member->contact}}</b></td>
                                                 <td>{{ \Carbon\Carbon::parse($member->created_at)->format('d D, M Y') }}</td>
                                             </tr>
                                         @empty

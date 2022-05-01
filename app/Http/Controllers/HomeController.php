@@ -24,6 +24,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+    public static function GetUserById($user_id)
+    {
+        $user = DB::table('users')->where('id', $user_id)->first();
+        return $user->name;
+    }
     public function index()
     {
         return view('Member.home');

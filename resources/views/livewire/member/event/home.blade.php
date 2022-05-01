@@ -20,12 +20,11 @@
                         <img src="{{ asset('/Events/' . $event->caption) }}" alt="Product Image" class="img-size-50">
                     </div>
                     <div class="product-info">
-                        <a href="{{ route('member.eventDetails',$event->id) }}" class="product-title">{{ $event->title }}</a>
-                        {{-- <span class="float-right">
-                        @if ($event->status == 0)
-                        <button class="btn btn-sm btn-success">Active</button>
-                        @endif
-                    </span> --}}
+                       @if ($event->status == 0)
+                       <a href="{{ route('member.eventDetails',$event->id) }}" class="product-title">{{ $event->title }}</a>
+                       @else
+                       <span class="product-title text-danger">{{ $event->title }}</span>
+                       @endif
                         <span
                             class="label label-danger text-dark float-right">{{ \Carbon\Carbon::parse($event->created_at)->format('d D, M Y') }}</span>
 

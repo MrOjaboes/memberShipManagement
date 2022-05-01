@@ -12,7 +12,7 @@
     <!-- /.card-header -->
     <div class="card-body p-0">
         <table class="table table-stripped table-hover">
-            <thead>
+            <thead class="bg-danger text-white">
                 <tr>
                     <th>Event Title</th>
                     <th>Date</th>
