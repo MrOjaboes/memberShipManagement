@@ -11,5 +11,11 @@ class EventRegister extends Model
         'event_id',
         'status',
         'user_id',
+        'contact',
         ];
+
+        public function user()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

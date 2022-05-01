@@ -44,3 +44,6 @@ Route::post('/admin/event/{event}/edit', [App\Http\Controllers\EventController::
 
 //Member(s) Collection
 Route::get('/admin/members', [App\Http\Controllers\AdminController::class, 'members'])->name('admin.members');
+//Attendance(s) Collection
+Route::get('/admin/attendance', [App\Http\Controllers\AdminController::class, 'attendance'])->name('admin.attendance');
+Route::get('/admin/attendance/{event}/members', [App\Http\Controllers\AdminController::class, 'eventAttendance'])->name('admin.attendance.member');

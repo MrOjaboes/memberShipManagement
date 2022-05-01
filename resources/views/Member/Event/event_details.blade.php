@@ -57,12 +57,15 @@
                             </div>
                             <div class="row pt-3">
 
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <label for="">Event Title</label>
                                     <input type="text" readonly name="title" value="{{ $event->title }}" class="form-control"
                                         id="" />
-
-
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">Contact</label>
+                                    <input type="text" name="contact" required placeholder="Please, Include your availabe contact for easy access"  class="form-control"
+                                        id="" />
                                 </div>
 
                             </div>

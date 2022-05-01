@@ -16,6 +16,7 @@ class CreateEventRegistersTable extends Migration
         Schema::create('event_registers', function (Blueprint $table) {
             $table->id();
             $table->boolean('status')->default(0);
+            $table->string('contact');
             $table->integer('user_id')->unsigned()->references('id')->on('users')->onDelete('SET NULL');
             $table->integer('event_id')->unsigned()->references('id')->on('events')->onDelete('SET NULL');
             $table->timestamps();

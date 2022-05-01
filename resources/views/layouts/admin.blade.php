@@ -15,52 +15,9 @@
     <link rel="stylesheet" href="/Interface/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/Interface/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="/Interface/style.css">
     @livewireStyles
-    <style>
-        .profile-user-img {
-            border: 3px solid #DB261D;
-            margin: 0 auto;
-            padding: 3px;
-            width: 100px;
-        }
-        .page-item.active .page-link {
-    z-index: 3;
-    color: #fff;
-    background-color: #DB261D;
-    border-color: #DB261D;
-}
-        [class*=sidebar-dark-] .sidebar a {
-            color: #fff;
-        }
 
-        .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active,
-        .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
-            background-color: #fff;
-            color: #000;
-        }
-
-        a {
-            color: #DB261D;
-            text-decoration: none;
-            background-color: transparent;
-        }
-
-        .card-primary:not(.card-outline)>.card-header {
-            background-color: #DB261D;
-        }
-
-        .btn-danger,
-        .nav-pills .nav-link.active,
-        .nav-pills .show>.nav-link {
-            color: #fff;
-            background-color: #DB261D;
-        }
-
-        .card-primary.card-outline {
-            border-top: 3px solid #DB261D;
-        }
-
-    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">

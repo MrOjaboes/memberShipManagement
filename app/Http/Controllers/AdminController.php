@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
+use App\Models\EventRegister;
 
 class AdminController extends Controller
 {
@@ -13,5 +15,14 @@ class AdminController extends Controller
     public function members()
     {
        return view('Admin.Members.index');
+    }
+    public function attendance()
+    {
+       return view('Admin.Attendance.index');
+    }
+    public function eventAttendance(Event $event)
+    {
+        $members = EventRegister::orderBy('created_at','DESC')->where('event_id',$event->id)->paginate(10);
+       return view('Admin.Attendance.members',compact('members'));
     }
 }
