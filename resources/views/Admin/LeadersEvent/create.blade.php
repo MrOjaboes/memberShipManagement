@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Dasboard / External Event</h1>
+                        <h1>Dasboard / Leaders Event</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -91,7 +91,7 @@
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
                                     <li class="nav-item"><a class="nav-link active" href="#login"
-                                            data-toggle="tab">External Event link</a></li>
+                                            data-toggle="tab">Leadership Event Page</a></li>
 
                                 </ul>
                             </div><!-- /.card-header -->
@@ -104,21 +104,26 @@
 
                                             <!-- /.card-header -->
                                             <div class="card-body">
-                                                <form action="{{ route('admin.event.external') }}" method="POST">
+                                                <form action="{{ route('admin.event.leader') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label for="">External Link</label>
-                                                                <input type="hidden" name="link_id" id="">
-                                                                <input type="url" required placeholder="Insert Your Link Here"
-                                                                    class="form-control input-lg"
-                                                                    value="{{Auth::user()->externalLink->link}}" name="link" id="">
+                                                                <label for="">Event Heading</label>
+                                                                <input type="text" required placeholder="Provide Us A Heading"
+                                                                    class="form-control input-lg" name="title" id="">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="">Event Description</label>
+                                                               <textarea name="description" class="form-control" cols="" rows=""></textarea> </div>
+                                                            <div class="form-group">
+                                                                <label for="">Event Caption</label>
+                                                                <input type="file" required class="form-control" name="file" id="">
                                                             </div>
 
 
-                                                            <button class="btn btn-danger" type="submit">Add
-                                                                Link</button>
+                                                            <button class="btn btn-danger" type="submit">Publish
+                                                                Event</button>
                                                         </div>
 
                                                     </div>

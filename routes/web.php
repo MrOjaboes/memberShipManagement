@@ -46,6 +46,10 @@ Route::post('/admin/event/{event}/edit', [App\Http\Controllers\EventController::
 Route::get('/admin/external-event', [App\Http\Controllers\EventController::class, 'externalLink'])->name('admin.event.external');
 Route::post('/admin/external-event', [App\Http\Controllers\EventController::class, 'storeLink'])->name('admin.event.external');
 Route::get('/admin/leaders-event', [App\Http\Controllers\EventController::class, 'leaders'])->name('admin.event.leaders');
+Route::get('/admin/leaders/event', [App\Http\Controllers\EventController::class, 'leaderEvent'])->name('admin.event.leader');
+Route::post('/admin/leaders/event', [App\Http\Controllers\EventController::class, 'storeLeaderEvent'])->name('admin.event.leader');
+Route::get('/admin/leaders/{event}/edit', [App\Http\Controllers\EventController::class, 'editLeaderEvent'])->name('admin.event.leaderEdit');
+Route::post('/admin/leaders/{event}/edit', [App\Http\Controllers\EventController::class, 'updateLeaderEvent'])->name('admin.event.leaderEdit');
 //Member(s) Collection
 Route::get('/admin/members', [App\Http\Controllers\AdminController::class, 'members'])->name('admin.members');
 Route::get('/admin/members/birthdate', [App\Http\Controllers\AdminController::class, 'birthdate'])->name('admin.members.birthdate');
