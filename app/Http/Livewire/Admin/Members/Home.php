@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Profile;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Http\Request;
+//use PDF;
 use Illuminate\Support\Facades\DB;
 
 class Home extends Component
@@ -46,4 +48,16 @@ class Home extends Component
        // $users = User::orderBy('created_at','DESC')->where('user_type',0)->paginate(5);
 
     }
+
+    // public function generatePDF()
+    // {
+    //     $data = [
+    //         'title' => 'Welcome to ItSolutionStuff.com',
+    //         'date' => date('m/d/Y')
+    //     ];
+
+    //     $pdf = PDF::loadView('myPDF', $data);
+
+    //     return $pdf->download('itsolutionstuff.pdf');
+    // }
 }

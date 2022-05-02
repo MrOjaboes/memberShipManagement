@@ -48,3 +48,8 @@ a {
 .card-primary.card-outline {
     border-top: 3px solid #DB261D;
 }
+
+.navbar-expand .navbar-nav .nav-link.active {
+    color: #fff;
+    background-color: #DB261D;
+}

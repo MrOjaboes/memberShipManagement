@@ -4,6 +4,13 @@
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
+        <li class="nav-item">
+            <b><a class="nav-link {{ request()->is('admin/external-event') ? 'active' : '' }}" href="{{ route('admin.event.external')}}">External Event</a></b>
+        </li>
+        <li class="nav-item">
+            <b><a class="nav-link {{ request()->is('admin/leaders-event') ? 'active' : '' }}" href="{{ route('admin.event.leaders')}}">Leaders Event</a></b>
+        </li>
+
 
 
     </ul>

@@ -1,3 +1,6 @@
+<div>
+    {{-- Nothing in the world is as soft and yielding as water. --}}
+</div>
 <div class="card">
     <div class="card-header">
 
@@ -11,13 +14,13 @@
         </div>
         <div class="row px-5 pt-2">
             <div class="col-md-12">
-                <x-member-search />
+                <x-birthdate-search />
             </div>
         </div>
     </div>
     <!-- /.card-header -->
     <div class="card-body p-0">
-        <table class="table table-stripped table-hover table-responsive">
+        <table class="table table-stripped table-hover">
             <thead class="bg-danger text-white">
                 <tr>
                     <th>User Name</th>
@@ -27,7 +30,6 @@
                     <th>Gender</th>
                     <th>Member ID</th>
                     <th>Date</th>
-                    <th> </th>
                 </tr>
             </thead>
 
@@ -36,11 +38,11 @@
                 @foreach ($users as $user)
 
                         <tr class="text-bold">
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->profile->fullname ?? 'Loading...' }}</td>
-                            <td>{{ $user->profile->email ?? 'Loading...' }}</td>
-                            <td>{{ $user->profile->contact_one ?? 'Loading...' }}</td>
-                            <td>{{ $user->profile->gender ?? 'Loading...' }}</td>
+                            <td>{{ $user->birth_date }}</td>
+                            <td>{{ $user->fullname ?? 'Loading...' }}</td>
+                            <td>{{ $user->email ?? 'Loading...' }}</td>
+                            <td>{{ $user->contact_one ?? 'Loading...' }}</td>
+                            <td>{{ $user->gender ?? 'Loading...' }}</td>
                             <td>{{ $user->profile->memberId ?? 'Loading...' }}</td>
                             <td>{{ \Carbon\Carbon::parse($user->created_at)->format('d D, M Y') ?? 'Loading...' }}
                             </td>

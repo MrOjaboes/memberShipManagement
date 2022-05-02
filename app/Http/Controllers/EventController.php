@@ -62,5 +62,21 @@ class EventController extends Controller
          return redirect()->back()->with('message','Event Updated Successfully!');
     }
 
+    //External Link
+    public function externalLink()
+    {
+       return view('Admin.Event.external_event');
+    }
+    public function storeLink()
+    {
+       return view('Admin.Event.external_event');
+    }
+    //End External Link
 
+    //Leaders Event
+    public function leaders()
+    {
+      return view('Admin.Event.leaders_event');
+    }
+    //End Leaders Event
 }

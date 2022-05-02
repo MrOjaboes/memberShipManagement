@@ -34,16 +34,23 @@ Route::post('/home/event/{event}/details', [App\Http\Controllers\EventRegistrati
 
 //Admin Section
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
-
+//Admin Profile
+Route::get('/admin/profile', [App\Http\Controllers\AdminController::class, 'profile'])->name('admin.profile');
 //Event Section
 Route::get('/admin/events', [App\Http\Controllers\EventController::class, 'index'])->name('admin.events');
 Route::get('/admin/event', [App\Http\Controllers\EventController::class, 'event'])->name('admin.event');
 Route::post('/admin/event', [App\Http\Controllers\EventController::class, 'store'])->name('admin.event');
 Route::get('/admin/event/{event}/edit', [App\Http\Controllers\EventController::class, 'edit'])->name('admin.event.edit');
 Route::post('/admin/event/{event}/edit', [App\Http\Controllers\EventController::class, 'updateEvent'])->name('admin.event.edit');
-
+//External Link
+Route::get('/admin/external-event', [App\Http\Controllers\EventController::class, 'externalLink'])->name('admin.event.external');
+Route::post('/admin/external-event', [App\Http\Controllers\EventController::class, 'storeLink'])->name('admin.event.external');
+Route::get('/admin/leaders-event', [App\Http\Controllers\EventController::class, 'leaders'])->name('admin.event.leaders');
 //Member(s) Collection
 Route::get('/admin/members', [App\Http\Controllers\AdminController::class, 'members'])->name('admin.members');
+Route::get('/admin/members/birthdate', [App\Http\Controllers\AdminController::class, 'birthdate'])->name('admin.members.birthdate');
+Route::get('/admin/member/{user}/profile', [App\Http\Controllers\MemberController::class, 'member'])->name('admin.memberDetails');
+Route::post('/admin/member/{user}/profile', [App\Http\Controllers\MemberController::class, 'comment'])->name('admin.member.comment');
 //Attendance(s) Collection
 Route::get('/admin/attendance', [App\Http\Controllers\AdminController::class, 'attendance'])->name('admin.attendance');
 Route::get('/admin/attendance/{event}/members', [App\Http\Controllers\AdminController::class, 'eventAttendance'])->name('admin.attendance.member');

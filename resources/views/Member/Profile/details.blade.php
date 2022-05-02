@@ -131,21 +131,21 @@
                     <div class="col-md-9">
                         <div class="card">
                             @if (session()->has('message'))
-                            <div class="alert alert-success alert-dismissible fade show px-3" role="alert">
-                                <strong><i class="fas fa-check-circle"></i></strong> {{ session()->get('message') }}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span style="color:white;" aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                        @endif
-                        @if (session()->has('error'))
-                        <div class="alert alert-danger alert-dismissible fade show px-3 py-3" role="alert">
-                            <strong><i class="fas fa-check-circle"></i></strong> {{ session()->get('error') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span style="color:white;" aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    @endif
+                                <div class="alert alert-success alert-dismissible fade show px-3" role="alert">
+                                    <strong><i class="fas fa-check-circle"></i></strong> {{ session()->get('message') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span style="color:white;" aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
+                            @if (session()->has('error'))
+                                <div class="alert alert-danger alert-dismissible fade show px-3 py-3" role="alert">
+                                    <strong><i class="fas fa-check-circle"></i></strong> {{ session()->get('error') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span style="color:white;" aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
                                     <li class="nav-item"><a class="nav-link active" href="#activity"

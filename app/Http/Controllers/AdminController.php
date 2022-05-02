@@ -25,4 +25,14 @@ class AdminController extends Controller
         $members = EventRegister::orderBy('created_at','DESC')->where('event_id',$event->id)->paginate(10);
        return view('Admin.Attendance.members',compact('members'));
     }
+
+    public function birthdate()
+    {
+       return view('Admin.Birthdate.index');
+    }
+
+    public function profile()
+    {
+       return view('Admin.Profile.home');
+    }
 }
