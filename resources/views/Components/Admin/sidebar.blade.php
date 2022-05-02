@@ -62,9 +62,15 @@
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-
-
-
+                </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.message') }}" class="nav-link">
+                                <i class="far fa-comment"></i>
+                                <p>
+                                    Message
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
                 </li>
 
 

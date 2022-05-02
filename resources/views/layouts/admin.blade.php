@@ -17,7 +17,53 @@
     <link rel="stylesheet" href="/Interface/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="/Interface/style.css">
     @livewireStyles
+    <style>
 
+
+
+        .multipleSelection {
+            width: 100%;
+            background-color: transparent;
+        }
+
+        .selectBox {
+            position: relative;
+            width: 300px;
+        }
+
+        .selectBox select {
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .overSelect {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        #checkBoxes {
+            display: none;
+            border: 1px #8DF5E4 solid;
+        }
+
+        #emailBoxes {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+           margin-left: 5px;
+
+        }
+
+        #checkBoxes label {
+            display: block;
+        }
+
+
+
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">

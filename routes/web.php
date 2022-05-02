@@ -50,6 +50,9 @@ Route::get('/admin/leaders/event', [App\Http\Controllers\EventController::class,
 Route::post('/admin/leaders/event', [App\Http\Controllers\EventController::class, 'storeLeaderEvent'])->name('admin.event.leader');
 Route::get('/admin/leaders/{event}/edit', [App\Http\Controllers\EventController::class, 'editLeaderEvent'])->name('admin.event.leaderEdit');
 Route::post('/admin/leaders/{event}/edit', [App\Http\Controllers\EventController::class, 'updateLeaderEvent'])->name('admin.event.leaderEdit');
+
+//Messages Section
+Route::get('/admin/message', [App\Http\Controllers\MessageController::class, 'create'])->name('admin.message');
 //Member(s) Collection
 Route::get('/admin/members', [App\Http\Controllers\AdminController::class, 'members'])->name('admin.members');
 Route::get('/admin/members/birthdate', [App\Http\Controllers\AdminController::class, 'birthdate'])->name('admin.members.birthdate');
