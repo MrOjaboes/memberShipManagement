@@ -72,11 +72,20 @@
 
                 <div class="row pt-5">
 
-                    <div class="col-md-12">
+                    <div class="col-md-6">
 
                        <livewire:member.event.home/>
                         <!-- /.card -->
                     </div>
+                    @if (Auth::user()->user_type == 1)
+                    <div class="col-md-6">
+                      <livewire:member.event.leaders/>
+                    </div>
+                      @else
+                      <div class="col-md-6"><h5 class="text-center text-success py-5">Loading Event........</h5></div>
+                      @endif
+                        <!-- /.card -->
+
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->

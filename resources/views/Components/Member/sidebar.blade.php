@@ -61,12 +61,7 @@
                                 <p>Profile</p>
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
-                              <a href="" class="nav-link">
-                                <i class="far fa-dot-circle nav-icon"></i>
-                                <p>Login Details</p>
-                            </a>
-                        </li> --}}
+
 
                 </li>
 
@@ -74,7 +69,14 @@
             </ul>
             </li>
 
-
+            {{-- @if (Auth::user()->user_type == 1)
+            <li class="nav-item">
+                <a href="{{ route('home.profile') }}" class="nav-link {{ request()->is('home/profile') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-book"></i>
+                    <p>Leaders Event</p>
+                </a>
+            </li>
+            @endif --}}
 
 
             <li class="nav-item">

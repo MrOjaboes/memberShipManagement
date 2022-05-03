@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MaritalInfo;
+use App\Models\User;
 use App\Models\Profile;
+use App\Models\MaritalInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -74,6 +75,10 @@ class HomeController extends Controller
     public function updateProfile(Request $request)
     {
 
+       if($request->member_type == "Leader"){
+        User::find(auth()->user()->id)->update([
+            'user_type' => 1,
+        ]);
         if ($request->marital_status == "Married") {
 
             if ($request->file('file')) {
@@ -103,9 +108,8 @@ class HomeController extends Controller
                     'marital_status' => $request->marital_status,
                     'birth_date' => $request->birth_date,
                     'occupation' => $request->occupation,
-                    'leadership_position' => $request->leadership_position,
-                    'memberId' => 'HOG/' . date('Y') . '/' . substr(rand(0, time()), 0, 5),
-                    'photo' => $fileName,
+                    'leadership_position' => $request->member_type,
+                      'photo' => $fileName,
                 ]);
             //dd($profile);
             $maritalInfo = MaritalInfo::where('user_id', auth()->user()->id)->count();
@@ -163,8 +167,7 @@ class HomeController extends Controller
                     'marital_status' => $request->marital_status,
                     'birth_date' => $request->birth_date,
                     'occupation' => $request->occupation,
-                    'leadership_position' => $request->leadership_position,
-                    'memberId' => 'HOG/' . date('Y') . '/' . substr(rand(0, time()), 0, 5),
+                    'leadership_position' => $request->member_type,
 
                 ]);
             //dd($profile);
@@ -267,5 +270,6 @@ class HomeController extends Controller
             }
 
         }
+       }
     }
 }

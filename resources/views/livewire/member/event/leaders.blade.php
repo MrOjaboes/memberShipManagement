@@ -1,6 +1,6 @@
 <div class="card" style="height: 350px;overflow-y:scroll;">
     <div class="card-header">
-        <h3 class="card-title">Upcoming Events</h3>
+        <h3 class="card-title">Upcoming leaders Events</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -17,18 +17,15 @@
             @foreach ($events as $event)
                 <li class="item">
                     <div class="product-img">
-                        <img src="{{ asset('/Events/' . $event->caption) }}" alt="Product Image" class="img-size-50">
+                        <img src="{{ asset('/Leaders_Events/' . $event->caption) }}" alt="Product Image" class="img-size-50">
                     </div>
                     <div class="product-info">
                        @if ($event->status == 0)
-                       <a href="{{ route('member.eventDetails',$event->id) }}" class="product-title">{{ $event->title }}</a>
+                       <a href="{{ route('member.leadereventDetails',$event->id) }}" class="product-title">{{ $event->title }}</a>
                        @else
                        <span class="product-title text-danger">{{ $event->title }}</span>
                        @endif
-                        <span
-                            class="label label-danger text-dark float-right">{{ \Carbon\Carbon::parse($event->created_at)->format('d D, M Y') }}</span>
-
-                        <span class="float-right px-5">
+                           <span class="float-right px-5">
                             @if ($event->status == 0)
                                 <button class="btn btn-sm btn-success">Active</button>
                             @else
@@ -36,7 +33,7 @@
                             @endif
                         </span>
                         <span class="product-description">
-                            {{ substr($event->description, 0, 45) }}.......
+                            {{ substr($event->description, 0, 35) }}.......
                         </span>
                     </div>
                 </li>

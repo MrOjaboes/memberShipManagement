@@ -75,9 +75,14 @@
 
                 <div class="row pt-5">
 
-                    <div class="col-md-12">
+                    <div class="col-md-6">
 
                         <livewire:event.home>
+                        <!-- /.card -->
+                    </div>
+                    <div class="col-md-6">
+
+                        <livewire:event.leaders>
                         <!-- /.card -->
                     </div>
                     <!-- /.col -->

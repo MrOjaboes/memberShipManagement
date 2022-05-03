@@ -9,6 +9,7 @@ class ExternalLink extends Model
 {
    protected $fillable = [
        'link',
+       'status',
        'user_id',
    ];
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Models\EventRegister;
+use App\Models\LeadersMeeting;
 use Illuminate\Support\Facades\DB;
 
 class EventRegistrationController extends Controller
@@ -13,15 +14,19 @@ class EventRegistrationController extends Controller
     {
        return view('Member.Event.event_details',compact('event'));
     }
+    public function leaderEventDetails(LeadersMeeting $event)
+    {
+       return view('Member.Event.leaders_event-details',compact('event'));
+    }
+
     public function attendEvent(Event $event, Request $request)
     {
 
-        $current_date = date('Y-m-d');
-        $dataexist = EventRegister::whereDate('created_at', $current_date)
+           $event_count = EventRegister::where('event_id', $event->id)
             ->where('user_id', auth()->user()->id)
             ->get();
         //dd($dataexist);
-        if (count($dataexist) !== 0) {
+        if (count($event_count) > 1) {
             return redirect()
                 ->back()->with('error', 'Attendance Already Taken!');
         }
@@ -29,9 +34,10 @@ class EventRegistrationController extends Controller
            'user_id' => auth()->user()->id,
            'event_id' => $event->id,
            'contact' => $request->contact,
+           'event_type' => $request->event_type,
            'status' => 1,
        ]);
-       return redirect()->route('home')->with('message', 'Attendance Taken succesfully');
+       return redirect()->back()->with('message', 'Attendance Taken succesfully');
 
     }
 }

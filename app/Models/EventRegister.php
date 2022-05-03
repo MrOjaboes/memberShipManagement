@@ -10,6 +10,7 @@ class EventRegister extends Model
     protected $fillable = [
         'event_id',
         'status',
+        'event_type',
         'user_id',
         'contact',
         ];

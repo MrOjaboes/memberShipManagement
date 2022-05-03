@@ -31,6 +31,7 @@ Route::post('/home/profile/password', [App\Http\Controllers\AccountUpdateControl
 //Event collection
 Route::get('/home/event/{event}/details', [App\Http\Controllers\EventRegistrationController::class, 'eventDetails'])->name('member.eventDetails');
 Route::post('/home/event/{event}/details', [App\Http\Controllers\EventRegistrationController::class, 'attendEvent'])->name('member.attendEvent');
+Route::get('/home/event/leader/{event}/details', [App\Http\Controllers\EventRegistrationController::class, 'leaderEventDetails'])->name('member.leadereventDetails');
 
 //Admin Section
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');

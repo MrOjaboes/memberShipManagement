@@ -4,13 +4,16 @@
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-        <li class="nav-item">
-            <b><a class="nav-link {{ request()->is('admin/external-event') ? 'active' : '' }}" href="{{ route('admin.event.external')}}">External Event</a></b>
-        </li>
-        <li class="nav-item">
-            <b><a class="nav-link {{ request()->is('admin/leaders-event') ? 'active' : '' }}" href="{{ route('admin.event.leaders')}}">Leaders Event</a></b>
-        </li>
-
+        @if (Auth::user()->user_type == 2)
+            <li class="nav-item">
+                <b><a class="nav-link {{ request()->is('admin/external-event') ? 'active' : '' }}"
+                        href="{{ route('admin.event.external') }}">External Event</a></b>
+            </li>
+            <li class="nav-item">
+                <b><a class="nav-link {{ request()->is('admin/leaders-event') ? 'active' : '' }}"
+                        href="{{ route('admin.event.leaders') }}">Leaders Event</a></b>
+            </li>
+        @endif
 
 
     </ul>
@@ -18,32 +21,34 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <!-- Navbar Search -->
-        <li class="nav-item">
-            <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-                <i class="fas fa-search"></i>
-            </a>
-            <div class="navbar-search-block">
-                <form class="form-inline">
-                    <div class="input-group input-group-sm">
-                        <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-navbar" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                            <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
+       @if (Auth::user()->user_type == 1 || Auth::user()->user_type == 0)
+       <li class="nav-item">
+        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+            <i class="fas fa-bell fa-2x">bb</i>
+        </a>
+        {{-- <div class="navbar-search-block">
+            <form class="form-inline">
+                <div class="input-group input-group-sm">
+                    <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                        aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-navbar" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                            <i class="fas fa-times"></i>
+                        </button>
                     </div>
-                </form>
-            </div>
-        </li>
+                </div>
+            </form>
+        </div> --}}
+    </li>
+       @endif
 
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-                <span><b>{{ Auth()->user()->name }}    <i class="nav-icon fas fa-angle-down"></i></b></span>
+                <span><b>{{ Auth()->user()->name }} <i class="nav-icon fas fa-angle-down"></i></b></span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <a href="#" class="dropdown-item">
@@ -78,7 +83,7 @@
                 <i class="fas fa-expand-arrows-alt"></i>
             </a>
         </li>
-          <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
                 <i class="fas fa-th-large"></i>
             </a>

@@ -12,14 +12,22 @@ class Home extends Component
 
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    public $searchTerm = null;
+    public $month ;
+
+    public function search()
+    {
+        dd('ok');
+      return DB::table('profiles')
+      ->whereMonth('birth_date', 'like','%'.$this->month.'%')
+      ->paginate(5);
+    }
     public function render()
     {
 
+      // $users = $this->sort();
         $users = Profile::query()
-        ->where('birth_date','like','%'.$this->searchTerm.'%')
-        ->orWhere('memberId','like','%'.$this->searchTerm.'%')
-        ->latest()->paginate(5);
+        ->orderBy('created_at','DESC')
+           ->latest()->paginate(5);
       return view('livewire.admin.birthdate.home',compact('users'));
     }
 }

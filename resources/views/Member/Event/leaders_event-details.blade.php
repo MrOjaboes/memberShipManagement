@@ -67,14 +67,13 @@
 
                                 <div class="col-md-6">
                                     <label for="">Event Title</label>
-                                    <input type="text" readonly name="title" value="{{ $event->title }}" class="form-control"
-                                        id="" />
+                                    <input type="text" readonly name="title" value="{{ $event->title }}" class="form-control" maxlength="11" />
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Contact</label>
                                     <input type="text" maxlength="11" name="contact" required placeholder="Please, Include your availabe contact for easy access"  class="form-control"
                                         id="" />
-                                        <input type="hidden" name="event_type" value="all" />
+                                    <input type="hidden" name="event_type" value="Leader" />
                                 </div>
 
                             </div>
