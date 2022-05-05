@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ExternalEvent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,10 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('auth.login');
 });
-
+Route::get('/event-link', function () {
+    return view('welcome',['links'=> ExternalEvent::where('status',0)->get()]);
+});
 Auth::routes();
 //Member Section
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

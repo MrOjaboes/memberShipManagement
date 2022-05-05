@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 
 class Home extends Component
 {
-
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $month ;

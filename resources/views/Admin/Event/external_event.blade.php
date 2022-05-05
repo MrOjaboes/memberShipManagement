@@ -24,10 +24,10 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-1">
 
                         <!-- Profile Image -->
-                        <div class="card card-primary card-outline">
+                        {{-- <div class="card card-primary card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
                                     <img class="profile-user-img img-fluid img-circle"
@@ -40,11 +40,11 @@
 
                             </div>
                             <!-- /.card-body -->
-                        </div>
+                        </div> --}}
                         <!-- /.card -->
 
                         <!-- About Me Box -->
-                        <div class="card card-primary">
+                        {{-- <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">About Me</h3>
                             </div>
@@ -66,76 +66,12 @@
 
                             </div>
                             <!-- /.card-body -->
-                        </div>
+                        </div> --}}
                         <!-- /.card -->
                     </div>
                     <!-- /.col -->
-                    <div class="col-md-9">
-                        <div class="card">
-                            @if (session()->has('message'))
-                                <div class="alert alert-success alert-dismissible fade show px-3" role="alert">
-                                    <strong><i class="fas fa-check-circle"></i></strong> {{ session()->get('message') }}
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span style="color:white;" aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            @endif
-                            @if (session()->has('error'))
-                                <div class="alert alert-danger alert-dismissible fade show px-3 py-3" role="alert">
-                                    <strong><i class="fas fa-check-circle"></i></strong> {{ session()->get('error') }}
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span style="color:white;" aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            @endif
-                            <div class="card-header p-2">
-                                <ul class="nav nav-pills">
-                                    <li class="nav-item"><a class="nav-link active" href="#login"
-                                            data-toggle="tab">External Event link</a></li>
-
-                                </ul>
-                            </div><!-- /.card-header -->
-                            <div class="card-body">
-                                <div class="tab-content">
-
-
-                                    <div class="active tab-pane" id="login">
-                                        <div class="card">
-
-                                            <!-- /.card-header -->
-                                            <div class="card-body">
-                                                <form action="{{ route('admin.event.external') }}" method="POST">
-                                                    @csrf
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="form-group">
-                                                                <label for="">External Link</label>
-                                                                <input type="hidden" name="link_id" id="">
-                                                                <input type="url" required placeholder="Insert Your Link Here"
-                                                                    class="form-control input-lg"
-                                                                    value="{{Auth::user()->externalLink->link}}" name="link" id="">
-                                                            </div>
-
-
-                                                            <button class="btn btn-danger" type="submit">Add
-                                                                Link</button>
-                                                        </div>
-
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <!-- /.card-body -->
-                                        </div>
-                                    </div>
-
-                                    <!-- /.tab-pane -->
-                                </div>
-                                <!-- /.tab-content -->
-                            </div><!-- /.card-body -->
-                        </div>
-
-                        <!-- /.card -->
-                    </div>
+                    <livewire:event.external-link>
+                        <div class="col-md-1"></div>
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->

@@ -47,7 +47,7 @@ class User extends Authenticatable
     }
     public function externalLink()
     {
-       return $this->hasOne(ExternalLink::class,'user_id');
+       return $this->hasOne(ExternalEvent::class,'user_id');
     }
     public function profile()
     {

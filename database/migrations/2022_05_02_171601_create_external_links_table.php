@@ -16,6 +16,7 @@ class CreateExternalLinksTable extends Migration
         Schema::create('external_links', function (Blueprint $table) {
             $table->id();
             $table->string('link');
+            $table->string('title');
             $table->boolean('status')->default(0);
             $table->integer('user_id')->unsigned()->references('id')->on('users')->onDelete('SET NULL');
             $table->timestamps();

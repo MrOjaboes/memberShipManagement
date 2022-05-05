@@ -1,4 +1,4 @@
-<div>
+
     <form wire:submit.prevent="search">
         <div class="form-group">
             <label for=""><b>SortBy Month</b></label>
@@ -22,5 +22,3 @@
             <button type="submit" class="btn btn-danger">Search</button>
         </div>
     </form>
-
-</div>
