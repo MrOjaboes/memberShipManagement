@@ -32,6 +32,9 @@ Route::post('/home/profile/update', [App\Http\Controllers\HomeController::class,
 Route::post('/home/profile/login', [App\Http\Controllers\AccountUpdateController::class, 'updateDetails'])->name('member.account');
 Route::post('/home/profile/password', [App\Http\Controllers\AccountUpdateController::class, 'updatePassword'])->name('member.password');
 
+//Member message collections
+Route::get('/home/messages', [App\Http\Controllers\MessageController::class, 'messages'])->name('member.messages');
+
 //Event collection
 Route::get('/home/event/{event}/details', [App\Http\Controllers\EventRegistrationController::class, 'eventDetails'])->name('member.eventDetails');
 Route::post('/home/event/{event}/details', [App\Http\Controllers\EventRegistrationController::class, 'attendEvent'])->name('member.attendEvent');
@@ -58,6 +61,7 @@ Route::post('/admin/leaders/{event}/edit', [App\Http\Controllers\EventController
 
 //Messages Section
 Route::get('/admin/message', [App\Http\Controllers\MessageController::class, 'create'])->name('admin.message');
+Route::post('/admin/message', [App\Http\Controllers\MessageController::class, 'sendMessage'])->name('admin.message');
 //Member(s) Collection
 Route::get('/admin/members', [App\Http\Controllers\AdminController::class, 'members'])->name('admin.members');
 Route::get('/admin/members/birthdate', [App\Http\Controllers\AdminController::class, 'birthdate'])->name('admin.members.birthdate');

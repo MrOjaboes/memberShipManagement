@@ -33,6 +33,11 @@ a {
     text-decoration: none;
     background-color: transparent;
 }
+a:hover{
+    color: #DB261D;
+    text-decoration: none;
+    background-color: transparent;
+}
 
 .card-primary:not(.card-outline)>.card-header {
     background-color: #DB261D;

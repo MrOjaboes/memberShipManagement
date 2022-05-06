@@ -15,7 +15,7 @@ class Home extends Component
 
     public function search()
     {
-        dd('ok');
+       // dd($this->month);
       return DB::table('profiles')
       ->whereMonth('birth_date', 'like','%'.$this->month.'%')
       ->paginate(5);
@@ -24,9 +24,7 @@ class Home extends Component
     {
 
       // $users = $this->sort();
-        $users = Profile::query()
-        ->orderBy('created_at','DESC')
-           ->latest()->paginate(5);
+        $users = $this->search();
       return view('livewire.admin.birthdate.home',compact('users'));
     }
 }

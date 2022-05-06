@@ -32,8 +32,17 @@
                             <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
                             <div class="info-box-content">
-                                <span class="info-box-text">Closed Events</span>
-                                <span class="info-box-number"> </span>
+                                <span class="text-center"><b>Closed Events</b></span>
+                                <div class="d-flex" style="justify-content: space-between;">
+                                   <div>
+                                    <span class="info-box-text">General</span>
+                                    <span class="info-box-number"> {{ $closedEvents }}</span>
+                                   </div>
+                                   <div>
+                                    <span class="info-box-text">Leaders</span>
+                                    <span class="info-box-number"> {{ $closedLeaders }}</span>
+                                   </div>
+                                </div>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -49,8 +58,18 @@
                             <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
                             <div class="info-box-content">
-                                <span class="info-box-text">Active Events</span>
-                                <span class="info-box-number"> </span>
+                                <span class="text-center"><b>Active Events</b></span>
+                                <div class="d-flex" style="justify-content: space-between;">
+
+                                    <div>
+                                     <span class="info-box-text">General</span>
+                                     <span class="info-box-number">{{ $activeEvents }}</span>
+                                    </div>
+                                    <div>
+                                     <span class="info-box-text">Leaders</span>
+                                     <span class="info-box-number">{{ $activeLeaders }}</span>
+                                    </div>
+                                 </div>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -58,12 +77,12 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-12 col-sm-6 col-md-4">
-                        <div class="info-box mb-3">
+                        <div class="info-box mb-3 py-4">
                             <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
                             <div class="info-box-content">
                                 <span class="info-box-text">Members</span>
-                                <span class="info-box-number"> </span>
+                                <span class="info-box-number">{{ $members }} </span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>

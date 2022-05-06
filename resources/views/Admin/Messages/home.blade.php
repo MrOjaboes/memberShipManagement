@@ -21,81 +21,8 @@
         <!-- /.content-header -->
 
         <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-
-                <div class="row pt-3">
-
-                    <!-- /.col -->
-                    <div class="col-12 col-sm-12 col-md-12">
-                        <div class="info-box mb-3">
-                            <div class="info-box-content">
-                                <form wire:submit.prevent="send">
-                                    <div class="form-group col-md-2">
-                                        <div class="multipleSelection">
-                                            <div class="selectBox" onclick="showEmailboxes()">
-                                                <select class="form-control">
-                                                    <option>Select Recievers</option>
-                                                </select>
-                                                <div class="overSelect"></div>
-                                            </div>
-                                            <div class="form-group" id="emailBoxes">
-                                                <label><input type="checkbox" name="all" value="all"> All Users</label>
-
-                                                @foreach ($users as $user)
-                                                    <label><input type="checkbox" name="reciever_id[]" value="{{ $user->id }}">
-                                                        {{ $user->name }}</label>
-                                                @endforeach
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea name="message[]" class="form-control" id="" cols="" rows="" placeholder="Message Content"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-danger">Send Message</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <!-- /.info-box-content -->
-                        </div>
-                        <!-- /.info-box -->
-                    </div>
-                    <!-- /.col -->
-
-
-                </div>
-
-
-                <div class="row pt-5">
-
-                    <div class="col-md-12">
-
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>ww</td>
-                                    <td>dd</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <!-- /.card -->
-                    </div>
-                    <!-- /.col -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!--/. container-fluid -->
-        </section>
-
+       {{-- Message section --}}
+<livewire:admin.messages.home/>
 
         <!-- /.content -->
     </div>

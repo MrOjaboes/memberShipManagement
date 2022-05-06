@@ -304,19 +304,24 @@
 
                                             <!-- /.card-header -->
                                             <div class="card-body">
-                                            @foreach ($comments as $comment)
-                                            <form action="{{ route('admin.member.comment',$user->id) }}" method="POST">
-                                                @csrf
-                                                 <div class="form-group">
-                                                    <textarea name="content" value="{{ $comment->content }}" class="form-control" placeholder="{{ Auth::user()->name }}, What's on your mind!" cols="30" rows="10">{{ $comment->content }}</textarea>
-                                                 </div>
+                                                @foreach ($comments as $comment)
+                                                    <form action="{{ route('admin.member.comment', $user->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <div class="form-group">
+                                                            <textarea name="content" value="{{ $comment->content }}" class="form-control"
+                                                                placeholder="{{ Auth::user()->name }}, What's on your mind!"
+                                                                cols="30"
+                                                                rows="10">{{ $comment->content }}</textarea>
+                                                        </div>
 
-                                                 <div class="form-group">
-                                                    <button type="submit" class="btn btn-danger">Save Comment</button>
-                                                 </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-danger">Save
+                                                                Comment</button>
+                                                        </div>
 
-                                             </form>
-                                            @endforeach
+                                                    </form>
+                                                @endforeach
                                             </div>
                                             <!-- /.card-body -->
                                         </div>

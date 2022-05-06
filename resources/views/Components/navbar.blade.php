@@ -23,8 +23,9 @@
         <!-- Navbar Search -->
        @if (Auth::user()->user_type == 1 || Auth::user()->user_type == 0)
        <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-            <i class="fas fa-bell fa-2x">bb</i>
+        <a class="nav-link" data-widget="navbar-search" href="{{ route('member.messages') }}" role="button">
+            <i class="fas fa-bell fa-2x"></i>
+            <span class="badge badge-dark br-5 navbar-badge"><b class="text-white">dd</b></span>
         </a>
         {{-- <div class="navbar-search-block">
             <form class="form-inline">

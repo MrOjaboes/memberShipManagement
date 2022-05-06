@@ -5,12 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Models\EventRegister;
+use App\Models\LeadersMeeting;
+use App\Models\Profile;
 
 class AdminController extends Controller
 {
     public function index()
     {
-       return view('Admin.index');
+        $members = Profile::count();
+        $activeLeaders = LeadersMeeting::where('status',0)->count();
+        $closedLeaders = LeadersMeeting::where('status',1)->count();
+        $closedEvents = Event::where('status',1)->count();
+        $activeEvents = Event::where('status',0)->count();
+       return view('Admin.index',compact('members','activeLeaders','closedLeaders','activeEvents','closedEvents'));
     }
     public function members()
     {
@@ -35,5 +42,5 @@ class AdminController extends Controller
     {
        return view('Admin.Profile.home');
     }
-  
+
 }

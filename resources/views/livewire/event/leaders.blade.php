@@ -24,8 +24,7 @@
                     <div class="product-info">
                         <a href="{{ route('admin.event.leaderEdit', $event->id) }}"
                             class="product-title">{{ $event->title }}
-                            <span
-                                class="label label-danger text-dark float-right">{{ \Carbon\Carbon::parse($event->created_at)->format('d D, M Y') }}</span></a>
+                            </a>
                         <span class="label label-danger text-dark float-right px-5">
                             @if ($event->status == 0)
                                 <button wire:click.prevent="closeEvent({{ $event->id }})" class="btn btn-sm btn-success">Active</button>
