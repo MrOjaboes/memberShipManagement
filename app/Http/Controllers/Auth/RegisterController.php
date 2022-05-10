@@ -75,7 +75,7 @@ class RegisterController extends Controller
         ]);
 
         if ($user) {
-            Profile::create([
+           $profile = Profile::create([
                 'user_id' => $user->id,
             ]);
             Member::create([
@@ -83,6 +83,7 @@ class RegisterController extends Controller
             ]);
             Comment::create([
                 'user_id' => $user->id,
+                'profile_id' => $profile->id,
             ]);
             return $user;
         }

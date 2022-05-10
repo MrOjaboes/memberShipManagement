@@ -72,3 +72,4 @@ Route::post('/admin/member/{user}/profile', [App\Http\Controllers\MemberControll
 Route::get('/admin/attendance', [App\Http\Controllers\AdminController::class, 'attendance'])->name('admin.attendance')->middleware('Admin');
 Route::get('/admin/attendance/leaders', [App\Http\Controllers\AdminController::class, 'leadersAttendance'])->name('admin.attendance.leaders')->middleware('Admin');
 Route::get('/admin/attendance/{event}/members', [App\Http\Controllers\AdminController::class, 'eventAttendance'])->name('admin.attendance.member')->middleware('Admin');
+Route::get('/admin/attendance/{event}/members/leaders', [App\Http\Controllers\AdminController::class, 'leadersEventAttendance'])->name('admin.attendance.leadersmember')->middleware('Admin');

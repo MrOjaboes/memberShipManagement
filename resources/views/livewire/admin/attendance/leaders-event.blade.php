@@ -22,7 +22,7 @@
             @forelse ($events as $event)
                 <tbody>
                     <tr class="">
-                        <td><h3><b><a href="{{ route('admin.attendance.member',$event->id) }}">{{ $event->title }}</a></b></h3></td>
+                        <td><h3><b><a href="{{ route('admin.attendance.leadersmember',$event->id) }}">{{ $event->title }}</a></b></h3></td>
                         <td>{{ \Carbon\Carbon::parse($event->created_at)->format('d D, M Y') }}</td>
 
                     </tr>
