@@ -196,7 +196,7 @@
                                 <div class="col-md-6">
 
                                     <!-- /.form-group -->
-                                    @if ( Auth::user()->profile->marital_status == "Single")
+                                    @if ( Auth::user()->profile->marital_status == "Single" || Auth::user()->profile->marital_status == null)
                                     <div class="form-group">
                                         <label for="">Marital Status</label>
                                         <select class="form-control select2bs4" name="marital_status" id="MaritalStatus"
@@ -257,7 +257,7 @@
                                             placeholder="Number Of Children">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="spouse_birthdate" class="form-control"
+                                        <input type="date" name="spouse_birthdate" class="form-control"
                                             placeholder="Spouse's Birth Date (DD/MM)">
                                     </div>
                                     <div class="form-group">
@@ -278,7 +278,7 @@
 
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" name="child_birthdate[]" class="form-control"
+                                            <input type="date" name="child_birthdate[]" class="form-control"
                                                 placeholder="Child's Birth Date(DD/MM)">
                                         </div>
                                         <div class="form-group">
@@ -332,7 +332,7 @@
             var addButton = $('.add_button'); //Add button selector
             var wrapper = $('.field_wrapper'); //Input field wrapper
             var fieldHTML =
-                '<div><input type="text" name="child_name[]" class="form-control mb-3" placeholder="Name of Child" /><input type="text" placeholder="Birth Date e.g (DD/MM)" name="child_birthdate[]" class="form-control mb-3"/><select class="form-control" name="child_gender[]"><option value="">----Gender----</option><option value="Male">Male</option><option value="Female">Female</option></select><a href="javascript:void(0);" class="remove_button" style="color:red;">Remove</a></div>'; //New input field html
+                '<div><input type="text" name="child_name[]" class="form-control mb-3" placeholder="Name of Child" /><input type="date" placeholder="Birth Date e.g (DD/MM/YYYY)" name="child_birthdate[]" class="form-control mb-3"/><select class="form-control" name="child_gender[]"><option value="">----Gender----</option><option value="Male">Male</option><option value="Female">Female</option></select><a href="javascript:void(0);" class="remove_button" style="color:red;">Remove</a></div>'; //New input field html
             var x = 1; //Initial field counter is 1
 
             //Once add button is clicked

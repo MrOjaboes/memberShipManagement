@@ -27,6 +27,10 @@ class AdminController extends Controller
     {
        return view('Admin.Attendance.index');
     }
+    public function leadersAttendance()
+    {
+       return view('Admin.Attendance.leaders_event');
+    }
     public function eventAttendance(Event $event)
     {
         $members = EventRegister::orderBy('created_at','DESC')->where('event_id',$event->id)->paginate(10);

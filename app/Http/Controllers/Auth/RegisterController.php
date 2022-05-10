@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use App\Models\Profile;
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Member;
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
@@ -78,6 +79,9 @@ class RegisterController extends Controller
                 'user_id' => $user->id,
             ]);
             Member::create([
+                'user_id' => $user->id,
+            ]);
+            Comment::create([
                 'user_id' => $user->id,
             ]);
             return $user;

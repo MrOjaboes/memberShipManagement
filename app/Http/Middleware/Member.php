@@ -16,6 +16,10 @@ class Member
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if (auth()->user()->user_type == 1 || auth()->user()->user_type == 0) {
+            return $next($request);
+        }
+        return redirect()->back()->with('warning', "You don't have access to this page.");
+
     }
 }

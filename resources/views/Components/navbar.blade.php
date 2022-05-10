@@ -23,9 +23,18 @@
         <!-- Navbar Search -->
        @if (Auth::user()->user_type == 1 || Auth::user()->user_type == 0)
        <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="{{ route('member.messages') }}" role="button">
+        <a class="nav-link" href="{{ route('member.messages') }}">
             <i class="fas fa-bell fa-2x"></i>
-            <span class="badge badge-dark br-5 navbar-badge"><b class="text-white">dd</b></span>
+            <span class="badge badge-dark br-5 navbar-badge">
+                @php
+                $messages = DB::table('messages')
+                      ->where('reciever_id', '=',auth()->user()->id)
+                      ->where(function ($query) {
+                          $query->where('is_read', '=', 0);
+                      })
+                      ->count('message');
+                      @endphp
+                <b class="text-white">{{ $messages }}</b></span>
         </a>
         {{-- <div class="navbar-search-block">
             <form class="form-inline">
@@ -52,11 +61,11 @@
                 <span><b>{{ Auth()->user()->name }} <i class="nav-icon fas fa-angle-down"></i></b></span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <a href="#" class="dropdown-item">
+                {{-- <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <p>Settings</p>
                     <!-- Message End -->
-                </a>
+                </a> --}}
                 <div class="dropdown-divider"></div>
 
                 <div class="dropdown-divider"></div>

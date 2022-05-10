@@ -13,9 +13,13 @@ class MessageController extends Controller
         $users = User::where('user_type',0)->orderBy('created_at','DESC')->get();
        return view('Admin.Messages.home',compact('users'));
     }
-  public function messages(Type $var = null)
-  {
-      # code...
-  }
+        public function messages()
+        {
+                return view('Member.Inbox.home');
+        }
+        public function messageDetails(Message $message)
+        {
+            return view('Member.Inbox.details',compact('message'));
+        }
 
 }
