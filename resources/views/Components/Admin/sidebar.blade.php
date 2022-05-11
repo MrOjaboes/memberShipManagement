@@ -121,6 +121,17 @@
 
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.members.wedding') }}"
+                        class="nav-link {{ request()->is('admin/members/wedding') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-comment"></i>
+                        <p>
+                            Anniversary
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('admin.events') }}"
                         class="nav-link {{ request()->is('admin/events') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-comment"></i>

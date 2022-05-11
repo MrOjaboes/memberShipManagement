@@ -1,3 +1,4 @@
+
 <div class="card">
     <div class="card-header">
 
@@ -32,14 +33,16 @@
 
             <tbody>
                 @foreach ($users as $user)
-                    <tr class="text-bold">
-                        <td>{{ \Carbon\Carbon::parse($user->birth_date)->format('d D, M Y') ?? 'Loading...' }}</td>
-                        <td>{{ $user->fullname ?? 'Loading...' }}</td>
-                        <td>{{ $user->email ?? 'Loading...' }}</td>
-                        <td>{{ $user->contact_one ?? 'Loading...' }}</td>
-                        <td>{{ $user->gender ?? 'Loading...' }}</td>
-                        <td>{{ $user->profile->memberId ?? 'Loading...' }}</td>
-                    </tr>
+
+                        <tr class="text-bold">
+                            <td>{{ \Carbon\Carbon::parse($user->birth_date)->format('d D, M Y') ?? 'Loading...'}}</td>
+                            <td>{{ $user->fullname ?? 'Loading...' }}</td>
+                            <td>{{ $user->email ?? 'Loading...' }}</td>
+                            <td>{{ $user->contact_one ?? 'Loading...' }}</td>
+                            <td>{{ $user->gender ?? 'Loading...' }}</td>
+                            <td>{{ $user->profile->memberId ?? 'Loading...' }}</td>
+                             </tr>
+
                 @endforeach
             </tbody>
 
@@ -47,6 +50,9 @@
 
     </div>
 
+    <!-- /.card-body -->
 
+    <!-- /.card-footer -->
 
+    
 </div>

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<x-navbar />
+    <x-navbar />
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
@@ -28,7 +28,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                 <div class="card-tools">
+                                <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
                                     </button>
@@ -42,37 +42,47 @@
                                 <table class="table table-stripped table-hover">
                                     <thead>
                                         <tr>
-                                            <th><h3>Members</h3></th>
-                                            <th><h3>Contact</h3></th>
-                                            <th><h3>Date</h3></th>
+                                            <th>
+                                                <b>S/N</b>
+                                            </th>
+                                            <th>
+                                                <b>Names</b>
+                                            </th>
+                                            <th>
+                                                <b>Contact</b>
+                                            </th>
+                                            <th>
+                                                <b>Email</b>
+                                            </th>
                                         </tr>
                                     </thead>
 
-                                    @forelse ($members as $member)
-                                        <tbody>
+                                    <tbody>
+                                        @php $i = 1; @endphp
+                                        @foreach ($members as $member)
                                             <tr class="">
-                                                <td> <b> {{ App\Http\Controllers\HomeController::GetUserById($member->user_id) }}</b></td>
-                                                <td> <b> {{ $member->contact}}</b></td>
-                                                <td>{{ \Carbon\Carbon::parse($member->created_at)->format('d D, M Y') }}</td>
+                                                <td>{{ $i }}</td>
+                                                <td> <b>
+                                                        {{ App\Http\Controllers\HomeController::GetUserById($member->user_id) }}</b>
+                                                </td>
+                                                <td> <b> {{ $member->contact }}</b></td>
+                                                <td> <b> {{ $member->email }}</b></td>
+
+
                                             </tr>
-                                        @empty
-                                            <span class="text-success">Loading.....</span>
-                                        </tbody>
-                                    @endforelse
+                                            @php $i++; @endphp
+                                        @endforeach
+                                    </tbody>
+
 
                                 </table>
 
                             </div>
 
-                            <!-- /.card-body -->
 
-                            <!-- /.card-footer -->
-
-                        <span class="float-right px-3 py-3"><b>{{ $members->links() }}</b></span>
                         </div>
 
-                        {{-- <livewire:admin.attendance.members> --}}
-                        <!-- /.card -->
+
                     </div>
                     <!-- /.col -->
                 </div>

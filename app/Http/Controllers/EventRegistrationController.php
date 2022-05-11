@@ -34,6 +34,8 @@ class EventRegistrationController extends Controller
            'user_id' => auth()->user()->id,
            'event_id' => $event->id,
            'contact' => $request->contact,
+           'name' => auth()->user()->name,
+           'email' => auth()->user()->email,
            'event_type' => $request->event_type,
            'status' => 1,
        ]);

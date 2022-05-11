@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Http\Livewire\Admin\Birthdate;
+namespace App\Http\Livewire\Admin\Wedding;
 
-use App\Models\Profile;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\DB;
 
 class Home extends Component
 {
-    use WithPagination;
-    protected $paginationTheme = 'bootstrap';
+   
     public $month ;
 
     public function search()
@@ -25,6 +23,7 @@ class Home extends Component
 
       // $users = $this->sort();
         $users = $this->search();
-      return view('livewire.admin.birthdate.home',compact('users'));
+      return view('livewire.admin.wedding.home',compact('users'));
     }
+
 }

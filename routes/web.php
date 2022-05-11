@@ -66,6 +66,7 @@ Route::post('/admin/message', [App\Http\Controllers\MessageController::class, 's
 //Member(s) Collection
 Route::get('/admin/members', [App\Http\Controllers\AdminController::class, 'members'])->name('admin.members')->middleware('Admin');
 Route::get('/admin/members/birthdate', [App\Http\Controllers\AdminController::class, 'birthdate'])->name('admin.members.birthdate')->middleware('Admin');
+Route::get('/admin/members/wedding', [App\Http\Controllers\AdminController::class, 'wedding'])->name('admin.members.wedding')->middleware('Admin');
 Route::get('/admin/member/{user}/profile', [App\Http\Controllers\MemberController::class, 'member'])->name('admin.memberDetails')->middleware('Admin');
 Route::post('/admin/member/{user}/profile', [App\Http\Controllers\MemberController::class, 'comment'])->name('admin.member.comment')->middleware('Admin');
 //Attendance(s) Collection
@@ -73,3 +74,4 @@ Route::get('/admin/attendance', [App\Http\Controllers\AdminController::class, 'a
 Route::get('/admin/attendance/leaders', [App\Http\Controllers\AdminController::class, 'leadersAttendance'])->name('admin.attendance.leaders')->middleware('Admin');
 Route::get('/admin/attendance/{event}/members', [App\Http\Controllers\AdminController::class, 'eventAttendance'])->name('admin.attendance.member')->middleware('Admin');
 Route::get('/admin/attendance/{event}/members/leaders', [App\Http\Controllers\AdminController::class, 'leadersEventAttendance'])->name('admin.attendance.leadersmember')->middleware('Admin');
+Route::get('/admin/export/{event}/pdf', [App\Http\Controllers\AttendanceController::class, 'exportPdf'])->name('admin.leadersexport')->middleware('Admin');

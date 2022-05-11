@@ -12,6 +12,8 @@ class EventRegister extends Model
         'status',
         'event_type',
         'user_id',
+        'name',
+        'email',
         'contact',
         ];
 

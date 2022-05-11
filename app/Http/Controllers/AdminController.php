@@ -39,20 +39,29 @@ class AdminController extends Controller
     }
     public function leadersEventAttendance(Event $event)
     {
-        $members = DB::table('users')
+        // $members = DB::table('users')
+        // ->where('event_id', '=',$event->id)
+        // ->where(function ($query) {
+        //     $query->where('event_type','=','leader');
+
+        // })
+        // ->orderBy('created_at','DESC')->get();
+        $members = DB::table('event_registers')
         ->where('event_id', '=',$event->id)
         ->where(function ($query) {
-            $query->where('event_type','=','leader');
-
+            $query->where('event_type', '=', 'leader');
         })
-        ->orderBy('created_at','DESC')->get();
-
+        ->get();
           return view('Admin.Attendance.leaders_members',compact('members'));
     }
 
     public function birthdate()
     {
        return view('Admin.Birthdate.index');
+    }
+    public function wedding()
+    {
+       return view('Admin.Wedding.index');
     }
 
     public function profile()

@@ -24,7 +24,9 @@
                     <tr class="">
                         <td><h3><b><a href="{{ route('admin.attendance.leadersmember',$event->id) }}">{{ $event->title }}</a></b></h3></td>
                         <td>{{ \Carbon\Carbon::parse($event->created_at)->format('d D, M Y') }}</td>
-
+                       <td> <a href="{{route('admin.leadersexport',$event->id)}}" title="Export Attendants" class="btn bg-danger btn-sm">
+                        <i class="fas fa-file-pdf text-white"></i>
+                     </a></td>
                     </tr>
                 @empty
                     <span class="text-success">Loading.....</span>
