@@ -7,7 +7,7 @@ use App\Models\Profile;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Http\Request;
-//use PDF;
+use PDF;
 use Illuminate\Support\Facades\DB;
 
 class Home extends Component
@@ -18,17 +18,18 @@ class Home extends Component
     public function render()
     {
 
-        // $users = User::query()
-        // ->where('name','like','%'.$this->searchTerm.'%')
-        // ->orWhere('email','like','%'.$this->searchTerm.'%')
-        // ->latest()->paginate(5);
-        $users = DB::table('users')
-        ->where('user_type', '=',0)
-        ->where(function ($query) {
-            $query->where('email','like','%'.$this->searchTerm.'%')
-                  ->orWhere('name','like','%'.$this->searchTerm.'%');
-        })
-        ->paginate(5);
+        $members = Profile::query()
+        ->where('fullname','like','%'.$this->searchTerm.'%')
+        ->orWhere('email','like','%'.$this->searchTerm.'%')
+        ->latest()->paginate(20);
+        // $users = DB::table('users')
+        // ->where('user_type', '<',2)
+        // ->where(function ($query) {
+        //     $query->where('email','like','%'.$this->searchTerm.'%')
+        //           ->orWhere('name','like','%'.$this->searchTerm.'%');
+        // })
+        // ->orderByDesc('created_at')
+        // ->paginate(5);
         // $users = DB::table('users')
         //    ->where('name', '=', 'John')
         //    ->where(function ($query) {
@@ -44,7 +45,7 @@ class Home extends Component
         // })->when($request->city, function ($query) use ($request) {
         //     $query->orWhere('city', $request->city);
         // });
-             return view('livewire.admin.members.home',compact('users'));
+             return view('livewire.admin.members.home',compact('members'));
        // $users = User::orderBy('created_at','DESC')->where('user_type',0)->paginate(5);
 
     }
@@ -60,4 +61,13 @@ class Home extends Component
 
     //     return $pdf->download('itsolutionstuff.pdf');
     // }
+
+    public function generatePDF()
+    {
+        //dd('ok');
+        $members = DB::table('profiles')
+        ->where('fullname', '!=',null)->get();
+        $pdf = PDF::loadView('Pdf.members_list',compact('members'));
+        return $pdf->download('members.pdf');
+    }
 }

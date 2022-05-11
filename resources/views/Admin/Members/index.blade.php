@@ -30,6 +30,7 @@
                         <livewire:admin.members.home>
                         <!-- /.card -->
                     </div>
+                  
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->

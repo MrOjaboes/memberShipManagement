@@ -17,7 +17,22 @@
     <link rel="stylesheet" href="/Interface/dist/css/adminlte.min.css">
     <link rel="stylesheet" href="/Interface/style.css">
     @livewireStyles
-     
+    <style>
+        .btn-primary {
+        color: #fff;
+        background-color: #DB261D;
+        border-color: #DB261D;
+    }
+        .btn-primary:hover{
+        color: #fff;
+        background-color: #DB261D;
+        border-color: #DB261D;
+    }
+    .sidebar-dark-danger .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-danger .nav-sidebar>.nav-item>.nav-link.active {
+    background-color: #fff;
+    color: #000;
+}
+    </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">

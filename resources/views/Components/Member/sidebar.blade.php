@@ -11,7 +11,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="/Interface/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="/Interface/dist/img/AdminLTELogo.PNG" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <b> <a href="#" class="d-block">{{ Auth::user()->name }}</a></b>
@@ -45,7 +45,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->is('home/profile') ? 'active' : '' }}">
+                    <a href="#" class="nav-link {{ request()->is('home/profile') ? 'active' : '' || request()->is('home/profile/update') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Settings

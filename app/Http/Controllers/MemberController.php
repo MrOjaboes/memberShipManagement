@@ -5,16 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Comment;
 use App\Models\MaritalInfo;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class MemberController extends Controller
 {
-    public function member(User $user)
+    public function member(Profile $profile)
     {
-        $comments = Comment::where('user_id', $user->id)->get();
-        $marital_info = MaritalInfo::where('user_id', $user->id)->get();
-      return view('Admin.Members.details',compact('user','marital_info','comments'));
+        $comments = Comment::where('profile_id', $profile->id)->get();
+        $marital_info = MaritalInfo::where('profile_id', $profile->id)->get();
+      return view('Admin.Members.details',compact('profile','marital_info','comments'));
     }
     public function comment(User $user, Request $request)
     {

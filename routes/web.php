@@ -29,6 +29,7 @@ Route::get('/home/profile', [App\Http\Controllers\HomeController::class, 'profil
 Route::post('/home/profile', [App\Http\Controllers\HomeController::class, 'updateChildren'])->name('home.profile')->middleware('Member');
 Route::get('/home/profile/update', [App\Http\Controllers\HomeController::class, 'editProfile'])->name('member.profile')->middleware('Member');
 Route::post('/home/profile/update', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('member.profile')->middleware('Member');
+Route::post('/home/profile/photo', [App\Http\Controllers\HomeController::class, 'updatePhoto'])->name('profile.photo')->middleware('Member');
 Route::post('/home/profile/login', [App\Http\Controllers\AccountUpdateController::class, 'updateDetails'])->name('member.account')->middleware('Member');
 Route::post('/home/profile/password', [App\Http\Controllers\AccountUpdateController::class, 'updatePassword'])->name('member.password')->middleware('Member');
 
@@ -65,9 +66,10 @@ Route::get('/admin/message', [App\Http\Controllers\MessageController::class, 'cr
 Route::post('/admin/message', [App\Http\Controllers\MessageController::class, 'sendMessage'])->name('admin.message')->middleware('Admin');
 //Member(s) Collection
 Route::get('/admin/members', [App\Http\Controllers\AdminController::class, 'members'])->name('admin.members')->middleware('Admin');
+Route::get('/admin/members/export', [App\Http\Controllers\AdminController::class, 'generatePDF'])->name('members.pdf')->middleware('Admin');
 Route::get('/admin/members/birthdate', [App\Http\Controllers\AdminController::class, 'birthdate'])->name('admin.members.birthdate')->middleware('Admin');
 Route::get('/admin/members/wedding', [App\Http\Controllers\AdminController::class, 'wedding'])->name('admin.members.wedding')->middleware('Admin');
-Route::get('/admin/member/{user}/profile', [App\Http\Controllers\MemberController::class, 'member'])->name('admin.memberDetails')->middleware('Admin');
+Route::get('/admin/member/{profile}/profile', [App\Http\Controllers\MemberController::class, 'member'])->name('admin.memberDetails')->middleware('Admin');
 Route::post('/admin/member/{user}/profile', [App\Http\Controllers\MemberController::class, 'comment'])->name('admin.member.comment')->middleware('Admin');
 //Attendance(s) Collection
 Route::get('/admin/attendance', [App\Http\Controllers\AdminController::class, 'attendance'])->name('admin.attendance')->middleware('Admin');

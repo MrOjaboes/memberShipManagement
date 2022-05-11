@@ -35,43 +35,66 @@
                         @endif
                     </div>
                 </div>
+
+{{-- Profile Photo section --}}
+<div class="card">
+    <div class="card-header"><h3>Profile Photo Section</h3></div>
+    <div class="card-body">
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="card card-outline">
+                    <div class="card-body box-profile">
+                        <div class="text-center">
+                            @if (Auth::user()->profile->photo == null)
+                                <img class="profile-user-img img-fluid img-thumbnail w-100 h-100"
+                                    src="/Interface/dist/img/AdminLTELogo.PNG" alt="member photo" />
+                            @else
+                                <img class="profile-user-img img-fluid img-thumbnail"
+                                    src="{{ asset('/Photos/' . Auth::user()->profile->photo) }}"
+                                    alt="member Passport" />
+                            @endif
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+
+                <form action="{{ route('profile.photo') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <label for="">Upload Profile Photo</label>
+                        <input type="file" class="form-control" name="file">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-danger">Upload</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- End of Profile photo section --}}
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('member.profile') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row">
-                                <div class="col-md-4"></div>
-                                <div class="col-md-4">
-                                    <div class="card card-outline">
-                                        <div class="card-body box-profile">
-                                            <div class="text-center">
-                                                @if (Auth::user()->profile->photo == null)
-                                                    <img class="profile-user-img img-fluid img-circle"
-                                                        src="/Interface/dist/img/AdminLTELogo.PNG" alt="member photo" />
-                                                @else
-                                                    <img class="profile-user-img img-fluid img-circle"
-                                                        src="{{ asset('/Photos/' . Auth::user()->profile->photo) }}"
-                                                        alt="member Passport" />
-                                                @endif
-                                            </div>
 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4"></div>
-                            </div>
+                        <form action="{{ route('member.profile') }}" method="POST">
+                            @csrf
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Full Name</label>
-                                        <input type="text" class="form-control"
+                                        <input type="text" class="form-control" required
                                             value="{{ Auth::user()->profile->fullname }}" name="fullname" id="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Email</label>
-                                        <input type="email" class="form-control"
+                                        <input type="email" class="form-control" required
                                             value="{{ Auth::user()->profile->email }}" name="email" id="">
                                     </div>
                                 </div>
@@ -80,14 +103,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Contact 1 (WhatsApp No.)</label>
-                                        <input type="text" class="form-control"
+                                        <input type="text" maxlength="11" class="form-control" required
                                             value="{{ Auth::user()->profile->contact_one }}" name="contact_one" id="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="">Contact 2</label>
-                                        <input type="text" class="form-control"
+                                        <label for="">Contact 2(Optional)</label>
+                                        <input type="text" maxlength="11" class="form-control" required
                                             value="{{ Auth::user()->profile->contact_two }}" name="contact_two" id="">
                                     </div>
                                 </div>
@@ -96,14 +119,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Service Group</label>
-                                        <input type="text" maxlength="11" class="form-control"
+                                        <input type="text" class="form-control" required
                                             value="{{ Auth::user()->profile->age_group }}" name="age_group" id="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Birth Date</label>
-                                        <input type="date" class="form-control"
+                                        <input type="date" class="form-control" required
                                             value="{{ Auth::user()->profile->birth_date }}" name="birth_date" id="">
                                     </div>
                                 </div>
@@ -112,7 +135,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Gender</label>
-                                        <select name="gender" class="form-control" id="">
+                                        <select name="gender" required class="form-control" id="">
                                             <option value="{{ Auth::user()->profile->gender }}">
                                                 {{ Auth::user()->profile->gender }}</option>
                                             <option value="Male">Male</option>
@@ -123,7 +146,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Occupation</label>
-                                        <input type="text" class="form-control"
+                                        <input type="text" class="form-control" required
                                             value="{{ Auth::user()->profile->occupation }}" name="occupation" id="">
                                     </div>
                                 </div>
@@ -132,11 +155,11 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Fellowship Group</label>
-                                        <select name="fellowship_group" class="form-control input-lg" id="">
+                                        <select name="fellowship_group" required class="form-control input-lg" id="">
                                             <option value="{{ Auth::user()->profile->fellowship_group }}">
                                                 {{ Auth::user()->profile->fellowship_group }}</option>
                                             <option value="Zenith fellowship">Zenith fellowship </option>
-                                            <option value="Ultimate Class">Ultimate Class</option>
+                                            <option value="Impact Class">Impact Class</option>
                                             <option value="Men Fellowship">Men Fellowship</option>
                                             <option value="Women Fellowship">Women Felloship</option>
                                             <option value="Battle Axe">Battle Axe</option>
@@ -147,8 +170,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Friendship Centre</label>
-                                        <input type="text" value="{{ Auth::user()->profile->friendship_centre }}"
-                                            class="form-control" name="friendship_centre" id="">
+                                        <input type="text" required
+                                            value="{{ Auth::user()->profile->friendship_centre }}" class="form-control"
+                                            name="friendship_centre" id="">
                                     </div>
                                 </div>
                             </div>
@@ -156,7 +180,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Address 1</label>
-                                        <input type="text" placeholder="Address 1"
+                                        <input type="text" required placeholder="Address 1"
                                             value="{{ Auth::user()->profile->address_one }}" name="address_one"
                                             class="form-control" id="">
                                     </div>
@@ -173,62 +197,16 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="">Church Branch</label>
-                                        <input type="text" placeholder="Area"
-                                            value="{{ Auth::user()->profile->church_location }}" name="church_location"
-                                            class="form-control" id="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="">Member Photo</label>
-                                        <input type="file" name="file" class="form-control" id="">
-
-                                    </div>
-                                </div>
-                            </div>
-                            {{-- Class Selection --}}
-
-
-                            <div class="row pt-3">
-                                <div class="col-md-6">
-
-                                    <!-- /.form-group -->
-                                    @if ( Auth::user()->profile->marital_status == "Single" || Auth::user()->profile->marital_status == null)
-                                    <div class="form-group">
-                                        <label for="">Marital Status</label>
-                                        <select class="form-control select2bs4" name="marital_status" id="MaritalStatus"
-                                            style="width: 100%;">
-                                            <option value="{{ Auth::user()->profile->marital_status }}">
-                                                {{ Auth::user()->profile->marital_status }}</option>
-                                            <option value="Single">Single</option>
-                                            <option value="Married">Married</option>
-                                            @error('marital_status')
-                                                <span style="color: red">
-                                                    <strong style="color: red">{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </select>
-                                    </div>
-                                      @else
-                                      <div class="form-group">
-                                        <label for="">Marital Status</label>
-                                        <input type="text" class="form-control" readonly value="{{ Auth::user()->profile->marital_status }}" name="marital_status"/>
-
-                                    </div>
-                                    @endif
-
-                                    <!-- /.form-group -->
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-md-6">
-
-                                    <!-- /.form-group -->
-                                    <div class="form-group">
-                                        <label for="">Member Type ( <span class="text-danger"><b>{{ Auth::user()->profile->leadership_position }}</b></span> )</label>
-                                        <select class="form-control select2bs4" name="member_type" id=""
+                                <div class="col-md-12">
+                                    <label for="">Member Type ( <span
+                                            class="text-danger"><b>{{ Auth::user()->profile->leadership_position }}</b></span>
+                                        )</label>
+                                    @if (Auth::user()->profile->leadership_position == 'Leader')
+                                        <input type="text" class="form-control" readonly
+                                            value="{{ Auth::user()->profile->leadership_position }}"
+                                            name="member_type" />
+                                    @else
+                                        <select class="form-control select2bs4" required name="member_type" id=""
                                             style="width: 100%;">
                                             <option value="">-----Select Member Type-----</option>
                                             <option value="Normal">Normal</option>
@@ -239,9 +217,57 @@
                                                 </span>
                                             @enderror
                                         </select>
+                                    @endif
 
-                                    </div>
+
+
+                                </div>
+
+                            </div>
+                            {{-- Class Selection --}}
+
+
+                            <div class="row pt-3">
+                                <div class="col-md-6">
+
                                     <!-- /.form-group -->
+                                    @if (Auth::user()->profile->marital_status == 'Single' || Auth::user()->profile->marital_status == null)
+                                        <div class="form-group">
+                                            <label for="">Marital Status</label>
+                                            <select class="form-control select2bs4" required name="marital_status"
+                                                id="MaritalStatus" style="width: 100%;">
+                                                <option value="{{ Auth::user()->profile->marital_status }}">
+                                                    {{ Auth::user()->profile->marital_status }}</option>
+                                                <option value="Single">Single</option>
+                                                <option value="Married">Married</option>
+                                                @error('marital_status')
+                                                    <span style="color: red">
+                                                        <strong style="color: red">{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </select>
+                                        </div>
+                                    @else
+                                        <div class="form-group">
+                                            <label for="">Marital Status</label>
+                                            <input type="text" class="form-control" readonly
+                                                value="{{ Auth::user()->profile->marital_status }}"
+                                                name="marital_status" />
+
+                                        </div>
+                                    @endif
+
+                                    <!-- /.form-group -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">Church Branch</label>
+                                        <input type="text" placeholder="Area" required
+                                            value="{{ Auth::user()->profile->church_location }}" name="church_location"
+                                            class="form-control" id="">
+                                    </div>
+
                                 </div>
                                 <!-- /.col -->
                             </div>
@@ -259,6 +285,11 @@
                                     <div class="form-group">
                                         <input type="date" name="spouse_birthdate" class="form-control"
                                             placeholder="Spouse's Birth Date (DD/MM)">
+                                        <small class="text-danger">Spouse Birthdate</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="date" name="spouse_contact" class="form-control">
+                                        <small class="text-danger">Spouse Contact</small>
                                     </div>
                                     <div class="form-group">
                                         <input type="date" name="wedding_date" class="form-control">
@@ -304,7 +335,6 @@
                         </form>
                     </div>
                 </div>
-
 
 
                 <!-- /.row -->

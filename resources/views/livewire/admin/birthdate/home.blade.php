@@ -16,7 +16,7 @@
         </div>
     </div>
     <!-- /.card-header -->
-    <div class="card-body p-0">
+    <div class="card-body p-0"  style="height:350px;overflow-y:scroll;">
         <table class="table table-stripped table-hover">
             <thead class="bg-danger text-white">
                 <tr>
@@ -29,8 +29,7 @@
                 </tr>
             </thead>
 
-
-            <tbody>
+   <tbody>
                 @foreach ($users as $user)
                     <tr class="text-bold">
                         <td>{{ \Carbon\Carbon::parse($user->birth_date)->format('d D, M Y') ?? 'Loading...' }}</td>
@@ -38,7 +37,7 @@
                         <td>{{ $user->email ?? 'Loading...' }}</td>
                         <td>{{ $user->contact_one ?? 'Loading...' }}</td>
                         <td>{{ $user->gender ?? 'Loading...' }}</td>
-                        <td>{{ $user->profile->memberId ?? 'Loading...' }}</td>
+                        <td>{{ $user->memberId ?? 'Loading...' }}</td>
                     </tr>
                 @endforeach
             </tbody>

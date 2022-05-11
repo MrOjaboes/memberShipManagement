@@ -30,18 +30,18 @@
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    @if ($user->profile->photo == null)
-                                        <img class="profile-user-img img-fluid img-circle"
+                                    @if ($profile->photo == null)
+                                        <img class="profile-user-img img-fluid img-thumbnail"
                                             src="/Interface/dist/img/AdminLTELogo.PNG" alt="member photo" />
                                     @else
-                                        <img class="profile-user-img img-fluid img-circle"
-                                            src="{{ asset('/Photos/' . $user->profile->photo) }}" alt="member Passport" />
+                                        <img class="profile-user-img img-fluid img-thumbnail"
+                                            src="{{ asset('/Photos/' . $profile->photo) }}" alt="member Passport" />
                                     @endif
                                 </div>
 
-                                <h3 class="profile-username text-center">{{ $user->profile->fullname }} </h3>
+                                <h3 class="profile-username text-center">{{ $profile->fullname }} </h3>
 
-                                <p class="text-muted text-center"><b>{{ $user->profile->memberId }}</b></p>
+                                <p class="text-muted text-center"><b>{{ $profile->memberId }}</b></p>
 
                                 {{-- <ul class="list-group list-group-unbordered mb-3">
                                     <li class="list-group-item">
@@ -77,23 +77,23 @@
                                 <strong><i class="fas fa-book mr-1"></i> Email</strong>
 
                                 <p class="text-muted">
-                                    {{ $user->profile->email }}
+                                    {{ $profile->email }}
                                 </p>
 
                                 <hr>
 
                                 <strong><i class="fas fa-map-marker-alt mr-1"></i> Contact 1 (WhatsApp)</strong>
 
-                                <p class="text-muted">{{ $user->profile->contact_one }}</p>
+                                <p class="text-muted">{{ $profile->contact_one }}</p>
                                 <hr>
                                 <strong><i class="fas fa-map-marker-alt mr-1"></i> Contact 2</strong>
 
-                                <p class="text-muted">{{ $user->profile->contact_two }}</p>
+                                <p class="text-muted">{{ $profile->contact_two }}</p>
                                 <hr>
                                 <strong><i class="fas fa-pencil-alt mr-1"></i> Gender</strong>
 
                                 <p class="text-muted">
-                                    {{ $user->profile->gender }}
+                                    {{ $profile->gender }}
                                 </p>
 
                                 <hr>
@@ -101,7 +101,7 @@
                                 <strong><i class="fas fa-pencil-alt mr-1"></i> Marital Status</strong>
 
                                 <p class="text-muted">
-                                    {{ $user->profile->marital_status }}
+                                    {{ $profile->marital_status }}
                                 </p>
 
                                 <hr>
@@ -109,7 +109,7 @@
                                 <strong><i class="fas fa-pencil-alt mr-1"></i> Date Of Birth</strong>
 
                                 <p class="text-muted">
-                                    {{ $user->profile->birth_date }}
+                                    {{ $profile->birth_date }}
                                 </p>
 
                                 <hr>
@@ -117,7 +117,7 @@
                                 <strong><i class="fas fa-pencil-alt mr-1"></i> Account Created On</strong>
 
                                 <p class="text-muted">
-                                    {{ \Carbon\Carbon::parse($user->created_at)->format('d D, M Y') }}
+                                    {{ \Carbon\Carbon::parse($profile->created_at)->format('d D, M Y') }}
                                 </p>
 
                                 <hr>
@@ -201,14 +201,14 @@
                                                 <strong><i class="fas fa-book mr-1"></i> Spouse Name</strong>
 
                                                 <p class="text-muted">
-                                                    {{ $user->profile->spouse_name }}
+                                                    {{ $profile->spouse_name }}
                                                 </p>
 
                                                 <hr>
 
                                                 <strong><i class="fas fa-map-marker-alt mr-1"></i>Spouse Contact</strong>
 
-                                                <p class="text-muted">{{ $user->profile->spouse_contact }}</p>
+                                                <p class="text-muted">{{ $profile->spouse_contact }}</p>
 
                                                 <hr>
 
@@ -217,7 +217,7 @@
                                                 <strong><i class="fas fa-pencil-alt mr-1"></i>Spouse Date Of Birth</strong>
 
                                                 <p class="text-muted">
-                                                    {{ $user->profile->spouse_birthdate }}
+                                                    {{ $profile->spouse_birthdate }}
                                                 </p>
 
 
@@ -226,7 +226,7 @@
                                                 <strong><i class="fas fa-pencil-alt mr-1"></i>Occupation</strong>
 
                                                 <p class="text-muted">
-                                                    {{ $user->profile->occupation }}
+                                                    {{ $profile->occupation }}
                                                 </p>
 
 
@@ -235,7 +235,7 @@
                                                 <strong><i class="fas fa-pencil-alt mr-1"></i>Fellowship Group</strong>
 
                                                 <p class="text-muted">
-                                                    {{ $user->profile->fellowship_group }}
+                                                    {{ $profile->fellowship_group }}
                                                 </p>
 
 
@@ -244,7 +244,7 @@
                                                 <strong><i class="fas fa-pencil-alt mr-1"></i>Friendship Centre</strong>
 
                                                 <p class="text-muted">
-                                                    {{ $user->profile->friendship_centre }}
+                                                    {{ $profile->friendship_centre }}
                                                 </p>
 
 
@@ -254,7 +254,7 @@
                                                 <strong><i class="fas fa-pencil-alt mr-1"></i>Leadership Position</strong>
 
                                                 <p class="text-muted">
-                                                    {{ $user->profile->leadership_position }}
+                                                    {{ $profile->leadership_position }}
                                                 </p>
 
 
@@ -263,7 +263,7 @@
                                                 <strong><i class="fas fa-pencil-alt mr-1"></i>Service Group</strong>
 
                                                 <p class="text-muted">
-                                                    {{ $user->profile->age_group }}
+                                                    {{ $profile->age_group }}
                                                 </p>
 
 
@@ -272,7 +272,7 @@
                                                 <strong><i class="fas fa-pencil-alt mr-1"></i>Church branch</strong>
 
                                                 <p class="text-muted">
-                                                    {{ $user->profile->church_location }}
+                                                    {{ $profile->church_location }}
                                                 </p>
 
 
@@ -281,7 +281,7 @@
                                                 <strong><i class="fas fa-pencil-alt mr-1"></i>Address 1</strong>
 
                                                 <p class="text-muted">
-                                                    {{ $user->profile->address_one }}
+                                                    {{ $profile->address_one }}
                                                 </p>
 
 
@@ -290,7 +290,7 @@
                                                 <strong><i class="fas fa-pencil-alt mr-1"></i>Address 2</strong>
 
                                                 <p class="text-muted">
-                                                    {{ $user->profile->address_two }}
+                                                    {{ $profile->address_two }}
                                                 </p>
 
 
@@ -305,7 +305,7 @@
                                             <!-- /.card-header -->
                                             <div class="card-body">
                                                 @foreach ($comments as $comment)
-                                                    <form action="{{ route('admin.member.comment', $user->id) }}"
+                                                    <form action="{{ route('admin.member.comment', $profile->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         <div class="form-group">

@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 use App\Models\EventRegister;
 use App\Models\LeadersMeeting;
 use Illuminate\Support\Facades\DB;
-
+use PDF;
 class AdminController extends Controller
 {
     public function index()
     {
-        $members = Profile::count();
+        $members = Profile::where('fullname','!=',null)->count();
         $activeLeaders = LeadersMeeting::where('status',0)->count();
         $closedLeaders = LeadersMeeting::where('status',1)->count();
         $closedEvents = Event::where('status',1)->count();
@@ -68,5 +68,12 @@ class AdminController extends Controller
     {
        return view('Admin.Profile.home');
     }
-
+    public function generatePDF()
+    {
+        //dd('ok');
+        $members = DB::table('profiles')
+        ->where('fullname', '!=',null)->get();
+        $pdf = PDF::loadView('Pdf.members_list',compact('members'));
+        return $pdf->download('members.pdf');
+    }
 }

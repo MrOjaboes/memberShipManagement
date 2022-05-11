@@ -8,14 +8,14 @@ use Illuminate\Support\Facades\DB;
 
 class Home extends Component
 {
-   
+
     public $month ;
 
     public function search()
     {
        // dd($this->month);
       return DB::table('profiles')
-      ->whereMonth('birth_date', 'like','%'.$this->month.'%')
+      ->whereMonth('wedding_date', 'like','%'.$this->month.'%')
       ->get();
     }
     public function render()

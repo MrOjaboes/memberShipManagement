@@ -10,7 +10,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="/Interface/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="/Interface/dist/img/AdminLTELogo.PNG" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <b> <a href="#" class="d-block">{{ Auth::user()->name }}</a></b>
@@ -46,7 +46,7 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link {{ request()->is('admin/profile') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-circle"></i>
+                        <i class="nav-icon fas fa-th"></i>
                         <p>
                             Settings
                             <i class="right fas fa-angle-left"></i>
@@ -112,7 +112,7 @@
                 <li class="nav-item">
                     <a href="{{ route('admin.members.birthdate') }}"
                         class="nav-link {{ request()->is('admin/members/birthdate') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-comment"></i>
+                        <i class="nav-icon fas fa-calendar"></i>
                         <p>
                             BirthDates
                             <i class="right fas fa-angle-left"></i>
@@ -123,7 +123,7 @@
                 <li class="nav-item">
                     <a href="{{ route('admin.members.wedding') }}"
                         class="nav-link {{ request()->is('admin/members/wedding') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-comment"></i>
+                        <i class="nav-icon fas fa-calendar"></i>
                         <p>
                             Anniversary
                             <i class="right fas fa-angle-left"></i>
@@ -134,7 +134,7 @@
                 <li class="nav-item">
                     <a href="{{ route('admin.events') }}"
                         class="nav-link {{ request()->is('admin/events') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-comment"></i>
+                        <i class="nav-icon fas fa-calendar"></i>
                         <p>
                             Events
                             <i class="right fas fa-angle-left"></i>

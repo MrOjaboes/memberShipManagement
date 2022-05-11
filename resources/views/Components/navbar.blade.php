@@ -4,6 +4,12 @@
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
+        @if (Auth::user()->user_type == 0 || Auth::user()->user_type == 1)
+        <li class="nav-item">
+            <b><a class="nav-link {{ request()->is('home/profile') ? 'active' : '' || request()->is('home/profile/update') ? 'active' : '' }}"
+                    href="{{ route('home.profile') }}">Profile</a></b>
+        </li>
+        @endif
         @if (Auth::user()->user_type == 2)
             <li class="nav-item">
                 <b><a class="nav-link {{ request()->is('admin/external-event') ? 'active' : '' }}"
@@ -12,6 +18,10 @@
             <li class="nav-item">
                 <b><a class="nav-link {{ request()->is('admin/leaders-event') ? 'active' : '' }}"
                         href="{{ route('admin.event.leaders') }}">Leaders Event</a></b>
+            </li>
+            <li class="nav-item">
+                <b><a class="nav-link {{ request()->is('admin/members') ? 'active' : '' }}"
+                        href="{{ route('admin.members') }}">Members</a></b>
             </li>
         @endif
 

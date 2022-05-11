@@ -31,10 +31,10 @@
                             <div class="card-body box-profile">
                                 <div class="text-center">
                                     @if (Auth::user()->profile->photo == null)
-                                        <img class="profile-user-img img-fluid img-circle"
+                                        <img class="profile-user-img img-fluid img-thumbnail"
                                             src="/Interface/dist/img/AdminLTELogo.PNG" alt="member photo" />
                                     @else
-                                        <img class="profile-user-img img-fluid img-circle"
+                                        <img class="profile-user-img img-fluid img-thumbnail"
                                             src="{{ asset('/Photos/' . Auth::user()->profile->photo) }}"
                                             alt="member Passport" />
                                     @endif
@@ -163,6 +163,9 @@
                                 <div class="tab-content">
                                     <div class="active tab-pane" id="activity">
 
+                                        @if (Auth::user()->profile->marital_status == 'Single')
+                                        <b>Not Married</b>
+                                        @else
                                         <form action="{{ route('home.profile') }}" method="POST">
                                             @csrf
                                             <input type="hidden" class="form-control" name="profile_id"
@@ -205,6 +208,7 @@
                                             <button type="submit" class="btn btn-outline-danger">Update</button>
                                         </form>
 
+                                        @endif
 
 
                                     </div>
