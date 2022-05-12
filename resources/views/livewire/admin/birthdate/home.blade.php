@@ -11,7 +11,8 @@
         </div>
         <div class="row px-5 pt-2">
             <div class="col-md-12">
-                <x-birthdate-search />
+                
+                @include('layouts.birthdate-search')
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<x-navbar />
+@include('layouts.navbar')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
@@ -30,7 +30,7 @@
                         <livewire:admin.members.home>
                         <!-- /.card -->
                     </div>
-                  
+
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->

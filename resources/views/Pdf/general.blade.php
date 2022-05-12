@@ -23,8 +23,8 @@
         }
 
         #attendants th {
-            padding-top: 12px;
-            padding-bottom: 12px;
+            padding-top: 5px;
+            padding-bottom: 5px;
             text-align: left;
             background-color: #DB261D;
             color: #fff;

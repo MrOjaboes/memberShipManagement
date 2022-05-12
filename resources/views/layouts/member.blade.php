@@ -48,7 +48,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <x-Member.sidebar />
+        @include('layouts.Member.sidebar')
         <!-- Content Wrapper. Contains page content -->
         @yield('content')
         <!-- /.content-wrapper -->
@@ -60,7 +60,7 @@
         <!-- /.control-sidebar -->
 
         <!-- Main Footer -->
-        <x-footer />
+       @include('layouts.footer')
     </div>
     <!-- ./wrapper -->
 

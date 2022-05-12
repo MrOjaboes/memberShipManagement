@@ -11,7 +11,8 @@
         </div>
         <div class="row px-5 pt-2">
             <div class="col-md-12">
-                <x-wedding-search />
+                
+                @include('layouts.wedding-search')
             </div>
         </div>
     </div>

@@ -11,7 +11,8 @@
         </div>
         <div class="row px-5 pt-2">
             <div class="col-md-8">
-                <x-member-search />
+               
+                @include('layouts.member-search')
             </div>
             <div class="col-md-2">
 

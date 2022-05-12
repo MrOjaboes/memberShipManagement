@@ -11,7 +11,7 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="/Interface/plugins/fontawesome-free/css/all.min.css">
-    
+
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="/Interface/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Theme style -->
@@ -80,7 +80,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <x-Admin.sidebar />
+        @include('layouts.Admin.sidebar')
         <!-- Content Wrapper. Contains page content -->
         @yield('content')
         <!-- /.content-wrapper -->
@@ -92,7 +92,7 @@
         <!-- /.control-sidebar -->
 
         <!-- Main Footer -->
-        <x-footer />
+        @include('layouts.footer')
     </div>
     <!-- ./wrapper -->
 

@@ -1,6 +1,6 @@
 @extends('layouts.member')
 @section('content')
-    <x-navbar />
+@include('layouts.navbar')
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
