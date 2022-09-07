@@ -34,7 +34,7 @@ class CreateProfilesTable extends Migration
             $table->string('friendship_centre')->nullable();
             $table->string('marital_status')->nullable();
             $table->string('birth_date')->nullable();
-            $table->string('wedding_date')->nullable();
+            //$table->string('wedding_date')->nullable();
             $table->string('occupation')->nullable();
             $table->string('leadership_position')->nullable();
             $table->string('memberId')->nullable();
