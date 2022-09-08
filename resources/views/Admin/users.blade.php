@@ -32,7 +32,7 @@
                     <div class="col-12 col-sm-6 col-md-4">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('upload.user') }}" method="POST" class="form-inline">
+                                <form action="{{ route('upload.user') }}" method="POST" class="form-inline" enctype="multipart/form-data">
                                     @csrf
                                     <input type="file" class="form-control" name="file" id=""><br><br>
                                     <button class="btn btn-success" type="submit">Upload</button>

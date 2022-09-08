@@ -7,7 +7,7 @@ use App\Models\Event;
 use App\Models\Profile;
 use App\Imports\UsersImport;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\EventRegister;
 use App\Models\LeadersMeeting;
 use Illuminate\Support\Facades\DB;
@@ -30,7 +30,7 @@ class AdminController extends Controller
     public function uploadUsers(Request $request)
     {
         //dd($request->file);
-        Excel::import(new UsersImport, $request->file);
+        Excel::import(new UsersImport, $request->file('file'));
         return redirect()->back()->with('success', 'User Imported Successfully');
     }
     public function members()

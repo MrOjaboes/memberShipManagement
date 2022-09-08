@@ -75,6 +75,7 @@
 
                     </ul>
                 </li>
+
                 <li class="nav-item">
                     <a href="" class="nav-link {{ request()->is('admin/attendance') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-book"></i>
@@ -108,7 +109,51 @@
                     </ul>
                 </li>
 
+                <li class="nav-item">
+                    <a href="{{ route('admin.churches') }}"
+                        class="nav-link {{ request()->is('admin/churches') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-calendar"></i>
+                        <p>
+                            Churches
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
 
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('admin.fellowship') }}"
+                        class="nav-link {{ request()->is('admin/fellowship-group') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-calendar"></i>
+                        <p>
+                            Fellowship Groups
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.friendship') }}"
+                        class="nav-link {{ request()->is('admin/friendship-centre') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-calendar"></i>
+                        <p>
+                            Friendship Centres
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.funcional') }}"
+                        class="nav-link {{ request()->is('admin/funcional-group') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-calendar"></i>
+                        <p>
+                            Funcional Group
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+
+                </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.members.birthdate') }}"
                         class="nav-link {{ request()->is('admin/members/birthdate') ? 'active' : '' }}">
