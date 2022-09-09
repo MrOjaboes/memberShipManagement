@@ -49,7 +49,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'Admin'], function () {
 //Content
 Route::get('/churches', [App\Http\Controllers\SuperAdmin\ContentController::class, 'church'])->name('admin.churches');
 Route::get('/fellowship-group', [App\Http\Controllers\SuperAdmin\ContentController::class, 'church'])->name('admin.fellowship');
-Route::get('/friendship-centre', [App\Http\Controllers\SuperAdmin\ContentController::class, 'church'])->name('admin.friendship');
+Route::get('/friendship-centre', [App\Http\Controllers\SuperAdmin\ContentController::class, 'fellowshipCentre'])->name('admin.friendship');
 Route::get('/funcional-group', [App\Http\Controllers\SuperAdmin\ContentController::class, 'church'])->name('admin.funcional');
 
     Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');

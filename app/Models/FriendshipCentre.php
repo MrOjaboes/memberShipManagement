@@ -9,6 +9,8 @@ class FriendshipCentre extends Model
 {
     protected $fillable = [
         'title',
-        'description'
+        'description',
+        'user_id',
+        'fellowship_group_id',
     ];
 }

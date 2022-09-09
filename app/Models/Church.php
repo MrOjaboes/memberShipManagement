@@ -10,6 +10,7 @@ class Church extends Model
     protected $fillable = [
         'title',
         'location',
-        'description'
+        'description',
+        'user_id'
     ];
 }

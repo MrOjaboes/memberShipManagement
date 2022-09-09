@@ -9,10 +9,13 @@ class ContentController extends Controller
 {
     public function church()
     {
-   return view('SuperAdmin.Content.church');
+        return view('SuperAdmin.Content.church');
     }
     public function fellowshipGroup()
     {
-
+    }
+    public function fellowshipCentre()
+    {
+        return view('SuperAdmin.Content.fc-centre');
     }
 }

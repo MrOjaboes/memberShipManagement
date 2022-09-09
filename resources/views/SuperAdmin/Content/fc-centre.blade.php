@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Dashboard / Church Collection</h1>
+                        <h1 class="m-0">Dashboard / Frienship Centre</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -27,7 +27,7 @@
 
                     <div class="col-md-12">
 
-                        <livewire:super-admin.content.church-page>
+                        <livewire:super-admin.content.friendship-centre-page>
                         <!-- /.card -->
                     </div>
 
@@ -39,4 +39,9 @@
         </section>
         <!-- /.content -->
     </div>
+    <script type="text/javascript">
+        window.livewire.on('userStore', () => {
+            $('#exampleModal').modal('hide');
+        });
+    </script>
 @endsection
