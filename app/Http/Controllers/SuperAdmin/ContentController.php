@@ -11,9 +11,7 @@ class ContentController extends Controller
     {
         return view('SuperAdmin.Content.church');
     }
-    public function fellowshipGroup()
-    {
-    }
+   
     public function fellowshipCentre()
     {
         return view('SuperAdmin.Content.fc-centre');
@@ -21,5 +19,9 @@ class ContentController extends Controller
     public function functionalGroup()
     {
         return view('SuperAdmin.Content.functional-group');
+    }
+    public function fellowshipGroup()
+    {
+        return view('SuperAdmin.Content.fellowship-group');
     }
 }

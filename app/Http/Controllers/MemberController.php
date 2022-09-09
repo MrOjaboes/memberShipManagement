@@ -40,6 +40,4 @@ class MemberController extends Controller
 
 
     }
-
-    b
-h=iiiiiiiiii
+ 

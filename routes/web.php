@@ -48,9 +48,16 @@ Route::group(['prefix' => 'home',  'middleware' => 'Member'], function () {
 Route::group(['prefix' => 'admin',  'middleware' => 'Admin'], function () {
 //Content
 Route::get('/churches', [App\Http\Controllers\SuperAdmin\ContentController::class, 'church'])->name('admin.churches');
-Route::get('/fellowship-group', [App\Http\Controllers\SuperAdmin\ContentController::class, 'church'])->name('admin.fellowship');
+Route::get('/fellowship-group', [App\Http\Controllers\SuperAdmin\ContentController::class, 'fellowshipGroup'])->name('admin.fellowship');
 Route::get('/friendship-centre', [App\Http\Controllers\SuperAdmin\ContentController::class, 'fellowshipCentre'])->name('admin.friendship');
 Route::get('/funcional-group', [App\Http\Controllers\SuperAdmin\ContentController::class, 'functionalGroup'])->name('admin.funcional');
+
+//Children
+Route::get('/children', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'index'])->name('admin.children');
+Route::get('/children/new', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'add'])->name('admin.children.add');
+Route::post('/children/new', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'store']);
+Route::get('/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'edit'])->name('admin.children.edit');
+Route::post('/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'update']);
 
     Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
     Route::post('/upload-user', [App\Http\Controllers\AdminController::class, 'uploadUsers'])->name('upload.user');

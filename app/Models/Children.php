@@ -7,5 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Children extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'gender',
+        'primary_phone',
+        'secondary_phone',
+        'birth_date',
+        'class',
+        'level',
+        'school',
+        'guardian_one',
+        'guardian_two',
+        'guardian_one',
+        'hog_member_id',
+        'image_id',
+    ];
 }
