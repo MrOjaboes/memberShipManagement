@@ -18,4 +18,8 @@ class ContentController extends Controller
     {
         return view('SuperAdmin.Content.fc-centre');
     }
+    public function functionalGroup()
+    {
+        return view('SuperAdmin.Content.functional-group');
+    }
 }

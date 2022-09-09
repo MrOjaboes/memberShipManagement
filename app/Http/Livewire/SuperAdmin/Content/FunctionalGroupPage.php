@@ -2,25 +2,23 @@
 
 namespace App\Http\Livewire\SuperAdmin\Content;
 
-use App\Models\FellowshipGroup;
-use App\Models\FriendshipCentre;
+use App\Models\FunctionalGroup;
 use Livewire\Component;
 
-class FriendshipCentrePage extends Component
+class FunctionalGroupPage extends Component
 {
     protected $paginationTheme = 'bootstrap';
-    public $users, $title, $description, $user_id,$fellowship_group;
+    public $users, $title, $description, $user_id, $fellowship_group;
     public $updateMode = false;
-
 
     public function render()
     {
-        $centres = FriendshipCentre::orderBy('created_at', 'DESC')->latest()->paginate(10);
-        $f_groups = FellowshipGroup::all();
-        return view('livewire.super-admin.content.friendship-centre-page',compact('centres','f_groups'));
+        $groups = FunctionalGroup::orderBy('created_at', 'DESC')->latest()->paginate(10);
+        return view('livewire.super-admin.content.functional-group-page', compact('groups'));
     }
 
-    private function resetInputFields(){
+    private function resetInputFields()
+    {
         $this->title = '';
         $this->description = '';
         $this->fellowship_froup = '';
@@ -30,29 +28,27 @@ class FriendshipCentrePage extends Component
         $validated = $this->validate([
             'title' => 'required',
             'description' => 'required',
-            'fellowship_group' => 'required',
         ]);
-        FriendshipCentre::create([
+        FunctionalGroup::create([
             'title' => $validated['title'],
             'description' => $validated['description'],
-            'fellowship_group_id' => $validated['fellowship_group'],
             'user_id' => auth()->user()->id,
         ]);
 
-        session()->flash('message', 'Users Created Successfully.');
+        session()->flash('message', 'Group Created Successfully.');
 
         $this->resetInputFields();
 
-        $this->emit('userStore'); // Close model to using to jquery
+        $this->emit('fgroupStore'); // Close model to using to jquery
     }
     public function edit($id)
     {
         $this->updateMode = true;
-        $user = FriendshipCentre::where('id',$id)->first();
+        $user = FunctionalGroup::where('id', $id)->first();
         $this->user_id = $id;
         $this->title = $user->title;
         $this->description = $user->description;
-     }
+    }
     public function cancel()
     {
         $this->updateMode = false;
@@ -65,21 +61,21 @@ class FriendshipCentrePage extends Component
             'description' => 'required',
         ]);
         if ($this->user_id) {
-            $user = FriendshipCentre::find($this->user_id);
+            $user = FunctionalGroup::find($this->user_id);
             $user->update([
                 'title' => $this->title,
                 'description' => $this->description,
             ]);
             $this->updateMode = false;
-            session()->flash('message', 'Users Updated Successfully.');
+            session()->flash('message', 'Group Updated Successfully.');
             $this->resetInputFields();
         }
     }
     public function delete($id)
     {
-        if($id){
-            FriendshipCentre::where('id',$id)->delete();
-            session()->flash('message', 'Users Deleted Successfully.');
+        if ($id) {
+            FunctionalGroup::where('id', $id)->delete();
+            session()->flash('message', 'Group Deleted Successfully.');
         }
     }
 }

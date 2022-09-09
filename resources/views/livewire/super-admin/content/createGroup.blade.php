@@ -1,14 +1,14 @@
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#churchModal">
-    <i class="fas fa-plus"></i> Add Church
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#fgroup">
+    <i class="fas fa-plus"></i> New Group
 </button>
 
 <!-- Modal -->
-<div wire:ignore.self class="modal fade" id="churchModal" tabindex="-1" role="dialog"
+<div wire:ignore.self class="modal fade" id="fgroup" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">New Church</h5>
+                <h5 class="modal-title" id="exampleModalLabel">New Group</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true close-btn">×</span>
                 </button>
@@ -17,20 +17,13 @@
                 <form>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Name</label>
-                        <input type="text" class="form-control" id="" placeholder="Enter Church Name"
+                        <input type="text" class="form-control" id="" placeholder="Enter Group Name"
                             wire:model="title">
                         @error('title')
                             <span class="text-danger error">{{ $message }}</span>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="">Location</label>
-                        <input type="text" class="form-control" id="" wire:model="location"
-                        placeholder="Enter Location">
-                        @error('location')
-                            <span class="text-danger error">{{ $message }}</span>
-                        @enderror
-                    </div>
+
                     <div class="form-group">
                         <label for="exampleFormControlInput2">Description</label>
                         <input type="text" class="form-control" id="" wire:model="description"
@@ -42,8 +35,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
-                <button type="button" wire:click.prevent="store()" class="btn btn-primary close-modal">Add Church</button>
+                <button type="button" class="btn btn-danger close-btn" data-dismiss="modal">Close</button>
+                <button type="button" wire:click.prevent="store()" class="btn btn-success close-modal">Add Group</button>
             </div>
         </div>
     </div>

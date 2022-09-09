@@ -5,74 +5,86 @@ namespace App\Http\Livewire\SuperAdmin\Content;
 use App\Models\Church;
 use Livewire\Component;
 use WithPagination;
+
 class ChurchPage extends Component
 {
 
     protected $paginationTheme = 'bootstrap';
     public $updateMode = false;
-    public $title,$location,$description,$searchTerm,$church_id;
+    public $title, $location, $description, $searchTerm, $user_id;
+
     public function render()
     {
-        $churches = Church::orderBy('created_at','DESC')->latest()->paginate(10);
-        return view('livewire.super-admin.content.church-page',compact('churches'));
+        $churches = Church::orderBy('created_at', 'DESC')->latest()->paginate(10);
+        return view('livewire.super-admin.content.church-page', compact('churches'));
     }
 
-    public function storeChurch()
+    public function store()
     {
-       // dd('ok');
         $validated = $this->validate([
-            'title' => 'required|unique:churches,title',
-            'location' => 'required',
+            'title' => 'required',
             'description' => 'required',
+            'location' => 'required',
         ]);
-
         Church::create([
             'title' => $validated['title'],
-            'location' => $validated['location'],
             'description' => $validated['description'],
+            'location' => $validated['location'],
             'user_id' => auth()->user()->id,
         ]);
+        session()->flash('message', 'Church Created Successfully.');
         $this->resetInputFields();
-        session()->flash('message', 'Church Created Successfully!');
 
-        //return redirect()->back()->with('message','Centre Created Successfully!');
-
+        $this->emit('churchStore'); // Close model to using to jquery
     }
 
     public function edit($id)
     {
-        $church =  Church::where('id',$id)->first();
-        $this->church_id = $id;
-        $this->title = $church->title;
-        $this->location = $church->location;
-        $this->description = $church->description;
         $this->updateMode = true;
+        $user = Church::where('id', $id)->first();
+        $this->user_id = $id;
+        $this->title = $user->title;
+        $this->location = $user->location;
+        $this->description = $user->description;
     }
 
-    private function resetInputFields(){
-        $this->title = '';
-        $this->location = '';
-        $this->description = '';
+    public function cancel()
+    {
+        $this->updateMode = false;
+        $this->resetInputFields();
     }
 
     public function update()
     {
         $validatedDate = $this->validate([
-            'fellowship_group' => 'required',
-             'fellowship_centre' => 'required',
-            'email' => 'required|email',
+            'title' => 'required',
+            'location' => 'required',
+            'description' => 'required',
         ]);
+        if ($this->user_id) {
+            $user = Church::find($this->user_id);
+            $user->update([
+                'title' => $this->title,
+                'location' => $this->location,
+                'description' => $this->description,
+            ]);
+            $this->updateMode = false;
+            session()->flash('message', 'Church Updated Successfully.');
+            $this->resetInputFields();
+        }
+    }
+    public function delete($id)
+    {
+        if ($id) {
+            Church::where('id', $id)->delete();
+            session()->flash('message', 'Church Deleted Successfully.');
+        }
+    }
 
-        $user = User::find($this->user_id);
-        $user->update([
-            'fellowship_group' => $this->fellowship_group,
-            'fellowship_centre' => $this->fellowship_centre,
-            'email' => $this->email,
-        ]);
-
-        $this->updateMode = false;
-  $this->resetInputFields();
-  return redirect()->back()->with('message','Centre Updated Successfully!');
-
+    private function resetInputFields()
+    {
+        $this->title = '';
+        $this->description = '';
+        $this->location = '';
     }
 }

@@ -1,6 +1,6 @@
 <div>
-    @include('livewire.super-admin.content.addChurch')
-@include('livewire.super-admin.content.editChurch') <br><br>
+    @include('livewire.super-admin.content.createGroup')
+@include('livewire.super-admin.content.updateGroup') <br><br>
 <div class="card">
     <div class="card-header">
         <div class="card-tools">
@@ -14,7 +14,7 @@
 
     </div>
 
-    <div class="row py-1">
+    <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">
             @if (session()->has('message'))
@@ -39,7 +39,7 @@
         </thead>
         <tbody>
 
-            @foreach($churches as $value)
+            @foreach($groups as $value)
             <tr>
 
                 <td>{{ $value->title }}</td>

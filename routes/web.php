@@ -50,7 +50,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'Admin'], function () {
 Route::get('/churches', [App\Http\Controllers\SuperAdmin\ContentController::class, 'church'])->name('admin.churches');
 Route::get('/fellowship-group', [App\Http\Controllers\SuperAdmin\ContentController::class, 'church'])->name('admin.fellowship');
 Route::get('/friendship-centre', [App\Http\Controllers\SuperAdmin\ContentController::class, 'fellowshipCentre'])->name('admin.friendship');
-Route::get('/funcional-group', [App\Http\Controllers\SuperAdmin\ContentController::class, 'church'])->name('admin.funcional');
+Route::get('/funcional-group', [App\Http\Controllers\SuperAdmin\ContentController::class, 'functionalGroup'])->name('admin.funcional');
 
     Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
     Route::post('/upload-user', [App\Http\Controllers\AdminController::class, 'uploadUsers'])->name('upload.user');

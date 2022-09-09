@@ -1,4 +1,5 @@
-@include('livewire.super-admin.content.create')
+<div>
+    @include('livewire.super-admin.content.create')
 @include('livewire.super-admin.content.update') <br><br>
 <div class="card">
     <div class="card-header">
@@ -13,7 +14,7 @@
 
     </div>
 
-    <div class="row">
+    <div class="row py-3">
         <div class="col-md-1"></div>
         <div class="col-md-10">
             @if (session()->has('message'))
@@ -29,7 +30,7 @@
     <table class="table text-condensed table-hovered">
         <thead>
             <tr>
-                
+
                 <th>Name</th>
                 <th>Description</th>
                 <th>Date Added</th>
@@ -54,4 +55,6 @@
         </tbody>
     </table>
   </div>
+</div>
+
 </div>
