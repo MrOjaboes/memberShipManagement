@@ -80,7 +80,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        @include('layouts.Admin.sidebar')
+        @include('layouts.Media.sidebar')
         <!-- Content Wrapper. Contains page content -->
         @yield('content')
         <!-- /.content-wrapper -->
@@ -99,7 +99,7 @@
     @livewireScripts
     <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
-    
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="/Interface/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap -->

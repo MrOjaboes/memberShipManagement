@@ -1,29 +1,32 @@
 <?php
 
-namespace App\Http\Controllers\SuperAdmin;
+namespace App\Http\Controllers\MediaAngle;
 
-use App\Http\Controllers\Controller;
-use App\Models\Address;
 use App\Models\Adult;
+use App\Models\Image;
 use App\Models\Church;
+use App\Models\Address;
+use Illuminate\Http\Request;
 use App\Models\FellowshipGroup;
 use App\Models\FriendshipCentre;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class AdultController extends Controller
+class CCTVSectionController extends Controller
 {
-    public function index()
+    public function adult()
     {
-        return view('SuperAdmin.Adult.index');
+        $images = Image::where('status',false)->get();
+        return view('Media.Adult.index');
     }
-    public function add()
+    public function addAdult()
     {
         $fgroup = FellowshipGroup::all();
         $centres = FriendshipCentre::all();
         $churches = Church::all();
-        return view('SuperAdmin.Adult.add',compact('fgroup','centres','churches'));
+        return view('Media.Adult.add', compact('fgroup', 'centres', 'churches'));
     }
-    public function store(Request $request)
+
+    public function storeAdult(Request $request)
     {
         if($request->is_leader == 1){
             $member = Adult::create([
@@ -75,12 +78,8 @@ class AdultController extends Controller
             "zip_code" => $request->zip_code,
             "state" => $request->state,
             "country" => $request->country,
-            "status" => 'previous',
+            "status" => $request->status,
         ]);
         return redirect()->back()->with('message', 'Details Submited Successfully.');
-    }
-    public function edit(Adult $member)
-    {
-        return view('SuperAdmin.Adult.edit', compact('member'));
     }
 }

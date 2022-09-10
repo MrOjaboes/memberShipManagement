@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+Route::get('/member/adult', [App\Http\Controllers\API\CCTVSectionController::class, 'getAdults']);
+Route::get('/member/children', [App\Http\Controllers\API\CCTVSectionController::class, 'getChildren']);

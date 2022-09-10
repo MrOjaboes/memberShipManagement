@@ -46,18 +46,18 @@ Route::group(['prefix' => 'home',  'middleware' => 'Member'], function () {
 });
 //Admin Section
 Route::group(['prefix' => 'admin',  'middleware' => 'Admin'], function () {
-//Content
-Route::get('/churches', [App\Http\Controllers\SuperAdmin\ContentController::class, 'church'])->name('admin.churches');
-Route::get('/fellowship-group', [App\Http\Controllers\SuperAdmin\ContentController::class, 'fellowshipGroup'])->name('admin.fellowship');
-Route::get('/friendship-centre', [App\Http\Controllers\SuperAdmin\ContentController::class, 'fellowshipCentre'])->name('admin.friendship');
-Route::get('/funcional-group', [App\Http\Controllers\SuperAdmin\ContentController::class, 'functionalGroup'])->name('admin.funcional');
+    //Content
+    Route::get('/churches', [App\Http\Controllers\SuperAdmin\ContentController::class, 'church'])->name('admin.churches');
+    Route::get('/fellowship-group', [App\Http\Controllers\SuperAdmin\ContentController::class, 'fellowshipGroup'])->name('admin.fellowship');
+    Route::get('/friendship-centre', [App\Http\Controllers\SuperAdmin\ContentController::class, 'fellowshipCentre'])->name('admin.friendship');
+    Route::get('/funcional-group', [App\Http\Controllers\SuperAdmin\ContentController::class, 'functionalGroup'])->name('admin.funcional');
 
-//Children
-Route::get('/children', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'index'])->name('admin.children');
-Route::get('/children/new', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'add'])->name('admin.children.add');
-Route::post('/children/new', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'store']);
-Route::get('/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'edit'])->name('admin.children.edit');
-Route::post('/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'update']);
+    //Children
+    Route::get('/children', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'index'])->name('admin.children');
+    Route::get('/children/new', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'add'])->name('admin.children.add');
+    Route::post('/children/new', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'store']);
+    Route::get('/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'edit'])->name('admin.children.edit');
+    Route::post('/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'update']);
 
     Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
     Route::post('/upload-user', [App\Http\Controllers\AdminController::class, 'uploadUsers'])->name('upload.user');
@@ -98,4 +98,14 @@ Route::post('/children/{children}/edit', [App\Http\Controllers\SuperAdmin\Childr
     Route::get('/attendance/{event}/members', [App\Http\Controllers\AdminController::class, 'eventAttendance'])->name('admin.attendance.member');
     Route::get('/attendance/{event}/members/leaders', [App\Http\Controllers\AdminController::class, 'leadersEventAttendance'])->name('admin.attendance.leadersmember');
     Route::get('/export/{event}/pdf', [App\Http\Controllers\AttendanceController::class, 'exportPdf'])->name('admin.leadersexport');
+});
+
+//Media Section
+Route::group(['prefix' => 'media',  'middleware' => 'MediaAngle'], function () {
+    //Children
+    Route::get('/', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'adult'])->name('media');
+    Route::get('/adult/new', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'addAdult'])->name('media.adult.add');
+    Route::post('/adult/new', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'storeAdult']);
+    Route::get('/media/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'edit']);
+    Route::post('/media/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'update']);
 });

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.media')
 @section('content')
     @include('layouts.navbar')
     <div class="content-wrapper">
@@ -11,11 +11,23 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('admin') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('media') }}">Home</a></li>
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
+                <div class="row py-1">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        @if (session()->has('message'))
+                            <div class="alert alert-success">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                {{ session('message') }}
+                            </div>
+                        @endif
+                        <div class="col-md-1"></div>
+                    </div>
+                </div>
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
@@ -29,18 +41,10 @@
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    @if (Auth::user()->profile->photo == null)
-                                        <img class="profile-user-img img-fluid img-thumbnail"
-                                            src="/Interface/dist/img/AdminLTELogo.PNG" alt="member photo" />
-                                    @else
-                                        <img class="profile-user-img img-fluid img-thumbnail" src=""
-                                            alt="member Passport" />
-                                    @endif
+                                    <img class="profile-user-img img-fluid img-thumbnail"
+                                        src="/Interface/dist/img/AdminLTELogo.PNG" alt="" />
                                 </div>
-
-                                <h3 class="profile-username text-center">{{ Auth::user()->name }} </h3>
-
-
+                                <h3 class="profile-username text-center"><b>{{ Auth::user()->name }} </b></h3>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -53,21 +57,8 @@
 
                     <div class="col-md-9" style="height: 500px;overflow-y:scroll;">
                         <div class="card">
-                            <div class="row py-1">
-                                <div class="col-md-1"></div>
-                                <div class="col-md-10">
-                                    @if (session()->has('message'))
-                                        <div class="alert alert-success">
-                                            <a href="#" class="close" data-dismiss="alert"
-                                                aria-label="close">&times;</a>
-                                            {{ session('message') }}
-                                        </div>
-                                    @endif
-                                    <div class="col-md-1"></div>
-                                </div>
-                            </div>
                             <div class="card-body">
-                                <form action="{{ url('/admin/member/new') }}" method="POST">
+                                <form action="{{ route('media.adult.add') }}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
@@ -169,6 +160,16 @@
                                                 <label for="">Wedding Date </label>
                                                 <input name="wedding_date" class="form-control" type="date" />
                                             </div>
+                                            <div class="form-group">
+
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="1"
+                                                        name="is_leader">
+                                                    <label class="form-check-label" for="remember">
+                                                        Am a leader
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     {{-- Address Section --}}
@@ -213,14 +214,12 @@
                                                 <input type="text" name="country" required class="form-control" />
                                             </div>
                                             <div class="form-group">
+                                                <label for="">Address Status</label>
+                                                <select name="status" class="form-control">
+                                                    <option value="previous">Previous</option>
+                                                    <option value="current">Current</option>
+                                                </select>
 
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="1"
-                                                        name="is_leader">
-                                                    <label class="form-check-label" for="remember">
-                                                        Am a leader
-                                                    </label>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -248,17 +247,4 @@
         </section>
         <!-- /.content -->
     </div>
-    <script>
-        $(document).ready(function() {
-            $('#maritalStatus').on('change', function() {
-                if (this.value == 'Married')
-                //.....................^.......
-                {
-                    $("#yes").show();
-                } else {
-                    $("#yes").hide();
-                }
-            });
-        });
-    </script>
 @endsection

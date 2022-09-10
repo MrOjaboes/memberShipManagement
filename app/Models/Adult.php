@@ -21,10 +21,14 @@ class Adult extends Model
         "spouse_member_id",
         "birth_date",
         "fellowship_group_id",
-        "friendship_center_id",
+        "friendship_centre_id",
         "is_leader",
         "church",
         "wedding_date",
         "occupation"
     ];
+    public function address()
+    {
+        return $this->hasOne(Address::class, 'member_id');
+    }
 }

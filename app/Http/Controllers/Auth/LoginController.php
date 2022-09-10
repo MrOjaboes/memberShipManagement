@@ -51,10 +51,14 @@ class LoginController extends Controller
         if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
             if (auth()->user()->user_type == 2) {
                 return redirect()->route('admin');
-                //session()->flash('login', 'welcome');
+
             } elseif (auth()->user()->user_type == 1 || auth()->user()->user_type == 0) {
                 return redirect()->route('home');
-            } else {
+            }
+         elseif (auth()->user()->user_type == 3) {
+            return redirect()->route('media');
+
+        }else {
                 return redirect()->route('login')
                     ->with('message', 'Email And Password Do not Match.');
             }
