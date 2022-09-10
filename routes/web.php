@@ -83,7 +83,10 @@ Route::post('/children/{children}/edit', [App\Http\Controllers\SuperAdmin\Childr
     Route::get('/message', [App\Http\Controllers\MessageController::class, 'create'])->name('admin.message');
     Route::post('/message', [App\Http\Controllers\MessageController::class, 'sendMessage'])->name('admin.message.post');
     //Member(s) Collection
-    Route::get('/members', [App\Http\Controllers\AdminController::class, 'members'])->name('admin.members');
+    Route::get('/members', [App\Http\Controllers\SuperAdmin\AdultController::class, 'index'])->name('admin.members');
+    Route::get('/member/new', [App\Http\Controllers\SuperAdmin\AdultController::class, 'add'])->name('admin.member.new');
+    Route::post('/member/new', [App\Http\Controllers\SuperAdmin\AdultController::class, 'store']);
+    Route::get('/member/{member}/edit', [App\Http\Controllers\SuperAdmin\AdultController::class, 'edit'])->name('admin.member.edit');
     Route::get('/members/export', [App\Http\Controllers\AdminController::class, 'generatePDF'])->name('members.pdf');
     Route::get('/members/birthdate', [App\Http\Controllers\AdminController::class, 'birthdate'])->name('admin.members.birthdate');
     Route::get('/members/wedding', [App\Http\Controllers\AdminController::class, 'wedding'])->name('admin.members.wedding');

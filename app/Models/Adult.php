@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Adult extends Model
+{
+    protected $fillable = [
+        "first_name",
+        "last_name",
+        "middle_name",
+        "gender",
+        "hog_member_id",
+        "email",
+        "primary_phone",
+        "secondary_phone",
+        "image_id",
+        "marital_status",
+        "spouse_member_id",
+        "birth_date",
+        "fellowship_group_id",
+        "friendship_center_id",
+        "is_leader",
+        "church",
+        "wedding_date",
+        "occupation"
+    ];
+}
