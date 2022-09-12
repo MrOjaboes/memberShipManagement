@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>House Of Grace | Admin </title>
+    <title>House Of Grace | Media </title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"

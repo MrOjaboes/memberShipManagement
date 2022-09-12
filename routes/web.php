@@ -108,4 +108,16 @@ Route::group(['prefix' => 'media',  'middleware' => 'MediaAngle'], function () {
     Route::post('/adult/new', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'storeAdult']);
     Route::get('/media/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'edit']);
     Route::post('/media/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'update']);
+
+    //Import section
+    Route::get('/adult/import', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'adultImport'])->name('adult-import');
+    Route::get('/children/import', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'childrenImport'])->name('children-import');
+
+    Route::post('/adult/import', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'storeAdultImport']);
+    Route::post('/children/import', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'storeChildrenImport']);
+
+    Route::get('/children', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'allChildren'])->name('children');
+    Route::get('/members', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'allAdults'])->name('adults');
+
+    Route::post('/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'update']);
 });

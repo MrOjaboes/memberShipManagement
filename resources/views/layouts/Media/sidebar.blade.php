@@ -35,7 +35,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a href="{{ route('admin') }}" class="nav-link {{ request()->is('admin') ? 'active' : '' }}">
+                    <a href="{{ route('media') }}" class="nav-link {{ request()->is('media') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -73,6 +73,24 @@
 
 
                     </ul>
+                </li>
+                <li class="nav-item menu-open">
+                    <a href="{{ route('children') }}" class="nav-link {{ request()->is('media/children') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Children
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item menu-open">
+                    <a href="{{ route('adults') }}" class="nav-link {{ request()->is('media/members') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Members
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a id="logout" href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();

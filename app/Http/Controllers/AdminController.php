@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use PDF;
 use App\Models\Event;
 use App\Models\Profile;
+use App\Imports\AdultImport;
 use App\Imports\UsersImport;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Models\EventRegister;
 use App\Models\LeadersMeeting;
+use App\Imports\ChildrenImport;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
@@ -30,7 +32,9 @@ class AdminController extends Controller
     public function uploadUsers(Request $request)
     {
         //dd($request->file);
-        Excel::import(new UsersImport, $request->file('file'));
+      //  Excel::import(new UsersImport, $request->file('file'));
+      //Excel::import(new ChildrenImport, $request->file('file'));
+      Excel::import(new AdultImport, $request->file('file'));
         return redirect()->back()->with('success', 'User Imported Successfully');
     }
     public function members()
