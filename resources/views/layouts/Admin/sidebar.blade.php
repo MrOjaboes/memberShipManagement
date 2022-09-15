@@ -76,10 +76,10 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link {{ request()->is('admin/profile') ? 'active' : '' }}">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Settings 2
+                         CMS
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -133,7 +133,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="" class="nav-link {{ request()->is('admin/attendance') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
@@ -164,9 +164,9 @@
 
 
                     </ul>
-                </li>
+                </li> --}}
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('admin.members.birthdate') }}"
                         class="nav-link {{ request()->is('admin/members/birthdate') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-calendar"></i>
@@ -176,11 +176,11 @@
                         </p>
                     </a>
 
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a href="{{ route('admin.children') }}"
                         class="nav-link {{ request()->is('admin/children') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-calendar"></i>
+                        <i class="nav-icon fas fas fa-users"></i>
                         <p>
                             Children
                             <i class="right fas fa-angle-left"></i>
@@ -188,7 +188,7 @@
                     </a>
 
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="{{ route('admin.members.wedding') }}"
                         class="nav-link {{ request()->is('admin/members/wedding') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-calendar"></i>
@@ -209,7 +209,7 @@
                         </p>
                     </a>
 
-                </li>
+                </li> --}}
                 {{-- <li class="nav-item">
                     <a href="{{ route('admin.attendance') }}"
                         class="nav-link {{ request()->is('admin/attendance') ? 'active' : '' }}">

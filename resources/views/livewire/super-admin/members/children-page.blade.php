@@ -1,7 +1,7 @@
 <div>
-    <a class="btn btn-danger" href="{{ route('admin.children.add') }}">
+    {{-- <a class="btn btn-danger" href="{{ route('admin.children.add') }}">
         <i class="fas fa-plus"></i> Add New
-    </a> <br><br>
+    </a> <br><br> --}}
     <div class="card">
          <div class="card-header">
              <div class="card-tools">
@@ -15,7 +15,7 @@
 
          </div>
 
-         <div class="row py-3">
+         <div class="row ">
              <div class="col-md-1"></div>
              <div class="col-md-10">
                  @if (session()->has('message'))
@@ -28,14 +28,18 @@
              </div>
          </div>
          <div class="card-body">
+            @include('layouts.children-search')
+            <div style="overflow-y: scroll;height:300px">
              <table class="table text-condensed table-hovered">
                  <thead>
                      <tr>
 
                          <th>First Name</th>
                          <th>Last Name</th>
+                         <th>Gender</th>
+                         <th>Class</th>
                          <th>Date Added</th>
-                         <th>Action</th>
+                         {{-- <th>Action</th> --}}
                      </tr>
                  </thead>
                  <tbody>
@@ -45,16 +49,19 @@
 
                              <td>{{ $value->first_name }}</td>
                              <td>{{ $value->last_name }}</td>
+                             <td>{{ $value->gender }}</td>
+                             <td>{{ $value->class }}</td>
                              <td>{{ \Carbon\Carbon::parse($value->created_at)->format('d D, M Y') }}</td>
-                             <td>
+                             {{-- <td>
                                  <a href="{{ route('admin.children.edit',$value->id) }}" class="btn btn-info btn-sm">Edit</a>
                                  <button wire:click="delete({{ $value->id }})"
                                      class="btn btn-danger btn-sm">Delete</button>
-                             </td>
+                             </td> --}}
                          </tr>
                      @endforeach
                  </tbody>
              </table>
+            </div>
          </div>
      </div>
 

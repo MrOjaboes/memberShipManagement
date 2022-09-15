@@ -12,7 +12,6 @@ class AdultImport implements ToModel, WithHeadingRow
     public function rules(): array
     {
         return [
-
         'birth_date' => 'required|dateformat:DD-MM-YYYY',
         ];
     }
@@ -23,7 +22,7 @@ class AdultImport implements ToModel, WithHeadingRow
      */
     public function model(array $row)
     {
-         return new Adult([
+         $member = Adult::create([
             'first_name'     => $row['first_name'],
             'last_name'     => $row['last_name'],
             'middle_name'     => $row['middle_name'],
@@ -42,19 +41,34 @@ class AdultImport implements ToModel, WithHeadingRow
             'is_leader'    => $row['is_leader'],
             'occupation'    => $row['occupation'],
         ]);
-       // $member = $this->members->where('first_name',$row['first_name'])->first();
+        // if (condition) {
+        //     foreach ($row as $key => $value) {
+        //         $save = new Adult();
+        //     $save->name = "";
+        //     if($save->save()){
+        //         $new_id = $save->id;
+        //         $save2 = new Address();
+        //         $save2->member_id = $new_id;
+        //         $savw2->state = $row['state'];
 
+        //     }
+        //                     }
+        // }
+
+
+       // $member = $this->members->where('first_name',$row['first_name'])->first();
+//dd(array($member->id));
         //dd(array($member->id));
-        // return new Address([
-        //     'member_id'     => $member->id,
-        //     'house_number'     => $row['house_number'],
-        //     'street'     => $row['street'],
-        //     'city'     => $row['city'],
-        //     'lga'     => $row['lga'],
-        //     'zip_code'     => $row['zip_code'],
-        //     'status'     => $row['status'],
-        //     'state'     => $row['state'],
-        //     'country'     => $row['country'],
-        // ]);
+        return new Address([
+            'member_id'     => $member->id,
+            'house_number'     => $row['house_number'],
+            'street'     => $row['street'],
+            'city'     => $row['city'],
+            'lga'     => $row['lga'],
+            'zip_code'     => $row['zip_code'],
+            'status'     => $row['status'],
+            'state'     => $row['state'],
+            'country'     => $row['country'],
+        ]);
     }
 }

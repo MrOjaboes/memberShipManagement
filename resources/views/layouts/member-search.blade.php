@@ -1,6 +1,9 @@
-
-    <div class="form-group">
-
-        <input type="text"  wire:model="searchTerm" class="form-control form-control-lg" placeholder="Search by Name, Email..." name="" id="">
+<div class="row">
+    <div class="col-md-12">
+        <form wire:submit.prevent="searchMember">
+            <div class="form-group">
+                <input type="text" wire:model="searchTerm" class="form-control" placeholder="Search by First Name,Primary Phone">
+            </div>
+        </form>
     </div>
-
+</div>

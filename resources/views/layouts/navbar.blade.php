@@ -11,14 +11,14 @@
         </li>
         @endif
         @if (Auth::user()->user_type == 2)
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <b><a class="nav-link {{ request()->is('admin/external-event') ? 'active' : '' }}"
                         href="{{ route('admin.event.external') }}">External Event</a></b>
             </li>
             <li class="nav-item">
                 <b><a class="nav-link {{ request()->is('admin/leaders-event') ? 'active' : '' }}"
                         href="{{ route('admin.event.leaders') }}">Leaders Event</a></b>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <b><a class="nav-link {{ request()->is('admin/members') ? 'active' : '' }}"
                         href="{{ route('admin.members') }}">Members</a></b>

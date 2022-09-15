@@ -41,7 +41,7 @@
                 </div>
                 <div class="row py-3">
                     <div class="col-md-3">
-                        <a href="{{ url('media/adult/new') }}">
+                        <a href="{{ route('media.add') }}">
                             <div class="card card-primary card-outline">
                                 <div class="card-body box-profile">
                                     <div class="text-center">

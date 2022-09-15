@@ -11,13 +11,22 @@ class ChildrenPage extends Component
     protected $paginationTheme = 'bootstrap';
     public $users, $first_name, $last_name, $middle_name, $email, $gender, $primary_phone, $secondary_phone, $level, $birth_date, $school, $guardian_one, $guardian_two, $class,$children_id;
     public $updateMode = false;
+    public $searchTerm = null;
 
     public function render()
     {
-        $children = Children::orderBy('created_at', 'DESC')->latest()->paginate(10);
+        $children = $this->searchChildren();
         return view('livewire.super-admin.members.children-page', compact('children'));
     }
 
+    public function searchChildren()
+    {
+       // dd('ok');
+        return Children::query()
+        ->where('first_name','like','%'.$this->searchTerm.'%')
+        ->orWhere('class','like','%'.$this->searchTerm.'%')
+        ->latest()->paginate(20);
+    }
     public function store(Request $request)
     {
         // $validated = $this->validate([
@@ -65,7 +74,7 @@ class ChildrenPage extends Component
     }
     public function delete($id)
     {
-      
+
         if ($id) {
             Children::where('id', $id)->delete();
             session()->flash('message', 'Group Deleted Successfully.');

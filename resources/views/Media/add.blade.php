@@ -280,7 +280,7 @@
                                     <div class="tab-pane" id="children">
                                         <div class="card">
                                             <div class="card-body">
-                                                <form action="{{ route('media.adult.add') }}" method="POST">
+                                                <form action="{{ route('media.children.add') }}" method="POST">
                                                     @csrf
                                                     <div class="row">
                                                         <div class="col-md-6">
@@ -306,27 +306,17 @@
                                                             <div class="form-group">
                                                                 <label for=" ">School</label>
                                                                 <input type="text" required class="form-control" id="" name="school">
-                                                                @error('email')
-                                                                    <span class="text-danger error">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="">Gender</label>
-                                                                <select name="gender" required class="form-control">
-                                                                    <option value="">--- Gender ---</option>
-                                                                    <option value="Male">Male</option>
-                                                                    <option value="Female">Female</option>
-                                                                </select>
-                                                                @error('gender')
+                                                                @error('school')
                                                                     <span class="text-danger error">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
 
+
                                                             <div class="form-group">
                                                                 <label for=" ">Level</label>
                                                                 <input type="text" required class="form-control" id=""
-                                                                    name="primary_phone">
-                                                                @error('primary_phone')
+                                                                    name="level">
+                                                                @error('level')
                                                                     <span class="text-danger error">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
@@ -354,7 +344,7 @@
                                                                 <input type="text" class="form-control" id="" name="guardian_two">
 
                                                             </div>
-                                                            <div class="form-group">
+                                                            {{-- <div class="form-group">
                                                                 <label for=" ">Fellowship Group</label>
                                                                 <select name="fellowship_group_id" required
                                                                     class="form-control">
@@ -373,8 +363,18 @@
                                                                             {{ $item->title }}</option>
                                                                     @endforeach
                                                                 </select>
+                                                            </div> --}}
+                                                            <div class="form-group">
+                                                                <label for="">Gender</label>
+                                                                <select name="gender" required class="form-control">
+                                                                    <option value="">--- Gender ---</option>
+                                                                    <option value="Male">Male</option>
+                                                                    <option value="Female">Female</option>
+                                                                </select>
+                                                                @error('gender')
+                                                                    <span class="text-danger error">{{ $message }}</span>
+                                                                @enderror
                                                             </div>
-
                                                             <div class="form-group">
                                                                 <label for="exampleFormControlInput2">Birth Date</label>
                                                                 <input type="date" required class="form-control" id=""
