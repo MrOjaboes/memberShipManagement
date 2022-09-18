@@ -8,8 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     protected $fillable = [
-        'title',
+        'image',
         'image_id',
-        'file'
+        'status',
+        'store_path',
+
     ];
+    //public $guarded = ['id'];
+
 }

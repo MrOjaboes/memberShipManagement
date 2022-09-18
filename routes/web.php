@@ -104,9 +104,10 @@ Route::group(['prefix' => 'admin',  'middleware' => 'Admin'], function () {
 Route::group(['prefix' => 'media',  'middleware' => 'MediaAngle'], function () {
     //Children
     Route::get('/', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'adult'])->name('media');
-    Route::get('/new', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'addAdult'])->name('media.add');
-    Route::post('/adult/new', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'storeAdult'])->name('media.adult.add');
-    Route::post('/children/new', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'storeChildren'])->name('media.children.add');
+    Route::get('/content', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'cms'])->name('content');
+    Route::get('/new/{image}', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'addAdult'])->name('media.add');
+    Route::post('/adult/{image}/new', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'storeAdult'])->name('media.adult.add');
+    Route::post('/children/{image}/new', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'storeChildren'])->name('media.children.add');
     Route::get('/media/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'edit']);
     Route::post('/media/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'update']);
 

@@ -17,27 +17,34 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class CCTVSectionController extends Controller
 {
+
+    public function cms()
+    {
+        # code... Collection of fellowshipGroup,FriendshipCentre,Church,FunctionalGroup for ID(s) access
+        return view('Media.cms');
+    }
+
     public function adult()
     {
         $images = Image::where('status', false)->get();
-        return view('Media.index');
+        return view('Media.index',compact('images'));
     }
-    public function addAdult()
+    public function addAdult(Image $image)
     {
         $fgroup = FellowshipGroup::all();
         $centres = FriendshipCentre::all();
         $churches = Church::all();
-        return view('Media.add', compact('fgroup', 'centres', 'churches'));
+        return view('Media.add', compact('fgroup', 'centres', 'churches','image'));
     }
-public function allChildren()
-{
-   return view('Media.children-list');
-}
-public function allAdults()
-{
-   return view('Media.adult-list');
-}
-    public function storechildren(Request $request)
+    public function allChildren()
+    {
+        return view('Media.children-list');
+    }
+    public function allAdults()
+    {
+        return view('Media.adult-list');
+    }
+    public function storechildren(Request $request, Image $image)
     {
         Children::create([
             'first_name' => $request->first_name,
@@ -55,12 +62,13 @@ public function allAdults()
             // 'fellowship_group_id' => $request->fellowship_group_id,
             // 'friendship_centre_id' => $request->friendship_centre_id,
             'hog_member_id' => 'HOG/' . date('Y') . '/' . substr(rand(0, time()), 0, 5),
-            'image_id' => substr(rand(0, time()), 0, 5),
+            'image_id' => $image->image_id,
         ]);
         return redirect()->back()->with('message', 'Details Submited Successfully.');
     }
-    public function storeAdult(Request $request)
+    public function storeAdult(Request $request, Image $image)
     {
+       // dd( $image->image_id);
         if ($request->is_leader == 1) {
             $member = Adult::create([
                 'first_name' => $request->first_name,
@@ -79,7 +87,7 @@ public function allAdults()
                 'fellowship_group_id' => $request->fellowship_group_id,
                 'friendship_centre_id' => $request->friendship_centre_id,
                 'hog_member_id' => 'HOG/' . date('Y') . '/' . substr(rand(0, time()), 0, 5),
-                'image_id' => substr(rand(0, time()), 0, 5),
+                'image_id' =>  $image->image_id,
             ]);
         } else {
             $member = Adult::create([
@@ -98,7 +106,7 @@ public function allAdults()
                 'fellowship_group_id' => $request->fellowship_group_id,
                 'friendship_centre_id' => $request->friendship_centre_id,
                 'hog_member_id' => 'HOG/' . date('Y') . '/' . substr(rand(0, time()), 0, 5),
-                'image_id' => substr(rand(0, time()), 0, 5),
+                'image_id' =>  $image->image_id,
             ]);
         }
 

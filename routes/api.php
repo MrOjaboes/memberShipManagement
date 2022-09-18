@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/member/adult', [App\Http\Controllers\API\CCTVSectionController::class, 'getAdults']);
 Route::get('/member/children', [App\Http\Controllers\API\CCTVSectionController::class, 'getChildren']);
+Route::post('/images', [App\Http\Controllers\API\CCTVSectionController::class, 'upload']);

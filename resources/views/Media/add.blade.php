@@ -56,9 +56,9 @@
                             <div class="card-body box-profile">
                                 <div class="text-center">
                                     <img class="profile-user-img img-fluid img-thumbnail"
-                                        src="/Interface/dist/img/AdminLTELogo.PNG" alt="" />
+                                        src="{{ asset('Storage/CCTV/'.$image->image) }}" alt="" />
                                 </div>
-                                <h3 class="profile-username text-center"><b>{{ Auth::user()->name }} </b></h3>
+                                <h3 class="profile-username text-center"><b>{{$image->image_id }} </b></h3>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -76,7 +76,7 @@
                                     <div class="active tab-pane" id="adult">
                                         <div class="card">
                                             <div class="card-body">
-                                                <form action="{{ route('media.adult.add') }}" method="POST">
+                                                <form action="{{ route('media.adult.add',$image->id) }}" method="POST">
                                                     @csrf
                                                     <div class="row">
                                                         <div class="col-md-6">
@@ -280,7 +280,7 @@
                                     <div class="tab-pane" id="children">
                                         <div class="card">
                                             <div class="card-body">
-                                                <form action="{{ route('media.children.add') }}" method="POST">
+                                                <form action="{{ route('media.children.add',$image->id) }}" method="POST">
                                                     @csrf
                                                     <div class="row">
                                                         <div class="col-md-6">

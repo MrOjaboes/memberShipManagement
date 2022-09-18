@@ -75,6 +75,15 @@
                     </ul>
                 </li>
                 <li class="nav-item menu-open">
+                    <a href="{{ route('content') }}" class="nav-link {{ request()->is('media/content') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            CMS
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item menu-open">
                     <a href="{{ route('children') }}" class="nav-link {{ request()->is('media/children') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>

@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-body">
         @include('layouts.member-search')
-        <table class="table">
+        <table class="table table-responsive table-stripped table-hover">
             <thead>
                 <tr>
                     <th>First Name</th>
