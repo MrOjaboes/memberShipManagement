@@ -1,7 +1,6 @@
-@extends('layouts.admin')
+@extends('layouts.media')
 @section('content')
-@include('layouts.navbar')
-
+    @include('layouts.navbar')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -30,8 +29,8 @@
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                         <img class="profile-user-img img-fluid img-circle"
-                                            src="/Interface/dist/img/AdminLTELogo.PNG" alt="member photo" />
+                                    <img class="profile-user-img img-fluid img-circle"
+                                        src="/Interface/dist/img/AdminLTELogo.PNG" alt="member photo" />
 
                                 </div>
 
@@ -60,9 +59,9 @@
 
                                 <strong><i class="fas fa-pencil-alt mr-1"></i> Role</strong>
                                 <p class="text-muted">
-                                    Admin
+                                    Media
                                 </p>
-<hr>
+                                <hr>
 
                             </div>
                             <!-- /.card-body -->
@@ -106,7 +105,7 @@
 
                                             <!-- /.card-header -->
                                             <div class="card-body">
-                                                <form action="{{ route('admin.account') }}" method="POST">
+                                                <form action="{{ route('media.account') }}" method="POST">
                                                     @csrf
                                                     <div class="row">
                                                         <div class="col-md-6">
@@ -139,7 +138,7 @@
                                             <!-- /.card-header -->
                                             <div class="card-body">
 
-                                                <form action="{{ route('admin.password') }}" method="POST">
+                                                <form action="{{ route('media.password') }}" method="POST">
                                                     @csrf
                                                     <div class="row">
                                                         <div class="col-md-6">

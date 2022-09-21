@@ -64,6 +64,7 @@ class CCTVSectionController extends Controller
     {
         $validator = Validator::make($request->all(),[
               'file' => 'required|max:2048',
+              'image_id' => 'required|max:2048',
         ]);
 
         if($validator->fails()) {
@@ -73,7 +74,7 @@ class CCTVSectionController extends Controller
 
 
         if ($file = $request->file('file')) {
-            $path = $file->store('public/CCTV');
+           // $path = $file->store('public/CCTV');
             $name = $file->getClientOriginalName();
             $request->file->storeAs('CCTV', $name, 'public');
 
@@ -83,13 +84,12 @@ class CCTVSectionController extends Controller
             $save->image = $name;
             $save->image_id = $request->image_id;
             $save->status = $request->status;
-            $save->store_path= $path;
             $save->save();
 
             return response()->json([
                 "success" => true,
                 "message" => "File successfully uploaded",
-                "file" => $path
+                
             ]);
 
         }

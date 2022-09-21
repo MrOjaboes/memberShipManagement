@@ -64,6 +64,9 @@ Route::group(['prefix' => 'admin',  'middleware' => 'Admin'], function () {
     Route::get('/upload-user-form', [App\Http\Controllers\AdminController::class, 'uploadUser']);
     //Admin Profile
     Route::get('/profile', [App\Http\Controllers\AdminController::class, 'profile'])->name('admin.profile');
+    Route::post('/profile/update', [App\Http\Controllers\AccountUpdateController::class, 'updateDetails'])->name('admin.account');
+    Route::post('/profile/password', [App\Http\Controllers\AccountUpdateController::class, 'updatePassword'])->name('admin.password');
+
     //Event Section
     Route::get('/events', [App\Http\Controllers\EventController::class, 'index'])->name('admin.events');
     Route::get('/event', [App\Http\Controllers\EventController::class, 'event'])->name('admin.event');
@@ -105,12 +108,17 @@ Route::group(['prefix' => 'media',  'middleware' => 'MediaAngle'], function () {
     //Children
     Route::get('/', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'adult'])->name('media');
     Route::get('/content', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'cms'])->name('content');
+    Route::get('/autocomplete-search', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'autocompleteSearch']);
     Route::get('/new/{image}', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'addAdult'])->name('media.add');
     Route::post('/adult/{image}/new', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'storeAdult'])->name('media.adult.add');
     Route::post('/children/{image}/new', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'storeChildren'])->name('media.children.add');
-    Route::get('/media/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'edit']);
+    Route::get('/children/{children}/details', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'childrenDetails'])->name('media.childrenDetails');
     Route::post('/media/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'update']);
 
+    //Profile secion
+    Route::get('/profile', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'profile'])->name('media.profile');
+    Route::post('/profile/update', [App\Http\Controllers\AccountUpdateController::class, 'updateDetails'])->name('media.account');
+    Route::post('/profile/password', [App\Http\Controllers\AccountUpdateController::class, 'updatePassword'])->name('media.password');
     //Import section
     Route::get('/adult/import', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'adultImport'])->name('adult-import');
     Route::get('/children/import', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'childrenImport'])->name('children-import');

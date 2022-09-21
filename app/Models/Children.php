@@ -10,7 +10,10 @@ class Children extends Model
     protected $fillable = [
         'first_name',
         'last_name',
-        'birth_date',
+        "age_range",
+        "day",
+        "month",
+        "year",
         'class',
         'level',
         'school',
@@ -19,4 +22,8 @@ class Children extends Model
         'hog_member_id',
         'image_id',
     ];
+    public function images()
+    {
+       return $this->hasOne(Image::class,'image_id');
+    }
 }

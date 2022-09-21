@@ -26,7 +26,10 @@ class CreateAdultsTable extends Migration
             $table->string('image_id')->nullable();
             $table->string('spouse_member_id');
             $table->string('church');
-            $table->string('birth_date');
+            $table->string('age_range');
+            $table->string('day');
+            $table->string('month');
+            $table->string('year');
             $table->string('marital_status');
             $table->string('wedding_date')->nullable();
             $table->string('occupation');

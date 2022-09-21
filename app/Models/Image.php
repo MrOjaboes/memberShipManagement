@@ -11,7 +11,7 @@ class Image extends Model
         'image',
         'image_id',
         'status',
-        'store_path',
+        //'store_path',
 
     ];
     //public $guarded = ['id'];

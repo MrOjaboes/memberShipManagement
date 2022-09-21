@@ -9,12 +9,12 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class AdultImport implements ToModel, WithHeadingRow
 {
-    public function rules(): array
-    {
-        return [
-        'birth_date' => 'required|dateformat:DD-MM-YYYY',
-        ];
-    }
+    // public function rules(): array
+    // {
+    //     // return [
+    //     //     'birth_date' => 'required|dateformat:DD-MM-YYYY',
+    //     // ];
+    // }
     /**
      * @param array $row
      *
@@ -22,7 +22,7 @@ class AdultImport implements ToModel, WithHeadingRow
      */
     public function model(array $row)
     {
-         $member = Adult::create([
+        $member = Adult::create([
             'first_name'     => $row['first_name'],
             'last_name'     => $row['last_name'],
             'middle_name'     => $row['middle_name'],
@@ -32,7 +32,10 @@ class AdultImport implements ToModel, WithHeadingRow
             'secondary_phone'     => $row['secondary_phone'],
             'wedding_date'     => $row['wedding_date'],
             'image_id'     => $row['image_id'],
-            'birth_date'     => $row['birth_date'],
+            'age_range'     => $row['age_range'],
+            'day'     => $row['day'],
+            'month'     => $row['month'],
+            'year'     => $row['year'],
             'marital_status'     => $row['marital_status'],
             'fellowship_group_id'     => $row['fellowship_group'],
             'friendship_centre_id'     => $row['friendship_centre'],
@@ -41,24 +44,7 @@ class AdultImport implements ToModel, WithHeadingRow
             'is_leader'    => $row['is_leader'],
             'occupation'    => $row['occupation'],
         ]);
-        // if (condition) {
-        //     foreach ($row as $key => $value) {
-        //         $save = new Adult();
-        //     $save->name = "";
-        //     if($save->save()){
-        //         $new_id = $save->id;
-        //         $save2 = new Address();
-        //         $save2->member_id = $new_id;
-        //         $savw2->state = $row['state'];
 
-        //     }
-        //                     }
-        // }
-
-
-       // $member = $this->members->where('first_name',$row['first_name'])->first();
-//dd(array($member->id));
-        //dd(array($member->id));
         return new Address([
             'member_id'     => $member->id,
             'house_number'     => $row['house_number'],

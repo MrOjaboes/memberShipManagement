@@ -21,10 +21,10 @@
                     <div class="col-md-6">
                         <div class="card-header">
                             <ul class="nav nav-pills">
-                                <li class="nav-item"><a class="nav-link active" href="#adult"
-                                        data-toggle="tab">Adult</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#children"
-                                        data-toggle="tab">Children</a></li>
+                                <li class="nav-item"><a class="nav-link active" href="#adult" data-toggle="tab">Adult</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="#children" data-toggle="tab">Children</a>
+                                </li>
 
                             </ul>
                         </div>
@@ -56,9 +56,9 @@
                             <div class="card-body box-profile">
                                 <div class="text-center">
                                     <img class="profile-user-img img-fluid img-thumbnail"
-                                        src="{{ asset('Storage/CCTV/'.$image->image) }}" alt="" />
+                                        src="{{ asset('Storage/CCTV/' . $image->image) }}" alt="" />
                                 </div>
-                                <h3 class="profile-username text-center"><b>{{$image->image_id }} </b></h3>
+                                <h3 class="profile-username text-center"><b>{{ $image->image_id }} </b></h3>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -76,21 +76,21 @@
                                     <div class="active tab-pane" id="adult">
                                         <div class="card">
                                             <div class="card-body">
-                                                <form action="{{ route('media.adult.add',$image->id) }}" method="POST">
+                                                <form action="{{ route('media.adult.add', $image->id) }}" method="POST">
                                                     @csrf
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="">First Name</label>
-                                                                <input type="text" class="form-control" id="" required
-                                                                    name="first_name">
+                                                                <input type="text" class="form-control" id=""
+                                                                    required name="first_name">
 
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="exampleFormControlInput2">Last Name</label>
-                                                                <input type="text" required class="form-control" id=""
-                                                                    name="last_name">
+                                                                <input type="text" required class="form-control"
+                                                                    id="" name="last_name">
 
                                                             </div>
                                                             <div class="form-group">
@@ -101,7 +101,7 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for=" ">Email</label>
-                                                                <input type="email" required class="form-control" id=""
+                                                                <input type="email" class="form-control" id=""
                                                                     name="email">
                                                                 @error('email')
                                                                     <span class="text-danger error">{{ $message }}</span>
@@ -121,7 +121,8 @@
 
                                                             <div class="form-group">
                                                                 <label for=" ">Primary Phone</label>
-                                                                <input type="text" required class="form-control" id=""
+                                                                <input type="text" required maxlength="11"
+                                                                    class="form-control" id=""
                                                                     name="primary_phone">
                                                                 @error('primary_phone')
                                                                     <span class="text-danger error">{{ $message }}</span>
@@ -141,8 +142,8 @@
                                                             <div class="form-group">
                                                                 <label for="exampleFormControlInput2">Secondary
                                                                     Phone</label>
-                                                                <input type="text" class="form-control" id=""
-                                                                    name="secondary_phone">
+                                                                <input type="text" maxlength="11" class="form-control"
+                                                                    id="" name="secondary_phone">
                                                                 @error('secondary_phone')
                                                                     <span class="text-danger error">{{ $message }}</span>
                                                                 @enderror
@@ -168,11 +169,114 @@
                                                                 </select>
                                                             </div>
 
-                                                            <div class="form-group">
-                                                                <label for="exampleFormControlInput2">Birth Date</label>
-                                                                <input type="date" required class="form-control" id=""
-                                                                    name="birth_date">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <p class="text-danger">Birth Date</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
 
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <small for="">Day</small>
+                                                                        <select name="day" class="form-control">
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                            <option value="6">6</option>
+                                                                            <option value="7">7</option>
+                                                                            <option value="8">8</option>
+                                                                            <option value="9">9</option>
+                                                                            <option value="10">10</option>
+                                                                            <option value="11">11</option>
+                                                                            <option value="12">12</option>
+                                                                            <option value="13">13</option>
+                                                                            <option value="14">14</option>
+                                                                            <option value="15">15</option>
+                                                                            <option value="16">16</option>
+                                                                            <option value="17">17</option>
+                                                                            <option value="18">18</option>
+                                                                            <option value="19">19</option>
+                                                                            <option value="20">20</option>
+                                                                            <option value="21">21</option>
+                                                                            <option value="22">22</option>
+                                                                            <option value="23">23</option>
+                                                                            <option value="24">24</option>
+                                                                            <option value="25">25</option>
+                                                                            <option value="26">26</option>
+                                                                            <option value="27">27</option>
+                                                                            <option value="28">28</option>
+                                                                            <option value="29">29</option>
+                                                                            <option value="30">30</option>
+                                                                            <option value="31">31</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <small for="">Month</small>
+                                                                        <select name="month" required
+                                                                            class="form-control">
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                            <option value="6">6</option>
+                                                                            <option value="7">7</option>
+                                                                            <option value="8">8</option>
+                                                                            <option value="9">9</option>
+                                                                            <option value="10">10</option>
+                                                                            <option value="11">11</option>
+                                                                            <option value="12">12</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <small for="">Year</small>
+                                                                        <select name="year" required
+                                                                            class="form-control">
+                                                                            <option value="1999">1999</option>
+                                                                            <option value="2000">2000</option>
+                                                                            <option value="2001">2001</option>
+                                                                            <option value="2002">2002</option>
+                                                                            <option value="2003">2003</option>
+                                                                            <option value="2004">2004</option>
+                                                                            <option value="2005">2005</option>
+                                                                            <option value="2006">2006</option>
+                                                                            <option value="2007">2007</option>
+                                                                            <option value="2008">2008</option>
+                                                                            <option value="2009">2009</option>
+                                                                            <option value="2010">2010</option>
+                                                                            <option value="2011">2011</option>
+                                                                            <option value="2012">2012</option>
+                                                                            <option value="2013">2013</option>
+                                                                            <option value="2014">2014</option>
+                                                                            <option value="2015">2015</option>
+                                                                            <option value="2016">2016</option>
+                                                                            <option value="2017">2017</option>
+                                                                            <option value="2018">2018</option>
+                                                                            <option value="2019">2019</option>
+                                                                            <option value="2020">2020</option>
+                                                                            <option value="2021">2021</option>
+                                                                            <option value="2022">2022</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <small for="">Age Range</small>
+                                                                        <select name="age_range" class="form-control">
+                                                                            <option value="3-5">3-5</option>
+                                                                            <option value="6-9">6-9</option>
+                                                                            <option value="10-14">10-14</option>
+                                                                        </select>
+
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="">Marital Status</label>
@@ -215,31 +319,32 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="">Street Name </label>
-                                                                <input type="text" required class="form-control" id=""
-                                                                    name="street">
-                                                            </div>
-                                                            <div class="form-group">
                                                                 <label for="">House Number </label>
-                                                                <input type="text" required class="form-control" id=""
-                                                                    name="house_number">
+                                                                <input type="text" required class="form-control"
+                                                                    id="" name="house_number">
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="">City </label>
-                                                                <input type="text" required class="form-control" id=""
-                                                                    name="city">
+                                                                <label for="">Street Name </label>
+                                                                <input type="text" required class="form-control"
+                                                                    id="" name="street">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="">City / Area</label>
+                                                                <input type="text" required class="form-control"
+                                                                    id="" name="city">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="">LGA </label>
-                                                                <input type="text" required class="form-control" id=""
-                                                                    name="lga">
+                                                                <input type="text" required class="form-control"
+                                                                    id="" name="lga">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="">Zip Code </label>
-                                                                <input type="text" required class="form-control" id=""
-                                                                    name="zip_code">
+                                                                <input type="text" required class="form-control"
+                                                                    id="" name="zip_code">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="">State </label>
@@ -268,7 +373,8 @@
                                                                 class="btn btn-danger btn-block close-btn">Cancel</button>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <button type="submit" class="btn btn-success btn-block">Submit
+                                                            <button type="submit"
+                                                                class="btn btn-success btn-block">Submit
                                                                 Details</button>
                                                         </div>
 
@@ -277,24 +383,26 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {{-- Children Section --}}
                                     <div class="tab-pane" id="children">
                                         <div class="card">
                                             <div class="card-body">
-                                                <form action="{{ route('media.children.add',$image->id) }}" method="POST">
+                                                <form action="{{ route('media.children.add', $image->id) }}"
+                                                    method="POST">
                                                     @csrf
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="">  Name</label>
-                                                                <input type="text" class="form-control" id="" required
-                                                                    name="first_name">
+                                                                <label for=""> First Name</label>
+                                                                <input type="text" class="form-control" id=""
+                                                                    required name="first_name">
 
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="exampleFormControlInput2">Last Name</label>
-                                                                <input type="text" required class="form-control" id=""
-                                                                    name="last_name">
+                                                                <input type="text" required class="form-control"
+                                                                    id="" name="last_name">
 
                                                             </div>
                                                             <div class="form-group">
@@ -305,7 +413,8 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for=" ">School</label>
-                                                                <input type="text" required class="form-control" id="" name="school">
+                                                                <input type="text" required class="form-control"
+                                                                    id="" name="school">
                                                                 @error('school')
                                                                     <span class="text-danger error">{{ $message }}</span>
                                                                 @enderror
@@ -314,8 +423,8 @@
 
                                                             <div class="form-group">
                                                                 <label for=" ">Level</label>
-                                                                <input type="text" required class="form-control" id=""
-                                                                    name="level">
+                                                                <input type="text" required class="form-control"
+                                                                    id="" name="level">
                                                                 @error('level')
                                                                     <span class="text-danger error">{{ $message }}</span>
                                                                 @enderror
@@ -332,16 +441,17 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="exampleFormControlInput2">Guardian One</label>
-                                                                <input type="text" required class="form-control" id=""
-                                                                    name="guardian_one">
+                                                                <label for=" ">Guardian One</label>
+                                                                <input type="text" required class="form-control"
+                                                                    id="search" name="guardian_one">
                                                                 @error('secondary_phone')
                                                                     <span class="text-danger error">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="exampleFormControlInput2">Guardian Two</label>
-                                                                <input type="text" class="form-control" id="" name="guardian_two">
+                                                                <label for=" ">Guardian Two</label>
+                                                                <input type="text" class="form-control" id=""
+                                                                    name="guardian_two">
 
                                                             </div>
                                                             {{-- <div class="form-group">
@@ -375,16 +485,120 @@
                                                                     <span class="text-danger error">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="exampleFormControlInput2">Birth Date</label>
-                                                                <input type="date" required class="form-control" id=""
-                                                                    name="birth_date">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <p class="text-danger">Birth Date</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
 
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <small for="">Day</small>
+                                                                        <select name="day" required
+                                                                            class="form-control">
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                            <option value="6">6</option>
+                                                                            <option value="7">7</option>
+                                                                            <option value="8">8</option>
+                                                                            <option value="9">9</option>
+                                                                            <option value="10">10</option>
+                                                                            <option value="11">11</option>
+                                                                            <option value="12">12</option>
+                                                                            <option value="13">13</option>
+                                                                            <option value="14">14</option>
+                                                                            <option value="15">15</option>
+                                                                            <option value="16">16</option>
+                                                                            <option value="17">17</option>
+                                                                            <option value="18">18</option>
+                                                                            <option value="19">19</option>
+                                                                            <option value="20">20</option>
+                                                                            <option value="21">21</option>
+                                                                            <option value="22">22</option>
+                                                                            <option value="23">23</option>
+                                                                            <option value="24">24</option>
+                                                                            <option value="25">25</option>
+                                                                            <option value="26">26</option>
+                                                                            <option value="27">27</option>
+                                                                            <option value="28">28</option>
+                                                                            <option value="29">29</option>
+                                                                            <option value="30">30</option>
+                                                                            <option value="31">31</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <small for="">Month</small>
+                                                                        <select name="month" required
+                                                                            class="form-control">
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+                                                                            <option value="5">5</option>
+                                                                            <option value="6">6</option>
+                                                                            <option value="7">7</option>
+                                                                            <option value="8">8</option>
+                                                                            <option value="9">9</option>
+                                                                            <option value="10">10</option>
+                                                                            <option value="11">11</option>
+                                                                            <option value="12">12</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <small for="">Year</small>
+                                                                        <select name="year" required
+                                                                            class="form-control">
+                                                                            <option value="1999">1999</option>
+                                                                            <option value="2000">2000</option>
+                                                                            <option value="2001">2001</option>
+                                                                            <option value="2002">2002</option>
+                                                                            <option value="2003">2003</option>
+                                                                            <option value="2004">2004</option>
+                                                                            <option value="2005">2005</option>
+                                                                            <option value="2006">2006</option>
+                                                                            <option value="2007">2007</option>
+                                                                            <option value="2008">2008</option>
+                                                                            <option value="2009">2009</option>
+                                                                            <option value="2010">2010</option>
+                                                                            <option value="2011">2011</option>
+                                                                            <option value="2012">2012</option>
+                                                                            <option value="2013">2013</option>
+                                                                            <option value="2014">2014</option>
+                                                                            <option value="2015">2015</option>
+                                                                            <option value="2016">2016</option>
+                                                                            <option value="2017">2017</option>
+                                                                            <option value="2018">2018</option>
+                                                                            <option value="2019">2019</option>
+                                                                            <option value="2020">2020</option>
+                                                                            <option value="2021">2021</option>
+                                                                            <option value="2022">2022</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <small for="">Age Range</small>
+                                                                        <select name="age_range" class="form-control">
+                                                                            <option value="3-5">3-5</option>
+                                                                            <option value="6-9">6-9</option>
+                                                                            <option value="10-14">10-14</option>
+                                                                        </select>
+
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="">Class</label>
-                                                                <select name="class" required
-                                                                    class="form-control" id="">
+                                                                <select name="class" required class="form-control"
+                                                                    id="">
                                                                     <option value="A">A</option>
                                                                     <option value="B">B</option>
                                                                     <option value="C">C</option>
@@ -401,7 +615,8 @@
                                                                 class="btn btn-danger btn-block close-btn">Cancel</button>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <button type="submit" class="btn btn-success btn-block">Submit
+                                                            <button type="submit"
+                                                                class="btn btn-success btn-block">Submit
                                                                 Details</button>
                                                         </div>
 
@@ -410,6 +625,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    {{-- End Children Section --}}
                                 </div>
                             </div>
                         </div>
@@ -424,4 +640,19 @@
         </section>
         <!-- /.content -->
     </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+    <script type="text/javascript">
+        var route = "{{ url('/media/autocomplete-search') }}";
+        $('#search').typeahead({
+            source: function(query, process) {
+                return $.get(route, {
+                    query: query
+                }, function(data) {
+                    return process(data);
+                });
+            }
+        });
+    </script>
 @endsection

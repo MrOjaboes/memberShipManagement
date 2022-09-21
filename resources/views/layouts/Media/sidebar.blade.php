@@ -34,7 +34,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item menu-open">
+                <li class="nav-item">
                     <a href="{{ route('media') }}" class="nav-link {{ request()->is('media') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -53,7 +53,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('admin.profile') }}" class="nav-link">
+                            <a href="{{ route('media.profile') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Profile
@@ -61,29 +61,29 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.message') }}" class="nav-link">
+                        {{-- <li class="nav-item">
+                            <a href="{ route('admin.message') }}" class="nav-link">
                                 <i class="far fa-comment"></i>
                                 <p>
                                     Message
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                        </li>
+                        </li> --}}
 
 
                     </ul>
                 </li>
-                <li class="nav-item menu-open">
+                <li class="nav-item">
                     <a href="{{ route('content') }}" class="nav-link {{ request()->is('media/content') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-users"></i>
+                        <i class="nav-icon fas fa-book"></i>
                         <p>
                             CMS
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                 </li>
-                <li class="nav-item menu-open">
+                <li class="nav-item">
                     <a href="{{ route('children') }}" class="nav-link {{ request()->is('media/children') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
@@ -92,7 +92,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item menu-open">
+                <li class="nav-item">
                     <a href="{{ route('adults') }}" class="nav-link {{ request()->is('media/members') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>

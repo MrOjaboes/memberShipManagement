@@ -27,7 +27,7 @@
                                 <h1 data-aos="fade-up" class="" data-aos-delay="100">Welcome To House Of Grace
                                     <br>Membership Portal</h1>
                                  {{-- <p class="mb-4"  data-aos="fade-up" data-aos-delay="200"> </p> --}}
-              <p data-aos="fade-up" data-aos-delay="300"><a href="{{ route('register') }}" class="btn btn-primary py-3 px-5 btn-pill">Not Yet A Member?</a></p>
+              {{-- <p data-aos="fade-up" data-aos-delay="300"><a href="{{ route('register') }}" class="btn btn-primary py-3 px-5 btn-pill">Not Yet A Member?</a></p> --}}
 
                             </div>
 

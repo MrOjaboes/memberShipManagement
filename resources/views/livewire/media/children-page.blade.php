@@ -22,6 +22,10 @@
                     <td>{{ $data->class ?? 'Loading'}}</td>
                     <td>{{ $data->birth_date }}</td>
                     <td>{{ \Carbon\Carbon::parse($data->created_at)->format('d D, M Y') }}</td>
+                    <td>
+                       <a href="{{ route('media.childrenDetails',$data->id) }}" class="btn btn-info btn-sm">Details</a>
+                        {{-- <button wire:click="delete({{ $value->id }})" class="btn btn-danger btn-sm">Delete</button> --}}
+                        </td>
                    </tr>
                 @empty
 <div>No Data Available</div>
