@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-body">
         @include('layouts.member-search')
-        <table class="table table-responsive table-stripped table-hover">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th>First Name</th>
@@ -11,6 +11,7 @@
                     <th>Marital Status</th>
                     <th>Birth Date</th>
                     <th>Date</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +24,10 @@
                         <td>{{ $member->marital_status }}</td>
                         <td>{{ $member->birth_date }}</td>
                         <td>{{ \Carbon\Carbon::parse($member->created_at)->format('d D, M Y') }}</td>
+                        <td>
+                            <a href="{{ route('media.adultDetails',$member->id) }}" class="btn btn-danger btn-sm">Details</a>
+                             {{-- <button wire:click="delete({{ $value->id }})" class="btn btn-danger btn-sm">Delete</button> --}}
+                             </td>
                     </tr>
                 @empty
                     <div>No Data Available</div>

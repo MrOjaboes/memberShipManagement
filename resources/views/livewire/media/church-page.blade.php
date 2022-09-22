@@ -17,7 +17,6 @@
                         <td>{{ $item->title }}</td>
                         <td>{{ $item->location }}</td>
                         <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d D, M Y') }}</td>
-
                     </tr>
                 @empty
                     <div>No Data Available</div>

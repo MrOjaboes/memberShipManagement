@@ -140,8 +140,7 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="exampleFormControlInput2">Secondary
-                                                                    Phone</label>
+                                                                <label for="exampleFormControlInput2">Secondary Phone</label>
                                                                 <input type="text" maxlength="11" class="form-control"
                                                                     id="" name="secondary_phone">
                                                                 @error('secondary_phone')
@@ -180,6 +179,7 @@
                                                                     <div class="form-group">
                                                                         <small for="">Day</small>
                                                                         <select name="day" class="form-control">
+                                                                            <option value="">Day</option>
                                                                             <option value="1">1</option>
                                                                             <option value="2">2</option>
                                                                             <option value="3">3</option>
@@ -219,6 +219,7 @@
                                                                         <small for="">Month</small>
                                                                         <select name="month" required
                                                                             class="form-control">
+                                                                            <option value="">Month</option>
                                                                             <option value="1">1</option>
                                                                             <option value="2">2</option>
                                                                             <option value="3">3</option>
@@ -239,6 +240,7 @@
                                                                         <small for="">Year</small>
                                                                         <select name="year" required
                                                                             class="form-control">
+                                                                            <option value="">Year</option>
                                                                             <option value="1999">1999</option>
                                                                             <option value="2000">2000</option>
                                                                             <option value="2001">2001</option>
@@ -270,6 +272,7 @@
                                                                     <div class="form-group">
                                                                         <small for="">Age Range</small>
                                                                         <select name="age_range" class="form-control">
+                                                                            <option value="">Age Range</option>
                                                                             <option value="3-5">3-5</option>
                                                                             <option value="6-9">6-9</option>
                                                                             <option value="10-14">10-14</option>
@@ -281,7 +284,7 @@
                                                             <div class="form-group">
                                                                 <label for="">Marital Status</label>
                                                                 <select name="marital_status" required
-                                                                    class="form-control" id="maritalStatus">
+                                                                    class="form-control" onchange="displayDivDemo('hideValuesOnSelect', this)">
                                                                     <option value="Single">Single</option>
                                                                     <option value="Married">Married</option>
                                                                 </select>
@@ -291,7 +294,7 @@
                                                                 <input type="text" class="form-control" id=""
                                                                     name="occupation">
                                                             </div>
-                                                            <div class="form-group">
+                                                            <div class="form-group" id>
                                                                 <label for="">Wedding Date </label>
                                                                 <input name="wedding_date" class="form-control"
                                                                     type="date" />
@@ -419,16 +422,6 @@
                                                                     <span class="text-danger error">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
-
-
-                                                            <div class="form-group">
-                                                                <label for=" ">Level</label>
-                                                                <input type="text" required class="form-control"
-                                                                    id="" name="level">
-                                                                @error('level')
-                                                                    <span class="text-danger error">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
                                                             <div class="form-group">
                                                                 <label for="">Church</label>
                                                                 <select name="church" required class="form-control">
@@ -442,11 +435,12 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for=" ">Guardian One</label>
-                                                                <input type="text" required class="form-control"
-                                                                    id="search" name="guardian_one">
-                                                                @error('secondary_phone')
-                                                                    <span class="text-danger error">{{ $message }}</span>
-                                                                @enderror
+                                                               <select name="guardian_one" class="form-control">
+                                                                <option value="">---- Option ----</option>
+                                                              @foreach ($members as $member)
+                                                              <option value="{{ $member->id }}">{{ $member->first_name }} {{ $member->last_name }}</option>
+                                                              @endforeach
+                                                               </select>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for=" ">Guardian Two</label>
@@ -497,6 +491,7 @@
                                                                         <small for="">Day</small>
                                                                         <select name="day" required
                                                                             class="form-control">
+                                                                            <option value="">Day</option>
                                                                             <option value="1">1</option>
                                                                             <option value="2">2</option>
                                                                             <option value="3">3</option>
@@ -536,6 +531,7 @@
                                                                         <small for="">Month</small>
                                                                         <select name="month" required
                                                                             class="form-control">
+                                                                            <option value="">Month</option>
                                                                             <option value="1">1</option>
                                                                             <option value="2">2</option>
                                                                             <option value="3">3</option>
@@ -556,6 +552,7 @@
                                                                         <small for="">Year</small>
                                                                         <select name="year" required
                                                                             class="form-control">
+                                                                            <option value="">Year</option>
                                                                             <option value="1999">1999</option>
                                                                             <option value="2000">2000</option>
                                                                             <option value="2001">2001</option>
@@ -587,6 +584,7 @@
                                                                     <div class="form-group">
                                                                         <small for="">Age Range</small>
                                                                         <select name="age_range" class="form-control">
+                                                                            <option value=""> Option </option>
                                                                             <option value="3-5">3-5</option>
                                                                             <option value="6-9">6-9</option>
                                                                             <option value="10-14">10-14</option>
@@ -641,18 +639,5 @@
         <!-- /.content -->
     </div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
-    <script type="text/javascript">
-        var route = "{{ url('/media/autocomplete-search') }}";
-        $('#search').typeahead({
-            source: function(query, process) {
-                return $.get(route, {
-                    query: query
-                }, function(data) {
-                    return process(data);
-                });
-            }
-        });
-    </script>
+
 @endsection

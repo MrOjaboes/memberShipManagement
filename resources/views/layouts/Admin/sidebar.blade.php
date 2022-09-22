@@ -86,6 +86,28 @@
                     <ul class="nav nav-treeview">
 
                         <li class="nav-item">
+                            <a href="{{ route('admin.class') }}"
+                                class="nav-link {{ request()->is('admin/class') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-calendar"></i>
+                                <p>
+                                    Class Settings
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.age_range') }}"
+                                class="nav-link {{ request()->is('admin/age_range') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-calendar"></i>
+                                <p>
+                                    Age Range
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('admin.churches') }}"
                                 class="nav-link {{ request()->is('admin/churches') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-calendar"></i>
