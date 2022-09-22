@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Livewire\SuperAdmin;
+namespace App\Http\Livewire\SuperAdmin\Content;
 
-use App\Models\AgeRange;
 use Livewire\Component;
+use App\Models\AgeRange;
 
 class AgeRangePage extends Component
 {
@@ -16,7 +16,7 @@ class AgeRangePage extends Component
     public function render()
     {
         $age_range = AgeRange::orderBy('created_at', 'DESC')->latest()->paginate(10);
-        return view('livewire.super-admin.content.age-range-page', compact('churches'));
+        return view('livewire.super-admin.content.age-range-page', compact('age_range'));
     }
 
     public function store()

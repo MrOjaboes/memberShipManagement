@@ -46,7 +46,7 @@
                 <td>{{ $value->description }}</td>
                 <td>{{ \Carbon\Carbon::parse($value->created_at)->format('d D, M Y') }}</td>
                 <td>
-                <button data-toggle="modal" data-target="#updateModal" wire:click="edit({{ $value->id }})" class="btn btn-primary btn-sm">Edit</button>
+                <button data-toggle="modal" data-target="#updateModal" wire:click="edit({{ $value->id }})" class="btn btn-outline-success btn-sm">Edit</button>
                 <button wire:click="delete({{ $value->id }})" class="btn btn-danger btn-sm">Delete</button>
                 </td>
             </tr>

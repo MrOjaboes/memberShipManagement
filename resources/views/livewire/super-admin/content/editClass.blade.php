@@ -12,8 +12,8 @@
                 <form>
                     <div class="form-group">
                         <input type="hidden" wire:model="user_id">
-                        <label for="exampleFormControlInput1">Name</label>
-                        <input type="text" class="form-control" wire:model="title" id="exampleFormControlInput1" placeholder="Enter Name">
+                        <label for=" ">Name</label>
+                        <input type="text" class="form-control" wire:model="title" id=" " placeholder="Enter Name">
                         @error('title') <span class="text-danger">{{ $message }}</span>@enderror
                     </div>
 

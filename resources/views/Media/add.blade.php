@@ -78,6 +78,7 @@
                                             <div class="card-body">
                                                 <form action="{{ route('media.adult.add', $image->id) }}" method="POST">
                                                     @csrf
+                                                    {{-- First Row --}}
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group">
@@ -86,96 +87,68 @@
                                                                     required name="first_name">
 
                                                             </div>
-
+                                                        </div>
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="exampleFormControlInput2">Last Name</label>
                                                                 <input type="text" required class="form-control"
                                                                     id="" name="last_name">
 
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                    {{-- Second Row --}}
+                                                    <div class="row">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="exampleFormControlInput2">Middle Name</label>
                                                                 <input type="text" class="form-control" id=""
                                                                     name="middle_name">
 
                                                             </div>
+                                                        </div>
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for=" ">Email</label>
                                                                 <input type="email" class="form-control" id=""
                                                                     name="email">
-                                                                @error('email')
-                                                                    <span class="text-danger error">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="">Gender</label>
-                                                                <select name="gender" required class="form-control">
-                                                                    <option value="">--- Gender ---</option>
-                                                                    <option value="Male">Male</option>
-                                                                    <option value="Female">Female</option>
-                                                                </select>
-                                                                @error('gender')
-                                                                    <span class="text-danger error">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{-- Third Row --}}
+                                                    <div class="row">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for=" ">Primary Phone</label>
                                                                 <input type="text" required maxlength="11"
                                                                     class="form-control" id=""
                                                                     name="primary_phone">
-                                                                @error('primary_phone')
-                                                                    <span class="text-danger error">{{ $message }}</span>
-                                                                @enderror
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="">Church</label>
-                                                                <select name="church" required class="form-control">
-                                                                    @foreach ($churches as $church)
-                                                                        <option value="{{ $church->id }}">
-                                                                            {{ $church->title }}</option>
-                                                                    @endforeach
-                                                                </select>
+
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="exampleFormControlInput2">Secondary Phone</label>
+                                                                <label for=" ">Secondary Phone</label>
                                                                 <input type="text" maxlength="11" class="form-control"
                                                                     id="" name="secondary_phone">
-                                                                @error('secondary_phone')
-                                                                    <span class="text-danger error">{{ $message }}</span>
-                                                                @enderror
+
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for=" ">Fellowship Group</label>
-                                                                <select name="fellowship_group_id" required
-                                                                    class="form-control">
-                                                                    @foreach ($fgroup as $item)
-                                                                        <option value="{{ $item->id }}">
-                                                                            {{ $item->title }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="">Friendship Centre</label>
-                                                                <select name="friendship_centre_id" required
-                                                                    class="form-control">
-                                                                    @foreach ($centres as $item)
-                                                                        <option value="{{ $item->id }}">
-                                                                            {{ $item->title }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <p class="text-danger">Birth Date</p>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    {{-- Fourth Row --}}
+                                                    <div class="row">
+                                                        <div class="col-md-6">
 
                                                             <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <p class="text-danger">Birth Date</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <small for="">Day</small>
                                                                         <select name="day" class="form-control">
@@ -214,7 +187,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <small for="">Month</small>
                                                                         <select name="month" required
@@ -235,7 +208,12 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-3">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <small for="">Year</small>
                                                                         <select name="year" required
@@ -268,39 +246,99 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <small for="">Age Range</small>
-                                                                        <select name="age_range" class="form-control">
-                                                                            <option value="">Age Range</option>
-                                                                            <option value="3-5">3-5</option>
-                                                                            <option value="6-9">6-9</option>
-                                                                            <option value="10-14">10-14</option>
+                                                                        <select name="age_range" required
+                                                                            class="form-control">
+                                                                            @foreach ($age_range as $item)
+                                                                                <option value="{{ $item->id }}">
+                                                                                    {{ $item->title }}  ( {{ $item->value }})</option>
+                                                                            @endforeach
                                                                         </select>
 
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                    {{-- Fifth Row --}}
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="">Gender</label>
+                                                                <select name="gender" required class="form-control">
+                                                                    <option value="">--- Gender ---</option>
+                                                                    <option value="Male">Male</option>
+                                                                    <option value="Female">Female</option>
+                                                                </select>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="">Church</label>
+                                                                <select name="church" required class="form-control">
+                                                                    @foreach ($churches as $church)
+                                                                        <option value="{{ $church->id }}">
+                                                                            {{ $church->title }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{-- Sixth Row --}}
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for=" ">Fellowship Group</label>
+                                                                <select name="fellowship_group_id" required
+                                                                    class="form-control">
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="">Friendship Centre</label>
+                                                                <select name="friendship_centre_id" required
+                                                                    class="form-control">
+
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{-- Seventh Row --}}
+                                                    <div class="row">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="">Marital Status</label>
                                                                 <select name="marital_status" required
-                                                                    class="form-control" onchange="displayDivDemo('hideValuesOnSelect', this)">
+                                                                    class="form-control" id="wedding">
                                                                     <option value="Single">Single</option>
                                                                     <option value="Married">Married</option>
                                                                 </select>
                                                             </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group" id="yes" style="display: none">
+                                                                <label for="">Wedding Date </label>
+                                                                <input name="wedding_date" class="form-control"
+                                                                    type="date" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{-- Eight Row --}}
+                                                    <div class="row">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="">Occupation </label>
                                                                 <input type="text" class="form-control" id=""
                                                                     name="occupation">
                                                             </div>
-                                                            <div class="form-group" id>
-                                                                <label for="">Wedding Date </label>
-                                                                <input name="wedding_date" class="form-control"
-                                                                    type="date" />
-                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
-
                                                                 <div class="form-check">
                                                                     <input class="form-check-input" type="checkbox"
                                                                         value="1" name="is_leader">
@@ -311,6 +349,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    {{-- <div class="row">
+                                                        <div class="col-md-6"></div>
+                                                        <div class="col-md-6"></div>
+                                                    </div> --}}
                                                     {{-- Address Section --}}
                                                     <div class="row">
                                                         <div class="col-md-12">
@@ -326,21 +368,21 @@
                                                                 <input type="text" required class="form-control"
                                                                     id="" name="house_number">
                                                             </div>
+                                                        </div>
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="">Street Name </label>
                                                                 <input type="text" required class="form-control"
                                                                     id="" name="street">
                                                             </div>
-
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="">City / Area</label>
-                                                                <input type="text" required class="form-control"
-                                                                    id="" name="city">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="">LGA </label>
-                                                                <input type="text" required class="form-control"
-                                                                    id="" name="lga">
+                                                                <label for="">Country </label>
+                                                                <input type="text" name="country" required
+                                                                    class="form-control" />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -349,16 +391,41 @@
                                                                 <input type="text" required class="form-control"
                                                                     id="" name="zip_code">
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="">State </label>
-                                                                <input type="text" name="state" required
-                                                                    class="form-control" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group mb-3">
+                                                                <label for="">State</label>
+                                                                <select  id="state-dropdown" name="state" class="form-control">
+                                                                    <option value="">-- Select State --</option>
+                                                                    @foreach ($states as $data)
+                                                                    <option value="{{$data->id}}">
+                                                                        {{$data->name}}
+                                                                    </option>
+                                                                    @endforeach
+                                                                </select>
                                                             </div>
+                                                        </div>
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="">Country </label>
-                                                                <input type="text" name="country" required
-                                                                    class="form-control" />
+                                                                <label for="">LGA </label>
+                                                                <select id="city-dropdown" name="lga" class="form-control">
+                                                                </select>
                                                             </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="">City / Area</label>
+                                                                <input type="text" required class="form-control"
+                                                                    id="" name="city">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="">Address Status</label>
                                                                 <select name="status" class="form-control">
@@ -372,13 +439,17 @@
                                                     {{-- End Address Section --}}
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <button type="reset"
-                                                                class="btn btn-danger btn-block close-btn">Cancel</button>
+                                                            <div class="form-group">
+                                                                <button type="reset"
+                                                                    class="btn btn-danger btn-block close-btn">Cancel</button>
+                                                            </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <button type="submit"
-                                                                class="btn btn-success btn-block">Submit
-                                                                Details</button>
+                                                            <div class="form-group">
+                                                                <button type="submit"
+                                                                    class="btn btn-success btn-block">Submit
+                                                                    Details</button>
+                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -390,41 +461,49 @@
                                     <div class="tab-pane" id="children">
                                         <div class="card">
                                             <div class="card-body">
-                                                <form action="{{ route('media.children.add', $image->id) }}"
-                                                    method="POST">
+                                                <form action="{{ route('media.children.add', $image->id) }}" method="POST">
                                                     @csrf
                                                     <div class="row">
-                                                        <div class="col-md-6">
+                                                        <div class="col-col-md-6">
                                                             <div class="form-group">
                                                                 <label for=""> First Name</label>
                                                                 <input type="text" class="form-control" id=""
                                                                     required name="first_name">
 
                                                             </div>
-
+                                                        </div>
+                                                        <div class="col-col-md-6">
                                                             <div class="form-group">
-                                                                <label for="exampleFormControlInput2">Last Name</label>
-                                                                <input type="text" required class="form-control"
-                                                                    id="" name="last_name">
+                                                                <label for=""> Last Name</label>
+                                                                <input type="text" class="form-control" id=""
+                                                                    required name="last_name">
 
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="exampleFormControlInput2">Middle Name</label>
+                                                                <label for="exampleFormControlInput2">Middle
+                                                                    Name</label>
                                                                 <input type="text" class="form-control" id=""
                                                                     name="middle_name">
-
                                                             </div>
+                                                        </div>
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for=" ">School</label>
                                                                 <input type="text" required class="form-control"
                                                                     id="" name="school">
-                                                                @error('school')
-                                                                    <span class="text-danger error">{{ $message }}</span>
-                                                                @enderror
                                                             </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="">Church</label>
                                                                 <select name="church" required class="form-control">
+                                                                    <option value="">---- Option ----</option>
                                                                     @foreach ($churches as $church)
                                                                         <option value="{{ $church->id }}">
                                                                             {{ $church->title }}</option>
@@ -434,63 +513,60 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for=" ">Guardian One</label>
-                                                               <select name="guardian_one" class="form-control">
-                                                                <option value="">---- Option ----</option>
-                                                              @foreach ($members as $member)
-                                                              <option value="{{ $member->id }}">{{ $member->first_name }} {{ $member->last_name }}</option>
-                                                              @endforeach
-                                                               </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for=" ">Guardian Two</label>
-                                                                <input type="text" class="form-control" id=""
-                                                                    name="guardian_two">
-
-                                                            </div>
-                                                            {{-- <div class="form-group">
-                                                                <label for=" ">Fellowship Group</label>
-                                                                <select name="fellowship_group_id" required
-                                                                    class="form-control">
-                                                                    @foreach ($fgroup as $item)
-                                                                        <option value="{{ $item->id }}">
-                                                                            {{ $item->title }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="">Friendship Centre</label>
-                                                                <select name="friendship_centre_id" required
-                                                                    class="form-control">
-                                                                    @foreach ($centres as $item)
-                                                                        <option value="{{ $item->id }}">
-                                                                            {{ $item->title }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div> --}}
-                                                            <div class="form-group">
                                                                 <label for="">Gender</label>
                                                                 <select name="gender" required class="form-control">
                                                                     <option value="">--- Gender ---</option>
                                                                     <option value="Male">Male</option>
                                                                     <option value="Female">Female</option>
                                                                 </select>
-                                                                @error('gender')
-                                                                    <span class="text-danger error">{{ $message }}</span>
-                                                                @enderror
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <p class="text-danger">Birth Date</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
 
-                                                                <div class="col-md-3">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for=" ">Guardian</label>
+                                                                <select name="parent_id" class="form-control">
+                                                                    <option value="">---- Option ----</option>
+                                                                    @foreach ($members as $member)
+                                                                        <option value="{{ $member->id }}">
+                                                                            {{ $member->first_name }}
+                                                                            {{ $member->last_name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="">Class</label>
+                                                                <select name="class" required class="form-control">
+                                                                    @foreach ($class as $item)
+                                                                        <option value="{{ $item->id }}">
+                                                                            {{ $item->title }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+
+                                                        </div>
+                                                        <p class="text-danger">Birth Date</p>
+
+                                                    </div>
+                                                    <hr>
+                                                    {{-- Fourth Row --}}
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+
+                                                            <div class="row">
+                                                                <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <small for="">Day</small>
-                                                                        <select name="day" required
-                                                                            class="form-control">
+                                                                        <select name="day" class="form-control">
                                                                             <option value="">Day</option>
                                                                             <option value="1">1</option>
                                                                             <option value="2">2</option>
@@ -526,7 +602,7 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <small for="">Month</small>
                                                                         <select name="month" required
@@ -547,7 +623,12 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-3">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <small for="">Year</small>
                                                                         <select name="year" required
@@ -580,42 +661,36 @@
                                                                         </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-3">
+                                                                <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <small for="">Age Range</small>
-                                                                        <select name="age_range" class="form-control">
-                                                                            <option value=""> Option </option>
-                                                                            <option value="3-5">3-5</option>
-                                                                            <option value="6-9">6-9</option>
-                                                                            <option value="10-14">10-14</option>
+                                                                        <select name="age_range" required
+                                                                            class="form-control">
+                                                                            @foreach ($age_range as $item)
+                                                                                <option value="{{ $item->id }}">
+                                                                                    {{ $item->title }}
+                                                                                    ({{ $item->value }})</option>
+                                                                            @endforeach
                                                                         </select>
 
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="">Class</label>
-                                                                <select name="class" required class="form-control"
-                                                                    id="">
-                                                                    <option value="A">A</option>
-                                                                    <option value="B">B</option>
-                                                                    <option value="C">C</option>
-                                                                </select>
-                                                            </div>
-
-
                                                         </div>
                                                     </div>
-
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <button type="reset"
-                                                                class="btn btn-danger btn-block close-btn">Cancel</button>
+                                                            <div class="form-group">
+                                                                <button type="reset"
+                                                                    class="btn btn-danger btn-block close-btn">Cancel</button>
+                                                            </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <button type="submit"
-                                                                class="btn btn-success btn-block">Submit
-                                                                Details</button>
+                                                            <div class="form-group">
+                                                                <button type="submit"
+                                                                    class="btn btn-success btn-block">Submit
+                                                                    Details</button>
+                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -640,4 +715,76 @@
     </div>
 
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            /*------------------------------------------
+            --------------------------------------------
+            Country Dropdown Change Event
+            --------------------------------------------
+            --------------------------------------------*/
+            // $('#country-dropdown').on('change', function () {
+            //     var idCountry = this.value;
+            //     $("#state-dropdown").html('');
+            //     $.ajax({
+            //         url: "{{ url('api/fetch-states') }}",
+            //         type: "POST",
+            //         data: {
+            //             country_id: idCountry,
+            //             _token: '{{ csrf_token() }}'
+            //         },
+            //         dataType: 'json',
+            //         success: function (result) {
+            //             $('#state-dropdown').html('<option value="">-- Select State --</option>');
+            //             $.each(result.states, function (key, value) {
+            //                 $("#state-dropdown").append('<option value="' + value
+            //                     .id + '">' + value.name + '</option>');
+            //             });
+            //             $('#city-dropdown').html('<option value="">-- Select City --</option>');
+            //         }
+            //     });
+            // });
+
+            /*------------------------------------------
+            --------------------------------------------
+            State Dropdown Change Event
+            --------------------------------------------
+            --------------------------------------------*/
+            $('#state-dropdown').on('change', function() {
+                var idState = this.value;
+                $("#city-dropdown").html('');
+                $.ajax({
+                    url: "{{ url('media/api/fetch-cities') }}",
+                    type: "GET",
+                    data: {
+                        state_id: idState,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    dataType: 'json',
+                    success: function(res) {
+                        $('#city-dropdown').html('<option value="">-- Select LGA --</option>');
+                        $.each(res.cities, function(key, value) {
+                            $("#city-dropdown").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            });
+
+        });
+    </script>
+     <script>
+        $(document).ready(function() {
+            $('#wedding').on('change', function() {
+                if (this.value == 'Married')
+                //.....................^.......
+                {
+                    $("#yes").show();
+                } else {
+                    $("#yes").hide();
+                }
+            });
+        });
+    </script>
 @endsection

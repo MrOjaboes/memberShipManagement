@@ -19,7 +19,7 @@ class Adult extends Model
         "image_id",
         "marital_status",
         "spouse_member_id",
-        "age_range",
+        "age_id",
         "day",
         "month",
         "year",
@@ -33,5 +33,9 @@ class Adult extends Model
     public function address()
     {
         return $this->hasOne(Address::class, 'member_id');
+    }
+    public function age_range()
+    {
+        return $this->belongsTo(AgeRange::class, 'age_id');
     }
 }

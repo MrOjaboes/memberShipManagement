@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\SuperAdmin;
 
+use App\Models\Image;
 use App\Models\Children;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -36,6 +37,13 @@ class ChildrenController extends Controller
                 'image_id' => substr(rand(0, time()), 0, 5),
             ]);
             return redirect()->back()->with('message', 'Details Submited Successfully.');
+    }
+    public function details(Children $children)
+    {
+        $profile = $children->with(['parent','images'])->get();
+        dd($profile);
+        $image = Image::where('image_id', $profile->image_id)->get();
+       return view('SuperAdmin.Children.details',compact('profile','image'));
     }
     public function edit(Children $children)
     {

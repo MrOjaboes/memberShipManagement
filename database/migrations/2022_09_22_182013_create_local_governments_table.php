@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChildrenPhotosTable extends Migration
+class CreateLocalGovernmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateChildrenPhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('children_photos', function (Blueprint $table) {
+        Schema::create('local_governments', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('state_id')->unsigned()->references('id')->on('states')->onDelete('SET NULL');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateChildrenPhotosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('children_photos');
+        Schema::dropIfExists('local_governments');
     }
 }

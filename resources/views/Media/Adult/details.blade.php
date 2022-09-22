@@ -107,7 +107,7 @@
                                                 <hr>
 
                                                 <strong> Age Group</strong>
-                                                <p class="text-muted">{{ $profile->age_range }}</p>
+                                                <p class="text-muted">{{ $profile->age_range->title }}</p>
                                                 <hr>
 
                                                 <strong>Birth Date</strong>
@@ -115,15 +115,15 @@
                                                 <hr>
 
                                                 <strong>Occupation</strong>
-                                                <p class="text-muted">{{ $profile->school }}</p>
+                                                <p class="text-muted">{{ $profile->occupation }}</p>
                                                 <hr>
 
-                                                <strong>Class</strong>
-                                                <p class="text-muted">{{ $profile->class }}</p>
-                                                <hr>
-
-                                                <strong> Contact One</strong>
+                                                <strong>Contact One</strong>
                                                 <p class="text-muted">{{ $profile->primary_phone }}</p>
+                                                <hr>
+
+                                                <strong> Contact Two</strong>
+                                                <p class="text-muted">{{ $profile->secondary_phone }}</p>
 
                                             </div>
                                         </div>

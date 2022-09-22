@@ -99,7 +99,7 @@
     @livewireScripts
     <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
-    
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="/Interface/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -121,7 +121,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="/Interface/dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="/Interface/dist/js/pages/dashboard2.js"></script>
+    {{-- <script src="/Interface/dist/js/pages/dashboard2.js"></script> --}}
 </body>
 
 </html>

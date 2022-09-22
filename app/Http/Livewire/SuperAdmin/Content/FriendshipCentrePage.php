@@ -15,7 +15,7 @@ class FriendshipCentrePage extends Component
 
     public function render()
     {
-        $centres = FriendshipCentre::orderBy('created_at', 'DESC')->latest()->paginate(10);
+        $centres = FriendshipCentre::orderBy('created_at', 'DESC')->with('fgroup')->latest()->paginate(10);
         $f_groups = FellowshipGroup::all();
         return view('livewire.super-admin.content.friendship-centre-page',compact('centres','f_groups'));
     }
@@ -48,9 +48,10 @@ class FriendshipCentrePage extends Component
     public function edit($id)
     {
         $this->updateMode = true;
-        $user = FriendshipCentre::where('id',$id)->first();
+        $user = FriendshipCentre::where('id',$id)->with('fgroup')->first();
         $this->user_id = $id;
         $this->title = $user->title;
+        $this->fellowship_group_id = $user->fgroup->title;
         $this->description = $user->description;
      }
     public function cancel()
@@ -63,11 +64,13 @@ class FriendshipCentrePage extends Component
         $validatedDate = $this->validate([
             'title' => 'required',
             'description' => 'required',
+            'description' => 'required',
         ]);
         if ($this->user_id) {
             $user = FriendshipCentre::find($this->user_id);
             $user->update([
                 'title' => $this->title,
+                'fellowship_group_id' => $this->fellowship_group_id,
                 'description' => $this->description,
             ]);
             $this->updateMode = false;

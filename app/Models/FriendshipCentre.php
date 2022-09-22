@@ -13,4 +13,9 @@ class FriendshipCentre extends Model
         'user_id',
         'fellowship_group_id',
     ];
+
+    public function fgroup()
+    {
+        return $this->belongsTo(FellowshipGroup::class,'fellowship_group_id');  # code...
+    }
 }

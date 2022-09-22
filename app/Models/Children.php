@@ -10,20 +10,24 @@ class Children extends Model
     protected $fillable = [
         'first_name',
         'last_name',
-        "age_range",
+        'middle_name',
+        "age_id",
         "day",
         "month",
         "year",
-        'class',
-        'level',
+        'class_id',
+        'gender',
         'school',
-        'guardian_one',
-        'guardian_two',
+        'parent_id',
         'hog_member_id',
         'image_id',
     ];
     public function images()
     {
        return $this->hasOne(Image::class,'image_id');
+    }
+    public function parent()
+    {
+       return $this->hasOne(Adult::class,'parent_id');
     }
 }

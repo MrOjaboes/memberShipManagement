@@ -52,11 +52,11 @@
                              <td>{{ $value->gender }}</td>
                              <td>{{ $value->class }}</td>
                              <td>{{ \Carbon\Carbon::parse($value->created_at)->format('d D, M Y') }}</td>
-                             {{-- <td>
-                                 <a href="{{ route('admin.children.edit',$value->id) }}" class="btn btn-info btn-sm">Edit</a>
-                                 <button wire:click="delete({{ $value->id }})"
-                                     class="btn btn-danger btn-sm">Delete</button>
-                             </td> --}}
+                             <td>
+                                 <a href="{{ route('admin.childrenDetails',$value->id) }}" class="btn btn-danger btn-sm">Details</a>
+                                 {{-- <button wire:click="delete({{ $value->id }})"
+                                     class="btn btn-danger btn-sm">Delete</button> --}}
+                             </td>
                          </tr>
                      @endforeach
                  </tbody>

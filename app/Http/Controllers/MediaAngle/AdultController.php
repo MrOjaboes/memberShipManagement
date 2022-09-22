@@ -36,7 +36,7 @@ class AdultController extends Controller
                 'gender' => $request->gender,
                 'primary_phone' => $request->primary_phone,
                 'secondary_phone' => $request->secondary_phone,
-                'age_range' => $request->age_range,
+                'age_id' => $request->age_range,
                 'day' => $request->day,
                 'month' => $request->month,
                 'year' => $request->year,
@@ -59,7 +59,7 @@ class AdultController extends Controller
                 'gender' => $request->gender,
                 'primary_phone' => $request->primary_phone,
                 'secondary_phone' => $request->secondary_phone,
-                'age_range' => $request->age_range,
+                'age_id' => $request->age_range,
                 'day' => $request->day,
                 'month' => $request->month,
                 'year' => $request->year,
@@ -106,8 +106,8 @@ class AdultController extends Controller
 
     public function details(Adult $adult)
     {
-        $profile = $adult;
-        $image = Image::where('image_id', $profile->image_id)->get();
+        $profile = $adult->with('age_range')->get();
+        $image = Image::where('image_id', $adult->image_id)->get();
         $address = Address::where('member_id', $profile->id)->get();
         return view('Media.Adult.details', compact('profile', 'image','address'));
     }

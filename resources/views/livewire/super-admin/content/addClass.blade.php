@@ -3,8 +3,8 @@
 </button>
 
 <!-- Modal -->
-<div wire:ignore.self class="modal fade" id="churchModal" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div wire:ignore.self class="modal fade" id="churchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -17,7 +17,7 @@
                 <form>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Name</label>
-                        <input type="text" class="form-control" id="" placeholder="Enter Church Name"
+                        <input type="text" class="form-control" id="" placeholder="Enter Class Name"
                             wire:model="title">
                         @error('title')
                             <span class="text-danger error">{{ $message }}</span>
@@ -28,8 +28,9 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
-                <button type="button" wire:click.prevent="store()" class="btn btn-primary close-modal">Add Church</button>
+                <button type="button" class="btn btn-danger close-btn" data-dismiss="modal">Close</button>
+                <button type="button" wire:click.prevent="store()" class="btn btn-success close-modal">Add
+                    Class</button>
             </div>
         </div>
     </div>

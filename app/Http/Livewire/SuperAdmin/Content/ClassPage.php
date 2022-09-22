@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\SuperAdmin;
-
+namespace App\Http\Livewire\SuperAdmin\Content;
 
 use Livewire\Component;
 use App\Models\ChildrenClass;
@@ -74,7 +73,4 @@ class ClassPage extends Component
     {
         $this->title = '';
     }
-
-
-
 }

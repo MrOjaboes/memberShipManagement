@@ -58,7 +58,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'Admin'], function () {
     Route::get('/children', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'index'])->name('admin.children');
     Route::get('/children/new', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'add'])->name('admin.children.add');
     Route::post('/children/new', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'store']);
-    Route::get('/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'edit'])->name('admin.children.edit');
+    Route::get('/children/{children}/details', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'details'])->name('admin.childrenDetails');
     Route::post('/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'update']);
 
     Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
@@ -111,7 +111,7 @@ Route::group(['prefix' => 'media',  'middleware' => 'MediaAngle'], function () {
     Route::get('/', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'index'])->name('media');
     Route::get('/content', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'cms'])->name('content');
     Route::get('/new/{image}', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'add'])->name('media.add');
-
+    Route::get('/api/fetch-cities', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'fetchCity']);
     //Adult section
     Route::post('/adult/{image}/new', [App\Http\Controllers\MediaAngle\AdultController::class, 'storeAdult'])->name('media.adult.add');
     Route::get('/adult/{adult}/details', [App\Http\Controllers\MediaAngle\AdultController::class, 'details'])->name('media.adultDetails');

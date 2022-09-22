@@ -23,10 +23,10 @@ class CreateAdultsTable extends Migration
             $table->string('email');
             $table->string('primary_phone');
             $table->string('secondary_phone')->nullable();
-            $table->string('image_id')->nullable();
-            $table->string('spouse_member_id');
+            $table->string('image_id');
+            $table->string('spouse_member_id')->nullable();
             $table->string('church');
-            $table->string('age_range');
+            $table->integer('age_id')->unsigned()->references('id')->on('age_ranges')->onDelete('SET NULL');
             $table->string('day');
             $table->string('month');
             $table->string('year');

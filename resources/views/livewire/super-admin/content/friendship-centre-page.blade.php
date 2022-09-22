@@ -32,7 +32,7 @@
             <tr>
 
                 <th>Name</th>
-                <th>Description</th>
+                <th>F Group</th>
                 <th>Date Added</th>
                 <th>Action</th>
             </tr>
@@ -43,10 +43,10 @@
             <tr>
 
                 <td>{{ $value->title }}</td>
-                <td>{{ $value->description }}</td>
+                <td>{{ $value->fgroup->title }}</td>
                 <td>{{ \Carbon\Carbon::parse($value->created_at)->format('d D, M Y') }}</td>
                 <td>
-                <button data-toggle="modal" data-target="#updateModal" wire:click="edit({{ $value->id }})" class="btn btn-primary btn-sm">Edit</button>
+                <button data-toggle="modal" data-target="#updateModal" wire:click="edit({{ $value->id }})" class="btn btn-outline-success btn-sm">Edit</button>
                 <button wire:click="delete({{ $value->id }})" class="btn btn-danger btn-sm">Delete</button>
                 </td>
             </tr>

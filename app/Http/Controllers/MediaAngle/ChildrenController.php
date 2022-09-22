@@ -31,16 +31,16 @@ class ChildrenController extends Controller
             'middle_name' => $request->middle_name,
             'email' => $request->email,
             'gender' => $request->gender,
-            'age_range' => $request->age_range,
+            'age_id' => $request->age_range,
             'day' => $request->day,
             'month' => $request->month,
             'year' => $request->year,
-            'guardian_one' => $request->guardian_one,
+            'parent_id' => $request->parent_id,
             'guardian_two' => $request->guardian_two,
             'church' => $request->church,
             'school' => $request->school,
             'level' => $request->level,
-            'class' => $request->class,
+            'class_id' => $request->class,
             'hog_member_id' => 'HOG/' . date('Y') . '/' . substr(rand(0, time()), 0, 5),
             'image_id' => $image->image_id,
         ]);
@@ -51,7 +51,7 @@ class ChildrenController extends Controller
                     'status' => true,
                 ]);
         }
-        return redirect()->back()->with('message', 'Details Submited Successfully.');
+        return redirect()->route('media')->with('message', 'Details Submited Successfully.');
     }
 
     public function allChildren()

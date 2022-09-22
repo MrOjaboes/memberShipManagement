@@ -21,16 +21,14 @@ class CreateChildrensTable extends Migration
             $table->string('hog_member_id');
             $table->enum('gender',['female','male']);
             $table->string('email')->nullable();
-            $table->integer('image_id')->unsigned()->references('id')->on('images')->onDelete('SET NULL');
-            $table->string('level');
+            $table->integer('image_id');
+            $table->integer('parent_id')->unsigned()->references('id')->on('adults')->onDelete('SET NULL');
+            $table->integer('class_id')->unsigned()->references('id')->on('children_classes')->onDelete('SET NULL');
+            $table->integer('age_id')->unsigned()->references('id')->on('age_ranges')->onDelete('SET NULL');
             $table->string('school')->nullable();
-            $table->string('age_range');
             $table->string('day');
             $table->string('month');
             $table->string('year');
-            $table->string('guardian_one')->nullable();
-            $table->string('guardian_two')->nullable();
-            $table->string('class');
             $table->timestamps();
         });
     }

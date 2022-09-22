@@ -38,7 +38,7 @@
         </thead>
         <tbody>
 
-            @foreach($churches as $value)
+            @foreach($class as $value)
             <tr>
 
                 <td>{{ $value->title }}</td>
