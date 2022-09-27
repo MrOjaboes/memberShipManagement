@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">HOG Media Portal / Member Import</h1>
+                        <h3 class="m-0">HOG Media Portal / Member Import</h3>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -43,7 +43,7 @@
                             <form action="{{ url('/media/adult/import') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="file" name="file" class="form-control">
+                                    <input type="file" name="file" required class="form-control">
                                 </div>
                                 <div class="form-group text-right">
                                    <button class="btn btn-danger" type="submit">Upload</button>

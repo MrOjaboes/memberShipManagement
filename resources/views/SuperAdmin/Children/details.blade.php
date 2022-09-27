@@ -30,38 +30,17 @@
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    @if ($profile->image_id == null)
-                                        <img class="profile-user-img img-fluid img-circle"
-                                            src="/Interface/dist/img/AdminLTELogo.PNG" alt="member photo" />
-                                    @else
+
                                         @foreach ($image as $item)
                                             <img class="profile-user-img img-fluid img-thumbnail"
                                                 src="{{ asset('/Storage/CCTV/' . $item->image) }}" alt="member Passport" />
                                         @endforeach
-                                    @endif
+
                                 </div>
 
                                 <h3 class="profile-username text-center">{{ $profile->first_name }} </h3>
 
                                 <p class="text-muted text-center"><b>{{ $profile->hog_member_id }}</b></p>
-
-                                {{-- <ul class="list-group list-group-unbordered mb-3">
-                                    <li class="list-group-item">
-                                        <b>State</b> <a class="float-right">{{ $student->state }}</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>LGA</b> <a class="float-right">{{ $student->lga }}</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Tribe</b> <a class="float-right">{{ $student->tribe }}</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Religion</b> <a class="float-right">{{ $student->religion }}</a>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <b>Class</b> <a class="float-right">{{ $student->class }}</a>
-                                    </li>
-                                </ul> --}}
 
 
                             </div>
@@ -120,7 +99,7 @@
                                                 <hr>
 
                                                 <strong> Age Group</strong>
-                                                <p class="text-muted">{{ $profile->age_range }}</p>
+                                                <p class="text-muted">{{ $profile->age_range->title }}</p>
                                                 <hr>
 
                                                 <strong>Birth Date</strong>
@@ -133,7 +112,7 @@
                                                 <hr>
 
                                                 <strong>Class</strong>
-                                                <p class="text-muted">{{ $profile->class }}</p>
+                                                <p class="text-muted">{{ $profile->class->title }}</p>
                                                 <hr>
 
 
@@ -141,40 +120,31 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="address" style="height: 350px;overflow-y:scroll;">
-                                        {{-- <div class="card">
-                                            @foreach ($address as $value)
-                                                <div class="card-body">
-                                                    <strong> House Number</strong>
-                                                    <p class="text-muted">{{ $value->house_number }}</p>
-                                                    <hr>
 
-                                                    <strong>Street Name</strong>
-                                                    <p class="text-muted">{{ $value->street }}</p>
-                                                    <hr>
+                                        <strong>First Name</strong>
+                                        <p class="text-muted">{{ $profile->parent->first_name }}</p>
+                                        <hr>
 
-                                                    <strong> City</strong>
-                                                    <p class="text-muted">{{ $value->city }}</p>
-                                                    <hr>
+                                        <strong>Last Name</strong>
+                                        <p class="text-muted">{{ $profile->parent->last_name }}</p>
+                                        <hr>
 
-                                                    <strong>Zip Code</strong>
-                                                    <p class="text-muted">{{ $value->zip_code }}</p>
-                                                    <hr>
+                                        <strong>Middle Name</strong>
+                                        <p class="text-muted">{{ $profile->parent->middle_name }}</p>
+                                        <hr>
 
-                                                    <strong> State </strong>
-                                                    <p class="text-muted">{{ $value->state }}</p>
-                                                    <hr>
+                                        <strong>Occupation</strong>
+                                        <p class="text-muted">{{ $profile->parent->occupation }}</p>
+                                        <hr>
 
-                                                    <strong>Country </strong>
-                                                    <p class="text-muted">{{ $value->country }}</p>
-                                                    <hr>
+                                        <strong>Gender</strong>
+                                        <p class="text-muted">{{ $profile->parent->gender }}</p>
+                                        <hr>
 
-                                                    <strong>Address Status </strong>
-                                                    <p class="text-muted">{{ $value->status }}</p>
-                                                    <hr>
+                                        <strong>Contact</strong>
+                                        <p class="text-muted">{{ $profile->parent->primary_phone }}</p>
+                                        <hr>
 
-                                                </div>
-                                            @endforeach
-                                        </div> --}}
                                     </div>
                                     <!-- /.tab-pane -->
                                 </div>

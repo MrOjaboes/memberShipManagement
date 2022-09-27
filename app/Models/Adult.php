@@ -18,15 +18,15 @@ class Adult extends Model
         "secondary_phone",
         "image_id",
         "marital_status",
-        "spouse_member_id",
         "age_id",
         "day",
         "month",
         "year",
         "fellowship_group_id",
         "friendship_centre_id",
+        "functional_group_id",
         "is_leader",
-        "church",
+        "church_id",
         "wedding_date",
         "occupation"
     ];
@@ -34,8 +34,34 @@ class Adult extends Model
     {
         return $this->hasOne(Address::class, 'member_id');
     }
+    public function lga()
+    {
+        return $this->belongsTo(LocalGovernments::class, 'lga_id');
+    }
+    public function state()
+    {
+        return $this->belongsTo(State::class, 'state_id');
+    }
     public function age_range()
     {
         return $this->belongsTo(AgeRange::class, 'age_id');
     }
+    public function church()
+    {
+        return $this->belongsTo(Church::class, 'church_id');
+    }
+
+    public function fgroup()
+    {
+        return $this->belongsTo(FellowshipGroup::class, 'fellowship_group_id');
+    }
+    public function fngroup()
+    {
+        return $this->belongsTo(FunctionalGroup::class, 'functional_group_id');
+    }
+    public function fcentre()
+    {
+        return $this->belongsTo(FriendshipCentre::class, 'friendship_centre_id');
+    }
 }
+

@@ -20,8 +20,8 @@
                         <td>{{ $data->first_name }}</td>
                         <td>{{ $data->last_name }}</td>
                         <td>{{ $data->hog_member_id }}</td>
-                        <td>{{ $data->class ?? 'Loading' }}</td>
-                        <td>{{ $data->birth_date }}</td>
+                        <td>{{ $data->class->title ?? 'Loading' }}</td>
+                        <td>{{ $data->day }} - {{ $data->month }} - {{ $data->year }}</td>
                         <td>{{ \Carbon\Carbon::parse($data->created_at)->format('d D, M Y') }}</td>
                         <td>
                             <a href="{{ route('media.childrenDetails', $data->id) }}"

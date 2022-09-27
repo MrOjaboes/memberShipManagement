@@ -63,6 +63,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('admin.account.new') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                    Accounts
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                        </li>
+                        {{-- <li class="nav-item">
                             <a href="{{ route('admin.message') }}" class="nav-link">
                                 <i class="far fa-comment"></i>
                                 <p>
@@ -70,7 +79,7 @@
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
-                        </li>
+                        </li> --}}
 
 
                     </ul>

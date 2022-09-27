@@ -121,7 +121,7 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for=" ">Primary Phone</label>
-                                                                <input type="text" required maxlength="11"
+                                                                <input type="text" required minlength="11" maxlength="11"
                                                                     class="form-control" id=""
                                                                     name="primary_phone">
 
@@ -130,7 +130,7 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for=" ">Secondary Phone</label>
-                                                                <input type="text" maxlength="11" class="form-control"
+                                                                <input type="text" minlength="11" maxlength="11" class="form-control"
                                                                     id="" name="secondary_phone">
 
                                                             </div>
@@ -249,11 +249,13 @@
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <small for="">Age Range</small>
-                                                                        <select name="age_range" required
+                                                                        <select name="age_id" required
                                                                             class="form-control">
+                                                                            <option value="">--- Option ---</option>
                                                                             @foreach ($age_range as $item)
                                                                                 <option value="{{ $item->id }}">
-                                                                                    {{ $item->title }}  ( {{ $item->value }})</option>
+                                                                                    {{ $item->title }} (
+                                                                                    {{ $item->value }})</option>
                                                                             @endforeach
                                                                         </select>
 
@@ -278,7 +280,8 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="">Church</label>
-                                                                <select name="church" required class="form-control">
+                                                                <select name="church_id" required class="form-control">
+                                                                    <option value="">Option</option>
                                                                     @foreach ($churches as $church)
                                                                         <option value="{{ $church->id }}">
                                                                             {{ $church->title }}</option>
@@ -289,22 +292,43 @@
                                                     </div>
                                                     {{-- Sixth Row --}}
                                                     <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for=" ">Functional Group</label>
+                                                                <select name="functional_group_id" class="form-control">
+                                                                    <option value="">-- Option --</option>
+                                                                    @foreach ($fngroup as $data)
+                                                                        <option value="{{ $data->id }}">
+                                                                            {{ $data->title }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for=" ">Fellowship Group</label>
-                                                                <select name="fellowship_group_id" required
-                                                                    class="form-control">
-
+                                                                <select id="fellowshipGroup-dropdown"
+                                                                    name="fellowship_group_id" class="form-control">
+                                                                    <option value="">-- Option --</option>
+                                                                    @foreach ($fgroup as $data)
+                                                                        <option value="{{ $data->id }}">
+                                                                            {{ $data->title }}
+                                                                        </option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="">Friendship Centre</label>
-                                                                <select name="friendship_centre_id" required
+                                                                <select id="centre-dropdown" name="friendship_centre_id"
                                                                     class="form-control">
-
                                                                 </select>
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -315,6 +339,7 @@
                                                                 <label for="">Marital Status</label>
                                                                 <select name="marital_status" required
                                                                     class="form-control" id="wedding">
+                                                                    <option value="">-- Option --</option>
                                                                     <option value="Single">Single</option>
                                                                     <option value="Married">Married</option>
                                                                 </select>
@@ -397,12 +422,13 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group mb-3">
                                                                 <label for="">State</label>
-                                                                <select  id="state-dropdown" name="state" class="form-control">
+                                                                <select id="state-dropdown" name="state_id"
+                                                                    class="form-control">
                                                                     <option value="">-- Select State --</option>
                                                                     @foreach ($states as $data)
-                                                                    <option value="{{$data->id}}">
-                                                                        {{$data->name}}
-                                                                    </option>
+                                                                        <option value="{{ $data->id }}">
+                                                                            {{ $data->name }}
+                                                                        </option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -410,7 +436,8 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="">LGA </label>
-                                                                <select id="city-dropdown" name="lga" class="form-control">
+                                                                <select id="city-dropdown" name="lga_id"
+                                                                    class="form-control">
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -429,6 +456,7 @@
                                                             <div class="form-group">
                                                                 <label for="">Address Status</label>
                                                                 <select name="status" class="form-control">
+                                                                    <option value="">-- Option --</option>
                                                                     <option value="previous">Previous</option>
                                                                     <option value="current">Current</option>
                                                                 </select>
@@ -461,33 +489,29 @@
                                     <div class="tab-pane" id="children">
                                         <div class="card">
                                             <div class="card-body">
-                                                <form action="{{ route('media.children.add', $image->id) }}" method="POST">
+                                                <form action="{{ route('media.children.add', $image->id) }}"
+                                                    method="POST">
                                                     @csrf
-                                                    <div class="row">
-                                                        <div class="col-col-md-6">
-                                                            <div class="form-group">
-                                                                <label for=""> First Name</label>
-                                                                <input type="text" class="form-control" id=""
-                                                                    required name="first_name">
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-col-md-6">
-                                                            <div class="form-group">
-                                                                <label for=""> Last Name</label>
-                                                                <input type="text" class="form-control" id=""
-                                                                    required name="last_name">
-
-                                                            </div>
-                                                        </div>
+                                                  <div class="row">
+                                                    <div class="col-md-6">
+                                                         <div class="form-group">
+                                                        <label for=""> First Name</label>
+                                                        <input type="text" class="form-control" id="" required name="first_name">
                                                     </div>
+                                                </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                        <label for=""> Last Name</label>
+                                                        <input type="text" class="form-control" id="" required name="last_name">
+                                                    </div>
+                                                </div>
+                                                  </div>
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="exampleFormControlInput2">Middle
                                                                     Name</label>
-                                                                <input type="text" class="form-control" id=""
-                                                                    name="middle_name">
+                                                                <input type="text" class="form-control" id="" name="middle_name">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -499,17 +523,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label for="">Church</label>
-                                                                <select name="church" required class="form-control">
-                                                                    <option value="">---- Option ----</option>
-                                                                    @foreach ($churches as $church)
-                                                                        <option value="{{ $church->id }}">
-                                                                            {{ $church->title }}</option>
-                                                                    @endforeach
-                                                                </select>
+                                                                <label for="">Email</label>
+                                                               <input type="email" name="email" class="form-control">
                                                             </div>
+
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group">
@@ -540,7 +559,8 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="">Class</label>
-                                                                <select name="class" required class="form-control">
+                                                                <select name="class_id" required class="form-control">
+                                                                    <option value="">-- Option --</option>
                                                                     @foreach ($class as $item)
                                                                         <option value="{{ $item->id }}">
                                                                             {{ $item->title }}</option>
@@ -666,10 +686,12 @@
                                                                         <small for="">Age Range</small>
                                                                         <select name="age_range" required
                                                                             class="form-control">
+                                                                            <option value="">-- Option --</option>
                                                                             @foreach ($age_range as $item)
                                                                                 <option value="{{ $item->id }}">
                                                                                     {{ $item->title }}
-                                                                                    ({{ $item->value }})</option>
+                                                                                    ({{ $item->value }})
+                                                                                </option>
                                                                             @endforeach
                                                                         </select>
 
@@ -716,6 +738,7 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    {{-- State and LGA relationship --}}
     <script>
         $(document).ready(function() {
 
@@ -774,7 +797,39 @@
 
         });
     </script>
-     <script>
+    {{-- Fellowship Group and Friendshipcentre relationship --}}
+    <script>
+        $(document).ready(function() {
+            /*------------------------------------------
+            --------------------------------------------
+            State Dropdown Change Event
+            --------------------------------------------
+            --------------------------------------------*/
+            $('#fellowshipGroup-dropdown').on('change', function() {
+                var idState = this.value;
+                $("#city-dropdown").html('');
+                $.ajax({
+                    url: "{{ url('media/api/fetch-centres') }}",
+                    type: "GET",
+                    data: {
+                        state_id: idState,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    dataType: 'json',
+                    success: function(res) {
+                        $('#centre-dropdown').html(
+                            '<option value="">-- Select Centre --</option>');
+                        $.each(res.centres, function(key, value) {
+                            $("#centre-dropdown").append('<option value="' + value
+                                .id + '">' + value.title + '</option>');
+                        });
+                    }
+                });
+            });
+
+        });
+    </script>
+    <script>
         $(document).ready(function() {
             $('#wedding').on('change', function() {
                 if (this.value == 'Married')

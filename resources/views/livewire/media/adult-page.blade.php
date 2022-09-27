@@ -10,7 +10,7 @@
                     <th>Gender</th>
                     <th>Marital Status</th>
                     <th>Birth Date</th>
-                    <th>Date</th>
+                    <th>Contact</th>
                     <th></th>
                 </tr>
             </thead>
@@ -22,8 +22,9 @@
                         <td>{{ $member->hog_member_id }}</td>
                         <td>{{ $member->gender }}</td>
                         <td>{{ $member->marital_status }}</td>
-                        <td>{{ $member->birth_date }}</td>
-                        <td>{{ \Carbon\Carbon::parse($member->created_at)->format('d D, M Y') }}</td>
+                        <td>{{ $member->day }} - {{ $member->month }} - {{ $member->year }}</td>
+                        <td>{{ $member->primary_phone }} </td>
+
                         <td>
                             <a href="{{ route('media.adultDetails',$member->id) }}" class="btn btn-danger btn-sm">Details</a>
                              {{-- <button wire:click="delete({{ $value->id }})" class="btn btn-danger btn-sm">Delete</button> --}}

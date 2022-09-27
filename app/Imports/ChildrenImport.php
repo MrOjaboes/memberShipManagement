@@ -28,16 +28,14 @@ class ChildrenImport implements ToModel, WithHeadingRow
             'middle_name'     => $row['middle_name'],
             'gender'     => $row['gender'],
             'school'     => $row['school'],
-            'level'     => $row['level'],
             'image_id'     => $row['image_id'],
-            'age_range'     => $row['age_range'],
+            'age_id'     => $row['age_id'],
             'day'     => $row['day'],
             'month'     => $row['month'],
             'year'     => $row['year'],
-            'guardian_one'     => $row['guardian_one'],
-            'guardian_two'     => $row['guardian_two'],
+            'parent_id'     => $row['parent_id'],
             'hog_member_id'     => 'HOG/' . date('Y') . '/' . substr(rand(0, time()), 0, 5),
-            'class'    => $row['class'],
+            'class_id'    => $row['class_id'],
         ]);
     }
 }

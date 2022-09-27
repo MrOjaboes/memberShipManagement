@@ -22,7 +22,8 @@ public function searchChildren()
    // dd('ok');
     return Children::query()
     ->where('first_name','like','%'.$this->searchTerm.'%')
-    ->orWhere('class','like','%'.$this->searchTerm.'%')
+    ->orWhere('class_id','like','%'.$this->searchTerm.'%')
+    ->with('class')
     ->latest()->paginate(6);
 }
 }

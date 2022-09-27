@@ -11,11 +11,21 @@ class Address extends Model
         "street",
         "house_number",
         "city",
-        "lga",
+        "lga_id",
         "zip_code",
-        "state",
+        "state_id",
         "country",
         "member_id",
         "status"
     ];
+
+
+    public function state()
+    {
+        return $this->belongsTo(State::class, 'state_id');
+    }
+    public function lga()
+    {
+        return $this->belongsTo(LocalGovernments::class, 'lga_id');
+    }
 }

@@ -17,6 +17,7 @@ use App\Models\FellowshipGroup;
 use App\Models\FriendshipCentre;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\FunctionalGroup;
 use App\Models\LocalGovernments;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -38,13 +39,14 @@ class CCTVSectionController extends Controller
     public function add(Image $image)
     {
         $fgroup = FellowshipGroup::all();
+        $fngroup = FunctionalGroup::all();
         $centres = FriendshipCentre::all();
         $churches = Church::all();
         $members = Adult::all();
         $age_range = AgeRange::all();
         $class = ChildrenClass::all();
         $states = State::get(["name", "id"]);
-        return view('Media.add', compact('fgroup', 'centres', 'churches', 'members','image','age_range','class','states'));
+        return view('Media.add', compact('fgroup', 'fngroup','centres', 'churches', 'members','image','age_range','class','states'));
     }
 
     public function profile()
@@ -66,6 +68,13 @@ class CCTVSectionController extends Controller
     {
         $data['cities'] = LocalGovernments::where("state_id", $request->state_id)
                                     ->get(["name", "id"]);
+
+        return response()->json($data);
+    }
+    public function fetchCentre(Request $request)
+    {
+        $data['centres'] = FriendshipCentre::where("fellowship_group_id", $request->state_id)
+                                    ->get(["title", "id"]);
 
         return response()->json($data);
     }

@@ -40,4 +40,4 @@ class MemberController extends Controller
 
 
     }
- 
+}

@@ -46,6 +46,14 @@ Route::group(['prefix' => 'home',  'middleware' => 'Member'], function () {
 });
 //Admin Section
 Route::group(['prefix' => 'admin',  'middleware' => 'Admin'], function () {
+
+    //Export Section
+    Route::get('/export-members', [App\Http\Controllers\SuperAdmin\ExportController::class, 'exportstate'])->name('admin.membersExcel');
+    Route::get('/export-children', [App\Http\Controllers\SuperAdmin\ExportController::class, 'exportChildren'])->name('admin.childrenExcel');
+
+    //Account Section
+    Route::get('/account', [App\Http\Controllers\SuperAdmin\AccountController::class, 'addAccount'])->name('admin.account.new');
+
     //Content
     Route::get('/churches', [App\Http\Controllers\SuperAdmin\ContentController::class, 'church'])->name('admin.churches');
     Route::get('/class', [App\Http\Controllers\SuperAdmin\ContentController::class, 'class'])->name('admin.class');
@@ -91,11 +99,12 @@ Route::group(['prefix' => 'admin',  'middleware' => 'Admin'], function () {
     Route::get('/members', [App\Http\Controllers\SuperAdmin\AdultController::class, 'index'])->name('admin.members');
     Route::get('/member/new', [App\Http\Controllers\SuperAdmin\AdultController::class, 'add'])->name('admin.member.new');
     Route::post('/member/new', [App\Http\Controllers\SuperAdmin\AdultController::class, 'store']);
+    Route::get('/member/{member}/details', [App\Http\Controllers\SuperAdmin\AdultController::class, 'details'])->name('admin.memberDetails');
     Route::get('/member/{member}/edit', [App\Http\Controllers\SuperAdmin\AdultController::class, 'edit'])->name('admin.member.edit');
     Route::get('/members/export', [App\Http\Controllers\AdminController::class, 'generatePDF'])->name('members.pdf');
     Route::get('/members/birthdate', [App\Http\Controllers\AdminController::class, 'birthdate'])->name('admin.members.birthdate');
     Route::get('/members/wedding', [App\Http\Controllers\AdminController::class, 'wedding'])->name('admin.members.wedding');
-    Route::get('/member/{profile}/profile', [App\Http\Controllers\MemberController::class, 'member'])->name('admin.memberDetails');
+    //Route::get('/member/{profile}/profile', [App\Http\Controllers\MemberController::class, 'member'])->name('admin.memberDetails');
     Route::post('/member/{user}/profile', [App\Http\Controllers\MemberController::class, 'comment'])->name('admin.member.comment');
     //Attendance(s) Collection
     Route::get('/attendance', [App\Http\Controllers\AdminController::class, 'attendance'])->name('admin.attendance');
@@ -111,6 +120,9 @@ Route::group(['prefix' => 'media',  'middleware' => 'MediaAngle'], function () {
     Route::get('/', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'index'])->name('media');
     Route::get('/content', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'cms'])->name('content');
     Route::get('/new/{image}', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'add'])->name('media.add');
+
+    //Relationship Section
+    Route::get('/api/fetch-centres', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'fetchCentre']);
     Route::get('/api/fetch-cities', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'fetchCity']);
     //Adult section
     Route::post('/adult/{image}/new', [App\Http\Controllers\MediaAngle\AdultController::class, 'storeAdult'])->name('media.adult.add');
@@ -122,7 +134,7 @@ Route::group(['prefix' => 'media',  'middleware' => 'MediaAngle'], function () {
     Route::post('/children/{image}/new', [App\Http\Controllers\MediaAngle\ChildrenController::class, 'storeChildren'])->name('media.children.add');
     Route::get('/children/{children}/details', [App\Http\Controllers\MediaAngle\ChildrenController::class, 'childrenDetails'])->name('media.childrenDetails');
     Route::get('/children', [App\Http\Controllers\MediaAngle\ChildrenController::class, 'allChildren'])->name('children');
-   // Route::post('/media/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'update']);
+    // Route::post('/media/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'update']);
 
     //Profile secion
     Route::get('/profile', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'profile'])->name('media.profile');
@@ -132,8 +144,8 @@ Route::group(['prefix' => 'media',  'middleware' => 'MediaAngle'], function () {
     Route::get('/adult/import', [App\Http\Controllers\MediaAngle\AdultController::class, 'adultImport'])->name('adult-import');
     Route::get('/children/import', [App\Http\Controllers\MediaAngle\ChildrenController::class, 'childrenImport'])->name('children-import');
 
-    Route::post('/adult/import', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'storeAdultImport']);
-    Route::post('/children/import', [App\Http\Controllers\MediaAngle\CCTVSectionController::class, 'storeChildrenImport']);
+    Route::post('/adult/import', [App\Http\Controllers\MediaAngle\AdultController::class, 'storeAdultImport']);
+    Route::post('/children/import', [App\Http\Controllers\MediaAngle\ChildrenController::class, 'storeChildrenImport']);
 
 
     Route::post('/children/{children}/edit', [App\Http\Controllers\SuperAdmin\ChildrenController::class, 'update']);

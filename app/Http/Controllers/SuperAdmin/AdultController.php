@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\SuperAdmin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Address;
 use App\Models\Adult;
+use App\Models\Image;
 use App\Models\Church;
+use App\Models\Address;
+use Illuminate\Http\Request;
 use App\Models\FellowshipGroup;
 use App\Models\FriendshipCentre;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdultController extends Controller
 {
@@ -82,5 +83,13 @@ class AdultController extends Controller
     public function edit(Adult $member)
     {
         return view('SuperAdmin.Adult.edit', compact('member'));
+    }
+    public function details(Adult $member)
+    {
+        $profile = Adult::with(['age_range','church','fgroup','fcentre','fngroup','state','lga'])->where('id', $member->id)->first();
+        //dd($profile);
+         $image = Image::where('image_id', $member->image_id)->get();
+         $address  = Address::with(['state','lga'])->where('member_id', $member->id)->get();
+      return view('SuperAdmin.Adult.details',compact('profile','image','address'));
     }
 }

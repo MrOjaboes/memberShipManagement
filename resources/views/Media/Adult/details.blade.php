@@ -43,8 +43,8 @@
                                 </div>
 
                                 <h3 class="profile-username text-center">{{ $profile->first_name }} </h3>
-
                                 <p class="text-muted text-center"><b>{{ $profile->hog_member_id }}</b></p>
+                                <p class="text-muted text-center">{{ $profile->email }}</p>
 
                             </div>
 
@@ -130,8 +130,7 @@
                                     </div>
                                     <div class="tab-pane" id="address" style="height: 350px;overflow-y:scroll;">
                                         <div class="card">
-                                        @foreach ($address as $value)
-
+                                     @foreach ($address as $value)
                                         <div class="card-body">
                                             <strong>  House Number</strong>
                                             <p class="text-muted">{{ $value->house_number }}</p>
@@ -149,8 +148,12 @@
                                             <p class="text-muted">{{ $value->zip_code }}</p>
                                             <hr>
 
+                                            <strong> LGA </strong>
+                                            <p class="text-muted">{{ $value->lga->name }}</p>
+                                            <hr>
+
                                             <strong> State </strong>
-                                            <p class="text-muted">{{ $value->state }}</p>
+                                            <p class="text-muted">{{ $value->state->name }}</p>
                                             <hr>
 
                                             <strong>Country </strong>

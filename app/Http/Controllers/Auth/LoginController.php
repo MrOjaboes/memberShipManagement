@@ -48,20 +48,48 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
-            if (auth()->user()->user_type == 2) {
-                return redirect()->route('admin');
+        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
+        {
+            if (auth()->user()->user_type == 3) {
+                return redirect()->route('media');
+                //session()->flash('login', 'welcome');
+            // }elseif(auth()->user()->user_type == 2){
+            //     return redirect()->route('admin');
 
-            } elseif (auth()->user()->user_type == 1 || auth()->user()->user_type == 0) {
-                return redirect()->route('home');
+            }elseif(auth()->user()->user_type == 3){
+                return redirect()->route('media');
             }
-         elseif (auth()->user()->user_type == 3) {
-            return redirect()->route('media');
-
-        }else {
-                return redirect()->route('login')
-                    ->with('message', 'Email And Password Do not Match.');
-            }
+        }else{
+            return redirect()->route('login')
+                ->with('message','Email And Password Do not Match.');
         }
+
     }
+
+
+    // public function login(Request $request)
+    // {
+    //     $input = $request->all();
+
+    //     $this->validate($request, [
+    //         'email' => 'required',
+    //         'password' => 'required',
+    //     ]);
+
+    //     if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
+    //         if (auth()->user()->user_type == 2) {
+    //             return redirect()->route('admin');
+
+    //         } elseif (auth()->user()->user_type == 1 || auth()->user()->user_type == 0) {
+    //             return redirect()->route('home');
+    //         }
+    //      elseif (auth()->user()->user_type == 3) {
+    //         return redirect()->route('media');
+
+    //     }else {
+    //             return redirect()->route('login')
+    //                 ->with('message', 'Email And Password Do not Match.');
+    //         }
+    //     }
+    // }
 }

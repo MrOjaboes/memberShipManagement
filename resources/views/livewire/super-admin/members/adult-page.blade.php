@@ -1,9 +1,9 @@
 <div>
-    {{-- <div class="text-right mr-3"> <a class="btn btn-danger" href="{{ route('admin.member.new') }}"> <i
-                class="fas fa-plus"></i> Add New</a> &nbsp; <a href="{{ route('members.pdf') }}"
-            class="btn btn-danger">Export Pdf</a> &nbsp; <a href="{{ route('members.pdf') }}"
-            class="btn btn-success">Export CSV</a><br><br>
-    </div> --}}
+    <div class="text-right mr-3">
+        {{-- <a class="btn btn-danger" href="{{ route('admin.member.new') }}"> <i class="fas fa-plus"></i> Add New</a>&nbsp;
+         <a href="{{ route('members.pdf') }}" class="btn btn-danger">Export Pdf</a> &nbsp; --}}
+          <a href="{{ route('admin.membersExcel') }}" class="btn btn-success">Export Excel</a><br><br>
+    </div>
     <div class="card">
         <div class="card-header">
             <div class="card-tools">
@@ -52,12 +52,11 @@
                                 <td>{{ $value->last_name }}</td>
                                 <td>{{ $value->primary_phone }}</td>
                                 <td>{{ \Carbon\Carbon::parse($value->created_at)->format('d D, M Y') }}</td>
-                                {{-- <td>
-                                    <a href="{{ route('admin.member.edit', $value->id) }}"
-                                        class="btn btn-info btn-sm">Edit</a>
-                                    <button wire:click="delete({{ $value->id }})"
-                                        class="btn btn-danger btn-sm">Delete</button>
-                                </td> --}}
+                                <td>
+                                     <a href="{{ route('admin.memberDetails', $value->id) }}" class="btn btn-danger btn-sm">Details</a>
+                                    {{-- <button wire:click="delete({{ $value->id }})"
+                                        class="btn btn-danger btn-sm">Delete</button> --}}
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

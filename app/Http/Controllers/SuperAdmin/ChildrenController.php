@@ -40,9 +40,9 @@ class ChildrenController extends Controller
     }
     public function details(Children $children)
     {
-        $profile = $children->with(['parent','images'])->get();
-        dd($profile);
-        $image = Image::where('image_id', $profile->image_id)->get();
+        $profile = Children::with(['class','parent','age_range'])->where('id', $children->id)->first();
+       //dd($profile);
+        $image = Image::where('image_id', $children->image_id)->get();
        return view('SuperAdmin.Children.details',compact('profile','image'));
     }
     public function edit(Children $children)

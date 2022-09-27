@@ -40,6 +40,14 @@
                         <livewire:media.functional-group-page>
                     </div>
                 </div>
+                <div class="row py-3">
+                    <div class="col-md-6">
+                        <livewire:media.age-range-page>
+                    </div>
+                    <div class="col-md-6">
+                        <livewire:media.class-page>
+                    </div>
+                </div>
 
         </section>
         <!-- /.content -->

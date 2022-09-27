@@ -36,11 +36,9 @@ class ChildrenController extends Controller
             'month' => $request->month,
             'year' => $request->year,
             'parent_id' => $request->parent_id,
-            'guardian_two' => $request->guardian_two,
-            'church' => $request->church,
             'school' => $request->school,
             'level' => $request->level,
-            'class_id' => $request->class,
+            'class_id' => $request->class_id,
             'hog_member_id' => 'HOG/' . date('Y') . '/' . substr(rand(0, time()), 0, 5),
             'image_id' => $image->image_id,
         ]);
@@ -60,8 +58,8 @@ class ChildrenController extends Controller
     }
     public function childrenDetails(Children $children)
     {
-        $profile = $children;
-        $image = Image::where('image_id', $profile->image_id)->get();
+        $profile = Children::with(['class','parent','age_range'])->where('id', $children->id)->first();
+        $image = Image::where('image_id', $children->image_id)->get();
 
         return view('Media.Children.details', compact('profile', 'image'));
     }

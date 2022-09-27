@@ -24,11 +24,11 @@ class CreateChildrensTable extends Migration
             $table->integer('image_id');
             $table->integer('parent_id')->unsigned()->references('id')->on('adults')->onDelete('SET NULL');
             $table->integer('class_id')->unsigned()->references('id')->on('children_classes')->onDelete('SET NULL');
-            $table->integer('age_id')->unsigned()->references('id')->on('age_ranges')->onDelete('SET NULL');
+            $table->integer('age_id')->unsigned()->references('id')->on('age_ranges')->onDelete('SET NULL'); 
             $table->string('school')->nullable();
-            $table->string('day');
-            $table->string('month');
-            $table->string('year');
+            $table->string('day')->nullable();
+            $table->string('month')->nullable();
+            $table->string('year')->nullable();
             $table->timestamps();
         });
     }

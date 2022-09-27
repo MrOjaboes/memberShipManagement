@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Update Form</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -12,20 +12,16 @@
                 <form>
                     <div class="form-group">
                         <input type="hidden" wire:model="user_id">
-                        <label for="exampleFormControlInput1">Name</label>
-                        <input type="text" class="form-control" wire:model="title" id="exampleFormControlInput1" placeholder="Enter Name">
-                        @error('title') <span class="text-danger">{{ $message }}</span>@enderror
+                        <label for=" ">Name</label>
+                        <input type="text" class="form-control" wire:model="name" id=" " >
+                        @error('name') <span class="text-danger">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Location</label>
-                        <input type="text" class="form-control" wire:model="location" id="">
-                        @error('location') <span class="text-danger">{{ $message }}</span>@enderror
+                        <label for="">Email</label>
+                        <input type="text" class="form-control" wire:model="email" id="">
+                        @error('email') <span class="text-danger">{{ $message }}</span>@enderror
                     </div>
-                    <div class="form-group">
-                        <label for="">Description </label>
-                        <input type="text" class="form-control" wire:model="description" id=" " placeholder="Enter Email">
-                        @error('description') <span class="text-danger">{{ $message }}</span>@enderror
-                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">

@@ -17,9 +17,9 @@ class CreateAddressesTable extends Migration
             $table->id();
             $table->string('street');
             $table->string('city');
-            $table->string('lga');
             $table->string('zip_code');
-            $table->string('state');
+            $table->integer('lga_id')->unsigned()->references('id')->on('local_governments')->onDelete('SET NULL');
+            $table->integer('state_id')->unsigned()->references('id')->on('states')->onDelete('SET NULL');
             $table->string('country');
             $table->string('status')->default('current');
             $table->integer('member_id')->unsigned()->references('id')->on('adults')->onDelete('SET NULL');

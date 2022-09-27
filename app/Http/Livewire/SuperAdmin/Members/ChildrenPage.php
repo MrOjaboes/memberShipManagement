@@ -24,7 +24,8 @@ class ChildrenPage extends Component
        // dd('ok');
         return Children::query()
         ->where('first_name','like','%'.$this->searchTerm.'%')
-        ->orWhere('class','like','%'.$this->searchTerm.'%')
+        ->orWhere('class_id','like','%'.$this->searchTerm.'%')
+        ->with('class')
         ->latest()->paginate(20);
     }
     public function store(Request $request)

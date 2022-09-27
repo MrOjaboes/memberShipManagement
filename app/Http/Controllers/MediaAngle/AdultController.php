@@ -59,14 +59,15 @@ class AdultController extends Controller
                 'gender' => $request->gender,
                 'primary_phone' => $request->primary_phone,
                 'secondary_phone' => $request->secondary_phone,
-                'age_id' => $request->age_range,
+                'age_id' => $request->age_id,
                 'day' => $request->day,
                 'month' => $request->month,
                 'year' => $request->year,
                 'marital_status' => $request->marital_status,
                 'wedding_date' => $request->wedding_date,
                 'occupation' => $request->occupation,
-                'church' => $request->church,
+                'church_id' => $request->church_id,
+                'functional_group_id' => $request->functional_group_id,
                 'fellowship_group_id' => $request->fellowship_group_id,
                 'friendship_centre_id' => $request->friendship_centre_id,
                 'hog_member_id' => 'HOG/' . date('Y') . '/' . substr(rand(0, time()), 0, 5),
@@ -85,9 +86,9 @@ class AdultController extends Controller
             "street" => $request->street,
             "house_number" => $request->house_number,
             "city" => $request->city,
-            "lga" => $request->lga,
+            'state_id' => $request->state_id,
+            'lga_id' => $request->lga_id,
             "zip_code" => $request->zip_code,
-            "state" => $request->state,
             "country" => $request->country,
             "status" => $request->status,
         ]);
@@ -106,9 +107,10 @@ class AdultController extends Controller
 
     public function details(Adult $adult)
     {
-        $profile = $adult->with('age_range')->get();
-        $image = Image::where('image_id', $adult->image_id)->get();
-        $address = Address::where('member_id', $profile->id)->get();
+        $profile = Adult::with(['address','age_range','church','fgroup','fcentre','fngroup'])->where('id', $adult->id)->first();
+         $image = Image::where('image_id', $adult->image_id)->get();
+         $address = Address::with(['state','lga'])->where('member_id', $adult->id)->get();
+         //dd($address);
         return view('Media.Adult.details', compact('profile', 'image','address'));
     }
 }

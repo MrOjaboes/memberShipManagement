@@ -3,6 +3,13 @@
     <div class="row">
         <div class="col-md-12">
             <h2 class="text-center">No Record Available</h2>
+            <p class="text-center">Continue with <a href="{{ route('children-import') }}" class="">
+                Children import
+            </a> /<a href="{{ route('adult-import') }}" class="">
+                Adult import
+            </a> <br>
+            <small>Note:: No import without image Id!</small>
+        </p>
         </div>
     </div>
     @else

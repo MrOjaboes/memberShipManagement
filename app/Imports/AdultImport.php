@@ -9,12 +9,13 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class AdultImport implements ToModel, WithHeadingRow
 {
-    // public function rules(): array
-    // {
-    //     // return [
-    //     //     'birth_date' => 'required|dateformat:DD-MM-YYYY',
-    //     // ];
-    // }
+    public function rules(): array
+    {
+        return [
+            'wedding_date' => 'required|dateformat:DD-MM-YYYY',
+            'image_id' => 'required','image_id', 'max:255', 'unique:adults',
+        ];
+    }
     /**
      * @param array $row
      *
@@ -32,15 +33,16 @@ class AdultImport implements ToModel, WithHeadingRow
             'secondary_phone'     => $row['secondary_phone'],
             'wedding_date'     => $row['wedding_date'],
             'image_id'     => $row['image_id'],
-            'age_range'     => $row['age_range'],
+            'age_id'     => $row['age_id'],
             'day'     => $row['day'],
             'month'     => $row['month'],
             'year'     => $row['year'],
             'marital_status'     => $row['marital_status'],
-            'fellowship_group_id'     => $row['fellowship_group'],
-            'friendship_centre_id'     => $row['friendship_centre'],
+            'fellowship_group_id'     => $row['fellowship_group_id'],
+            'friendship_centre_id'     => $row['friendship_centre_id'],
+            'functional_group_id'     => $row['functional_group_id'],
             'hog_member_id'     => 'HOG/' . date('Y') . '/' . substr(rand(0, time()), 0, 5),
-            'church'    => $row['church'],
+            'church_id'    => $row['church_id'],
             'is_leader'    => $row['is_leader'],
             'occupation'    => $row['occupation'],
         ]);
@@ -50,10 +52,10 @@ class AdultImport implements ToModel, WithHeadingRow
             'house_number'     => $row['house_number'],
             'street'     => $row['street'],
             'city'     => $row['city'],
-            'lga'     => $row['lga'],
+            'lga_id'     => $row['lga_id'],
             'zip_code'     => $row['zip_code'],
             'status'     => $row['status'],
-            'state'     => $row['state'],
+            'state_id'     => $row['state_id'],
             'country'     => $row['country'],
         ]);
     }

@@ -11,6 +11,7 @@ class Children extends Model
         'first_name',
         'last_name',
         'middle_name',
+        'email',
         "age_id",
         "day",
         "month",
@@ -22,12 +23,16 @@ class Children extends Model
         'hog_member_id',
         'image_id',
     ];
-    public function images()
+    public function age_range()
     {
-       return $this->hasOne(Image::class,'image_id');
+       return $this->belongsTo(AgeRange::class,'age_id');
     }
     public function parent()
     {
-       return $this->hasOne(Adult::class,'parent_id');
+       return $this->belongsTo(Adult::class,'parent_id');
+    }
+    public function class()
+    {
+       return $this->belongsTo(ChildrenClass::class,'class_id');
     }
 }
